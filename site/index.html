@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" data-build="${build.id}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>name origins</title>
+  <meta name="description" content="Type a first name and trace the languages it came through, from Wiktionary's etymologies.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=${build.id}">
+</head>
+<body>
+  <div class="page">
+    <header class="masthead">
+      <p class="wordmark">name origins</p>
+      <h1>Where does your name come from?</h1>
+      <p class="lede">Type a first name to trace the languages it passed through, oldest first, as recorded by Wiktionary’s editors.</p>
+    </header>
+
+    <form id="trace-form" class="trace" role="search">
+      <label for="name">First name</label>
+      <div class="trace-row">
+        <input id="name" name="name" list="name-list" autocomplete="off" autocapitalize="words" spellcheck="false" placeholder="e.g. Sophia" required>
+        <button type="submit" class="primary">Trace</button>
+      </div>
+      <datalist id="name-list"></datalist>
+    </form>
+    <p id="status" class="status" aria-live="polite"></p>
+
+    <main id="result" class="result" aria-live="polite"></main>
+
+    <section class="by-meaning" aria-labelledby="meaning-h">
+      <h2 id="meaning-h">Find names by meaning</h2>
+      <form id="meaning-form" class="trace">
+        <label for="meaning">A meaning</label>
+        <div class="trace-row">
+          <input id="meaning" name="meaning" autocomplete="off" placeholder="e.g. victory, light, gift of god" required>
+          <button type="submit" class="secondary">Search</button>
+        </div>
+      </form>
+      <div id="meaning-result" aria-live="polite"></div>
+    </section>
+
+    <footer class="colophon">
+      <p>Recorded origins come from <a href="https://en.wiktionary.org/">Wiktionary</a> (CC BY-SA 4.0), extracted by <a href="https://kaikki.org/">kaikki.org</a>, with extra names from <a href="https://www.wikidata.org/">Wikidata</a> (CC0). When a name isn’t recorded, the page says so and shows a guess from its letter patterns instead, labelled as a guess.</p>
+      <p>Written in Java and compiled to run in your browser. <a href="https://github.com/SanjithTammana/name-origins">Source and method</a></p>
+    </footer>
+  </div>
+  <script src="js/app.js?v=${build.id}"></script>
+  <script>main();</script>
+</body>
+</html>
