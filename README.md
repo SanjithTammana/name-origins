@@ -7,8 +7,8 @@ Ancient Greek → Latin → Old French → Middle English → English.
 Everything is Java. The data is built by Java programs on a PC, and the page itself is Java compiled to
 JavaScript with [TeaVM](https://teavm.org/), so it runs as a static site (GitHub Pages) with no server.
 
-The data: 69,323 given-name entries from Wiktionary (22,315 names with a recorded origin chain), plus 87,684
-more names from Wikidata, which records the language and gender a name is used with but no etymology. 149,591
+The data: 69,323 given-name entries from Wiktionary (22,259 names with a recorded origin chain), plus 87,427
+more names from Wikidata, which records the language and gender a name is used with but no etymology. 149,112
 names in all.
 
 ## What happens when you type a name
@@ -37,11 +37,11 @@ Numbers from the last build (`work/eval-origin.txt`, `work/eval-meaning.txt`):
 
 | Part | Measure | Result |
 |---|---|---|
-| Origin guess | top-1 accuracy, 2,716 held-out names, 31 origins | 0.555 (always guessing the largest origin: 0.129) |
-| Origin guess | top-3 accuracy | 0.761 |
-| Origin guess | above the confidence floor | shown for 78% of names, right 65% of the time |
+| Origin guess | top-1 accuracy, 2,736 held-out names, 30 origins | 0.563 (always guessing the largest origin: 0.135) |
+| Origin guess | top-3 accuracy | 0.769 |
+| Origin guess | above the confidence floor | shown for 80% of names, right 65% of the time |
 | Meaning search | concept recall@50 (TF-IDF / embeddings / blend) | 0.961 / 0.955 / **0.973** |
-| Meaning search | shared-root recall@10 | 0.605 / 0.581 / **0.610** |
+| Meaning search | shared-root recall@10 | 0.595 / 0.578 / **0.606** |
 | Meaning search | names found only through a synonym, recall@100 | 0.000 / 0.135 / 0.088 |
 
 The blend was chosen by a rule fixed before the results were seen: it had to raise concept recall without

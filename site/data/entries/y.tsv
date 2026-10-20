@@ -180,7 +180,7 @@ yakoub	Yakoub		male		Listed on Wikidata as a given name. No etymology is recorde
 yakov	Yakov	Russian	male		Listed on Wikidata as a given name in Russian. No etymology is recorded for it yet.	
 yakova	Yakova	English	female		From the Hebrew masculine form "Ya'akov" or "Yakov" which originally refers to the Biblical character, Jacob.	Hebrew
 yakub	Yakub	Arabic	male		Listed on Wikidata as a given name in Arabic. No etymology is recorded for it yet.	
-yakubu	Yakubu	Hausa	male		Listed on Wikidata as a given name in Hausa. No etymology is recorded for it yet.	
+yakubu	Yaƙubu	Hausa	male			Arabicيَعْقُوب (yaʕqūb)
 yakun	Yakun	Atayal	male		Listed on Wikidata as a given name in Atayal. No etymology is recorded for it yet.	
 yakup	Yakup	Turkish	male		Inherited from Ottoman Turkish یعقوب (yaʿkûb).	Ottoman Turkishیعقوب
 yakym	Yakym	Ukrainian	male		Listed on Wikidata as a given name in Ukrainian. No etymology is recorded for it yet.	
@@ -191,7 +191,7 @@ yalciner	Yalçıner	Turkish	male		Listed on Wikidata as a given name in Turkish.
 yalda	Yalda		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yale	Yale		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yalemzerf	Yalemzerf		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
-yali	Yali	Hebrew	female		Listed on Wikidata as a given name in Hebrew. No etymology is recorded for it yet.	
+yali	Yali	Hebrew, Chinese	female		Listed on Wikidata as a given name in Hebrew, Chinese. No etymology is recorded for it yet.	
 yalim	Yalım	Turkish	male			
 yalin	Yalın	Turkish	unisex			
 yaling	Yaling	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
@@ -200,7 +200,6 @@ yalong	Yalong				Listed on Wikidata as a given name. No etymology is recorded fo
 yaltah	Yaltah		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yalung	Yalung	Seediq	female		Listed on Wikidata as a given name in Seediq. No etymology is recorded for it yet.	
 yalwa	Yalwa	Hausa	unisex	abundance		
-yalǐ	Yàlǐ	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 yam	Yam		unisex		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yama	Yama	English	female			Japaneseやま (Yama)
 yama	Yama	Pazeh	male			
@@ -317,6 +316,8 @@ yangaw	Yangaw	Atayal	female		Listed on Wikidata as a given name in Atayal. No et
 yangay	Yangay	Atayal	female		Listed on Wikidata as a given name in Atayal. No etymology is recorded for it yet.	
 yangbo	Yangbo	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 yangchen	Yangchen	Tibetan	female		Listed on Wikidata as a given name in Tibetan. No etymology is recorded for it yet.	
+yangchuan	Yǎngchuān	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
+yangda	Yǎngdà	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 yangeh	Yangeh	Atayal	female		Listed on Wikidata as a given name in Atayal. No etymology is recorded for it yet.	
 yangel	Yangel				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yangu	Yangu	Atayal	female		Listed on Wikidata as a given name in Atayal. No etymology is recorded for it yet.	
@@ -387,7 +388,7 @@ yanti	Yanti		female		Listed on Wikidata as a given name. No etymology is recorde
 yanting	Yanting	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 yanto	Yanto	Indonesian	male			JavaneseYanto
 yantoni	Yantoni		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
-yantumaros	Yantumaros	Gaulish	male	zeal, jealousy; to desire, wish, beg; great	From *yantus (from Proto-Celtic *yantus (“zeal, jealousy”), from Proto-Indo-European *yeh₂- (“to desire, wish, beg”)) + *māros, from Proto-Celtic *māros (“great”).	Proto-Celtic*māros (“great”)unknown*yeh₂-Proto-Celtic*yantus (“zeal)
+yantumaros	Yantumaros	Gaulish	male	zeal, jealousy; to desire, wish, beg; great	From *yantus (from Proto-Celtic *yantus (“zeal, jealousy”), from Proto-Indo-European *yeh₂- (“to desire, wish, beg”)) + *māros, from Proto-Celtic *māros (“great”).	Proto-Celtic*māros (“great”)Proto-Indo-European*yeh₂- (“to desire)Proto-Celtic*yantus (“zeal)
 yanu	Yanu		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yanuario	Yanuario	Spanish			Listed on Wikidata as a given name in Spanish. No etymology is recorded for it yet.	
 yanung	Yanung	Seediq	female		Listed on Wikidata as a given name in Seediq. No etymology is recorded for it yet.	
@@ -474,8 +475,8 @@ yaro	Yaro	Atayal	male		Listed on Wikidata as a given name in Atayal. No etymolog
 yaromyr	Yaromyr		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yaron	Yaron		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yaropolk	Yaropolk		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
-yaroslav	Yaroslav	English	male		Transliteration of Russian and Ukrainian Яросла́в (Jarosláv).	ru,ukЯросла́в
-yaroslava	Yaroslava	English	female		Transliteration of Russian and Ukrainian Яросла́ва (Jarosláva).	ru,ukЯросла́ва
+yaroslav	Yaroslav	English	male		Transliteration of Russian and Ukrainian Яросла́в (Jarosláv).	Russian and UkrainianЯросла́в (Jarosláv)
+yaroslava	Yaroslava	English	female		Transliteration of Russian and Ukrainian Яросла́ва (Jarosláva).	Russian and UkrainianЯросла́ва (Jarosláva)
 yarrive	Yarrive		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yars	Yars	Ukrainian	male		Listed on Wikidata as a given name in Ukrainian. No etymology is recorded for it yet.	
 yarsem	Yarsem		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
@@ -493,6 +494,7 @@ yasar	Yaşar	Turkish	unisex
 yasar, yasser	Yasar, Yasser		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yasaw	Yasaw	Atayal	male		Listed on Wikidata as a given name in Atayal. No etymology is recorded for it yet.	
 yascha	Yascha				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
+yase	Yǎsè	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 yaseen	Yaseen		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yasei	Yasei	Japanese	male		Listed on Wikidata as a given name in Japanese. No etymology is recorded for it yet.	
 yasemen	Yasemen		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
@@ -618,11 +620,11 @@ yatuy	Yatuy	Atayal	male		Listed on Wikidata as a given name in Atayal. No etymol
 yau	Yau		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yau-yi	Yau-Yi				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yaua	Yaua	Akkadian	male	Jehu	Borrowed from Biblical Hebrew יֵהוּא (Yēhūʔ, “Jehu”).	Biblical Hebrewיֵהוּא (Yēhūʔ)
+yauhazi	Yauḫazi	Akkadian	male	Ahaz	Borrowed from Hebrew יְהוֹאָחָז (Yehoʾaḥaz, “Ahaz”).	Hebrewיְהוֹאָחָז (Yehoʾaḥaz)
 yauhen	Yauhen	English	male			
 yauheni	Yauheni	English	male			
 yauhenii	Yauhenii	English	male			
 yauheniy	Yauheniy	English	male			
-yauḫazi	Yauḫazi	Akkadian	male	Ahaz	Borrowed from Hebrew יְהוֹאָחָז (Yehoʾaḥaz, “Ahaz”).	Hebrewיְהוֹאָחָז (Yehoʾaḥaz)
 yave	Yave		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yaver	Yaver	Turkish	male		Listed on Wikidata as a given name in Turkish. No etymology is recorded for it yet.	
 yavor	Yavor	Russian, Bulgarian	male		Listed on Wikidata as a given name in Russian, Bulgarian. No etymology is recorded for it yet.	
@@ -678,7 +680,6 @@ yazid	Yazid	Arabic	male		Listed on Wikidata as a given name in Arabic. No etymol
 yazik	Yazık	Turkish	male			
 yazmeen	Yazmeen		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yazmin	Yazmin		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
-yaƙubu	Yaƙubu	Hausa	male			Arabicيَعْقُوب (yaʕqūb)
 yaʼqub	Yaʼqub	Uzbek	male		Borrowed from Arabic يَعْقُوب (yaʕqūb), from Classical Syriac ܝܥܩܘܒ (yaʿqōḇ), from Biblical Hebrew יעקב.	Biblical HebrewיעקבClassical Syriacܝܥܩܘܒ (yaʿqōḇ)Arabicيَعْقُوب (yaʕqūb)
 ya’akov	Ya’akov		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yban	Yban		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
@@ -807,7 +808,7 @@ yelboga	Yelboğa	Turkish	male
 yelda	Yelda	Turkish	female			
 yeldos	Yeldos				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yeldy	Yeldy		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
-yelena	Yelena	English	female		From Bulgarian, Macedonian, and Russian Еле́на (Jeléna), from Latin Helena, from Ancient Greek Ἑλένη (Helénē). Doublet of Helena.	Ancient GreekἙλένη (Helénē)LatinHelenabg,mk,ruЕле́на
+yelena	Yelena	English	female		From Bulgarian, Macedonian, and Russian Еле́на (Jeléna), from Latin Helena, from Ancient Greek Ἑλένη (Helénē). Doublet of Helena.	Ancient GreekἙλένη (Helénē)LatinHelenaBulgarian, Macedonian, and RussianЕле́на (Jeléna)
 yeliana	Yeliana	Spanish	female		Listed on Wikidata as a given name in Spanish. No etymology is recorded for it yet.	
 yelisei	Yelisei	English	male			
 yelisey	Yelisey	Russian	male		Listed on Wikidata as a given name in Russian. No etymology is recorded for it yet.	
@@ -836,6 +837,7 @@ yeming	Yeming	Chinese			Listed on Wikidata as a given name in Chinese. No etymol
 yemira	Yemira		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yemisi	Yemisi	Yoruba			Listed on Wikidata as a given name in Yoruba. No etymology is recorded for it yet.	
 yemissi	Yémissi		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
+yen	Yến	Vietnamese	female			Chinese
 yen	Yên	Vietnamese	unisex			Chinese
 yen hui	Yen Hui		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yen mei	Yen Mei		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
@@ -1523,7 +1525,7 @@ yolac	Yolaç	Turkish	male
 yolaine	Yolaine		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yolal	Yolal	Turkish	male			
 yoland	Yoland		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
-yolanda	Yolanda	English	female	violet; flower	From Spanish Yolanda, the form of a medieval royal name of obscure, probably Germanic, origin. It has been identified with Latin Violante and with Ancient Greek ἴον (íon, “violet”) + ἄνθος (ánthos, “flower”). Doublet of Yolande.	gemSpanishYolanda
+yolanda	Yolanda	English	female	violet; flower	From Spanish Yolanda, the form of a medieval royal name of obscure, probably Germanic, origin. It has been identified with Latin Violante and with Ancient Greek ἴον (íon, “violet”) + ἄνθος (ánthos, “flower”). Doublet of Yolande.	GermanicSpanishYolanda
 yolanda	Yolanda	Tagalog	female			SpanishYolanda
 yolanda	Yolanda	Portuguese	female			
 yolanda	Yolanda	Spanish	female			
@@ -1675,7 +1677,7 @@ yongfei	Yongfei	Chinese			Listed on Wikidata as a given name in Chinese. No etym
 yongfen	Yongfen				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yongfu	Yongfu	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 yonggang	Yonggang	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-yonghan	Yonghan				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
+yonghan	Yǒnghàn	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 yonghe	Yonghe				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yongjie	Yongjie		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yongju	Yongju	Korean	unisex		Listed on Wikidata as a given name in Korean. No etymology is recorded for it yet.	
@@ -1912,8 +1914,10 @@ youcef	Youcef	Arabic	male		Listed on Wikidata as a given name in Arabic. No etym
 youcheng	Youcheng				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 youd	Youd				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 youenn	Youenn	Breton	male		Listed on Wikidata as a given name in Breton. No etymology is recorded for it yet.	
+youguang	Yǒuguāng	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 youjia	Youjia	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 youl	Youl				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
+youliang	Yǒuliàng	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 youlin	Yòulín	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 youmeni	Youmeni				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 youms	Youms	Seediq	female		Listed on Wikidata as a given name in Seediq. No etymology is recorded for it yet.	
@@ -1954,11 +1958,13 @@ younoussa	Younoussa		male		Listed on Wikidata as a given name. No etymology is r
 younousse	Younousse				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 younoussi	Younoussi		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 youp	Youp				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
-youpeng	Youpeng				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
+youpeng	Yǒupéng	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 youping	Youping		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
+youqian	Yǒuqiān	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
+youqing	Yǒuqìng	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 youra	Youra		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 youree	Youree	American English	unisex		Listed on Wikidata as a given name in American English. No etymology is recorded for it yet.	
-youren	Youren				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
+youren	Yǒurén	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 youri	Youri	French	male			
 yousef	Yousef	English	male		Borrowed from Arabic يُوسُف (yūsuf), equivalent to English Joseph.	Arabicيُوسُف (yūsuf)
 yousra	Yousra	Arabic	female		Listed on Wikidata as a given name in Arabic. No etymology is recorded for it yet.	
@@ -1982,7 +1988,7 @@ youteng	Youteng	Chinese			Listed on Wikidata as a given name in Chinese. No etym
 youting	Youting	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 youtong	Youtong	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 youxia	Youxia	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-youyi	Youyi				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
+youyi	Youyi	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 youyin	Youyin	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 youzhi	Yóuzhī	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 yova	Yova	Bulgarian	female		Listed on Wikidata as a given name in Bulgarian. No etymology is recorded for it yet.	
@@ -2003,7 +2009,6 @@ yoyong	Yoyong	Cebuano	male		A diminutive of Mateo. Compare Yoyoy.
 yoyoy	Yoyoy	Cebuano	male			
 yoyoy	Yoyoy	Tagalog	male			
 yozo	Yōzō	Japanese	male		Listed on Wikidata as a given name in Japanese. No etymology is recorded for it yet.	
-yoḥanan	Yoḥanan		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yo’aew	yo’aew	Saisiyat	female			
 yo’aw	yo’aw	Saisiyat	female			
 yo’ut	Yo’ut	Atayal	female		Listed on Wikidata as a given name in Atayal. No etymology is recorded for it yet.	
@@ -2078,7 +2083,7 @@ ytje	Ytje				Listed on Wikidata as a given name. No etymology is recorded for it
 ytsen	Ytsen				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 ytsje	Ytsje				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 ytwꜥw-bꜥr	ytwꜥw-bꜥr	Egyptian	male	lord; Baal	The second element is a rendering of the Semitic theonym Baal, ultimately from Proto-Semitic *baʕl- (“lord”); see also Egyptian bꜥr (“Baal”) as a loanword.	Proto-Semitic*baʕl- (“lord”)
-yu	Yu	English	unisex		* (Mandarin): From Wade–Giles romanization of Mandarin (for: ㄩˊ, ㄩˇ, ㄩˋ, ㄧㄡˊ) (余, 于, 由 (yóu), 魚 /鱼 (yú) / 鱼 (yú), 漁 /渔 (yú), 渔 (yú), 楀 (yǔ), 俞, 喻, 兪, 於 /于, 遇 (yù), 虞 (yú), 郁 (yù), 尉, 禹 (yǔ), 游 (yóu), 尤 (yóu), 庾 (yǔ), 娛 /娱, 娱, 茹)	JapaneseゆうKorean유 (yu)Mandarincmn-wadegiles
+yu	Yu	English	unisex		* (Mandarin): From Wade–Giles romanization of Mandarin (for: ㄩˊ, ㄩˇ, ㄩˋ, ㄧㄡˊ) (余, 于, 由 (yóu), 魚 /鱼 (yú) / 鱼 (yú), 漁 /渔 (yú), 渔 (yú), 楀 (yǔ), 俞, 喻, 兪, 於 /于, 遇 (yù), 虞 (yú), 郁 (yù), 尉, 禹 (yǔ), 游 (yóu), 尤 (yóu), 庾 (yǔ), 娛 /娱, 娱, 茹)	JapaneseゆうKorean유 (yu)MandarinWade–Giles
 yu hsin	Yu Hsin				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yu lun	Yu Lun				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yu shan	Yu Shan				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
@@ -2192,12 +2197,13 @@ yuanji	Yuanji				Listed on Wikidata as a given name. No etymology is recorded fo
 yuanjia	Yuanjia				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yuanjing	Yuanjing				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yuanjun	Yuanjun	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
+yuankan	Yuánkǎn	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 yuankun	Yuankun	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-yuankǎn	Yuánkǎn	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 yuanli	Yuanli				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yuanlong	Yuánlóng	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 yuanlou	Yuánlóu	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 yuanming	Yuanming				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
+yuanping	Yuǎnpíng	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 yuanqi	Yuanqi	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 yuanqing	Yuanqing				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yuanrong	Yuanrong	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
@@ -2210,9 +2216,9 @@ yuanxiu	Yuánxiū	Chinese			Listed on Wikidata as a given name in Chinese. No et
 yuanxun	Yuánxùn	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 yuanyi	Yuanyi				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yuanying	Yuanying	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
+yuanyong	Yuányǒng	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 yuanyu	Yuanyu				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yuanyuan	Yuanyuan	Chinese	female		Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-yuanyǒng	Yuányǒng	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 yuanze	Yuanze				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yuanzhi	Yuanzhi	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 yuay	Yuay	Atayal	female		Listed on Wikidata as a given name in Atayal. No etymology is recorded for it yet.	
@@ -2288,12 +2294,13 @@ yugus	Yugus	Atayal	female		Listed on Wikidata as a given name in Atayal. No etym
 yugut	Yugut	Atayal	female		Listed on Wikidata as a given name in Atayal. No etymology is recorded for it yet.	
 yuhan	Yuhan	Chinese	unisex		Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 yuhang	Yuhang	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
+yuhanna	Yūḥannā	Arabic	male		Listed on Wikidata as a given name in Arabic. No etymology is recorded for it yet.	
 yuhannis	Yuhannis		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yuhao	Yuhao	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 yuhaw	Yuhaw	Seediq, Atayal	male		Listed on Wikidata as a given name in Seediq, Atayal. No etymology is recorded for it yet.	
 yuhay	Yuhay	Atayal	female		Listed on Wikidata as a given name in Atayal. No etymology is recorded for it yet.	
 yuhei	Yūhei	Japanese	male		Listed on Wikidata as a given name in Japanese. No etymology is recorded for it yet.	
-yuheng	Yuheng	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
+yuheng	Yǔhéng	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 yuhi	Yūhi	Japanese	unisex		Listed on Wikidata as a given name in Japanese. No etymology is recorded for it yet.	
 yuhki	Yuhki				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yuho	Yūho	Japanese	female		Listed on Wikidata as a given name in Japanese. No etymology is recorded for it yet.	
@@ -2582,6 +2589,7 @@ yunus	Yunus	Turkish	male		Inherited from Ottoman Turkish یونس (yûnüs), fro
 yunus, yoonus	Yunus, Yoonus		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yunusa	Yunusa				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yunuy	Yunuy	Atayal	female			
+yunxi	Yǔnxǐ	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 yunyong	Yunyong		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yunze	Yunze		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yunzhi	Yunzhi		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
@@ -2761,9 +2769,6 @@ yuzuna	Yuzuna		female		Listed on Wikidata as a given name. No etymology is recor
 yuzuno	Yuzuno	Japanese	female		Listed on Wikidata as a given name in Japanese. No etymology is recorded for it yet.	
 yuzuru	Yuzuru	English	male			Japaneseゆずる (Yuzuru)
 yuzuyu	Yuzuyu				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
-yuǎn	Yuǎn	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-yuǎnping	Yuǎnpíng	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-yuḥanna	Yūḥannā	Arabic	male		Listed on Wikidata as a given name in Arabic. No etymology is recorded for it yet.	
 yu’ing	Yu’ing	Atayal	female		Listed on Wikidata as a given name in Atayal. No etymology is recorded for it yet.	
 yva	Yva		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yvain	Yvain	Middle French	male	born of yew	From Old Welsh Owain (“born of yew”).	Old WelshOwain (“born of yew”)
@@ -2779,8 +2784,8 @@ yvel	Yvel		female		Listed on Wikidata as a given name. No etymology is recorded 
 yveline	Yveline		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yven	Yven				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yves	Yves	English	male			FrenchYves
-yves	Yves	Cebuano	male		Borrowed from English Yves, from French Yves, from Celtic or Germanic.	gemcelFrenchYvesEnglishYves
-yves	Yves	French	male	yew	Unclear still today, either short form of Germanic or Celtic compound names beginning with iv- "yew" - see Proto-Germanic *īhwaz (“yew”) and Proto-Celtic *iwos (“yew”), both from Proto-Indo-European *h₁eyHw- (“yew”).	unknown*h₁eyHw-Proto-Celtic*iwos (“yew”)Proto-Germanic*īhwaz (“yew”)celgem
+yves	Yves	Cebuano	male		Borrowed from English Yves, from French Yves, from Celtic or Germanic.	GermanicCelticFrenchYvesEnglishYves
+yves	Yves	French	male	yew	Unclear still today, either short form of Germanic or Celtic compound names beginning with iv- "yew" - see Proto-Germanic *īhwaz (“yew”) and Proto-Celtic *iwos (“yew”), both from Proto-Indo-European *h₁eyHw- (“yew”).	Proto-Indo-European*h₁eyHw- (“yew”)Proto-Celtic*iwos (“yew”)Proto-Germanic*īhwaz (“yew”)CelticGermanic
 yves robert	Yves Robert		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yves-francois	Yves-François		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yves-henri	Yves-Henri		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
@@ -2804,10 +2809,10 @@ yvone	Yvone				Listed on Wikidata as a given name. No etymology is recorded for 
 yvonick	Yvonick		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yvonis	Yvonis		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yvonna	Yvonna	Faroese	female			FrenchYvonne
-yvonne	Yvonne	English	female		From the French feminine form of Yvon, variant of Yves, from a Germanic root for "yew" (see Old English iw). It might have originally been used of an archer, since yew wood was used to make bows.	gemFrench
-yvonne	Yvonne	Cebuano	female		Borrowed from English Yvonne, from French feminine form of Yvon, variant of Yves, from a Germanic root for "yew".	gemFrenchEnglishYvonne
+yvonne	Yvonne	English	female		From the French feminine form of Yvon, variant of Yves, from a Germanic root for "yew" (see Old English iw). It might have originally been used of an archer, since yew wood was used to make bows.	GermanicFrench
+yvonne	Yvonne	Cebuano	female		Borrowed from English Yvonne, from French feminine form of Yvon, variant of Yves, from a Germanic root for "yew".	GermanicFrenchEnglishYvonne
 yvonne	Yvonne	German	female			French
-yvonne	Yvonne	Tagalog	female		Borrowed from English Yvonne, from French feminine form of Yvon, variant of Yves, from a Germanic root for "yew".	gemFrenchEnglishYvonne
+yvonne	Yvonne	Tagalog	female		Borrowed from English Yvonne, from French feminine form of Yvon, variant of Yves, from a Germanic root for "yew".	GermanicFrenchEnglishYvonne
 yvonne	Yvonne	Danish	female			
 yvonne	Yvonne	French	female			
 yvonne	Yvonne	Norwegian	female			
@@ -2821,33 +2826,5 @@ ywonne	Ywonne		female		Listed on Wikidata as a given name. No etymology is recor
 yzak	Yzak				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yzedin	Yzedin				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 yzeir	Yzeir	Albanian	male		Borrowed from Ottoman Turkish عزیر (ʼüzeyr), from Arabic عُزَيْر (ʕuzayr), cognate with Biblical Hebrew עֶזְרָא (ʿezrāʾ). Compare Turkish Üzeyir, Azerbaijani Üzeyir.	Arabicعُزَيْر (ʕuzayr)Ottoman Turkishعزیر (ʼüzeyr)
-yǎn	Yǎn	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-yǎng	Yǎng	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-yǎngchuan	Yǎngchuān	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-yǎngda	Yǎngdà	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-yǎse	Yǎsè	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-yǐ	Yǐ	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-yǐlin	Yǐlín	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-yǐng	Yǐng	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-yǒng	Yǒng	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-yǒnghan	Yǒnghàn	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-yǒuguang	Yǒuguāng	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-yǒuliang	Yǒuliàng	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-yǒupeng	Yǒupéng	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-yǒuqian	Yǒuqiān	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-yǒuqing	Yǒuqìng	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-yǒuren	Yǒurén	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-yǒuyi	Yǒuyí	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-yǔ	Yǔ	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-yǔfeng	Yǔfēng	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-yǔhan	Yǔhán	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-yǔheng	Yǔhéng	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-yǔhui	Yǔhuī	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-yǔnxǐ	Yǔnxǐ	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-yǔpeng	Yǔpéng	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-yǔqing	Yǔqīng	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-yǔtang	Yǔtáng	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-yǔwen	Yǔwén	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 yəhya	Yəhya	Azerbaijani	male			Arabicيَحْيَى (yaḥyā)
-yến	Yến	Vietnamese	female			Chinese
 yꜥqb-hr	yꜥqb-hr	Egyptian	male			
