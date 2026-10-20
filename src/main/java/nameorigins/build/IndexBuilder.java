@@ -42,6 +42,7 @@ public final class IndexBuilder {
         final Set<String> wikidataGenders = new LinkedHashSet<>();
         /** Wikidata "said to be the same as" labels; joined into the group only if the spelling is close. */
         final Set<String> wikidataSame = new LinkedHashSet<>();
+        WikipediaNames.Fact wikipedia;
         boolean inWikidata;
     }
 
@@ -56,6 +57,10 @@ public final class IndexBuilder {
             b.readWikidata(wikidata);
         } else {
             System.out.println("  no wikidata.tsv: building from Wiktionary only");
+        }
+        Path wikipedia = work.resolve("wikipedia.tsv");
+        if (Files.exists(wikipedia)) {
+            b.readWikipedia(wikipedia);
         }
         b.addVariantOnlyNames();
         b.write(work, site);
@@ -118,6 +123,24 @@ public final class IndexBuilder {
             }
         }
         System.out.printf("  wikidata: %,d names not in Wiktionary%n", added);
+    }
+
+    /** Wikipedia facts supplement recorded names whose Wiktionary entry has no origin chain. */
+    void readWikipedia(Path tsv) throws IOException {
+        int used = 0;
+        for (String line : Files.readAllLines(tsv)) {
+            String[] f = Tsv.split(line, '\t');
+            if (f.length != 6) continue;
+            NameData d = names.get(f[0]);
+            if (d == null || d.entries.stream().anyMatch(e -> !e.chain().isEmpty())) continue;
+            WikipediaNames.Fact fact = new WikipediaNames.Fact(f[0], f[1], f[2], f[3], f[4], f[5]);
+            if (d.wikipedia == null || fact.meaning().length() > d.wikipedia.meaning().length()) {
+                d.wikipedia = fact;
+            }
+            if (!fact.meaning().isEmpty()) d.meanings.add(fact.meaning());
+            used++;
+        }
+        System.out.printf("  wikipedia: %,d facts matched names without a Wiktionary origin chain%n", used);
     }
 
     /** A recorded variant spelling with no entry of its own still becomes a name, so typing it finds the group. */
@@ -234,7 +257,7 @@ public final class IndexBuilder {
         }
     }
 
-    /** English first, then entries with an origin chain, then by language; Wikidata line if nothing else. */
+    /** English first, then entries with an origin chain, then by language; sourced additions before bare Wikidata. */
     private static List<NameEntry> ordered(NameData d) {
         List<NameEntry> list = new ArrayList<>(d.entries);
         list.sort(Comparator
@@ -243,6 +266,17 @@ public final class IndexBuilder {
                 .thenComparing(NameEntry::language));
         if (list.size() > MAX_ENTRIES_PER_NAME) {
             list = new ArrayList<>(list.subList(0, MAX_ENTRIES_PER_NAME));
+        }
+        WikipediaNames.Fact fact = d.wikipedia;
+        boolean noChain = list.stream().noneMatch(e -> !e.chain().isEmpty());
+        boolean noMeaning = list.stream().noneMatch(e -> !e.meaning().isEmpty());
+        if (fact != null && noChain && (noMeaning || fact.summary().contains("Possible writings"))) {
+            String langs = fact.language().isEmpty() ? String.join(", ", d.wikidataLanguages) : fact.language();
+            String gender = d.wikidataGenders.size() == 1 ? d.wikidataGenders.iterator().next()
+                    : d.wikidataGenders.containsAll(List.of("male", "female")) ? "unisex" : "";
+            list.add(0, new NameEntry(fact.display(), langs, gender, fact.meaning(), fact.summary(),
+                    List.of(), fact.title()));
+            if (list.size() > MAX_ENTRIES_PER_NAME) list.remove(list.size() - 1);
         }
         if (list.isEmpty() && d.inWikidata) {
             String langs = String.join(", ", d.wikidataLanguages);

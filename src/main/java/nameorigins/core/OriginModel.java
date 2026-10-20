@@ -33,6 +33,42 @@ public final class OriginModel {
     public static final int MIN_N = 2;
     public static final int MAX_N = 4;
 
+    /**
+     * Prefix of a class learned from the language a name is used in (Wikidata), not from an etymology: "used in
+     * Korean" says names spelled like this are given in Korean, not that they come from Korean.
+     */
+    public static final String USED_IN = "used in ";
+
+    public static boolean isUsage(String origin) {
+        return origin.startsWith(USED_IN);
+    }
+
+    /**
+     * A relative class probability is not evidence that arbitrary text is a name. Usage guesses need overlap
+     * with trained 3- or 4-letter pieces and either a class-specific beginning or ending of at least three
+     * letters, or two distinct internal pieces of at least four letters. This rejects Qwzx and Flarping
+     * without suppressing Eunwoo, Siwoo, Seoah, or Ifeoluwa.
+     */
+    public boolean supportsUsage(String folded, String usageClass) {
+        int longPieces = 0;
+        int supported = 0;
+        for (String gram : ngrams(folded)) {
+            if (gram.length() >= 3) {
+                longPieces++;
+                if (pairOrigins.containsKey(gram)) supported++;
+            }
+        }
+        if (supported < 4 || supported * 5 <= longPieces * 2) return false;
+        int distinctiveInternal = 0;
+        for (String line : evidence(folded, usageClass, 4)) {
+            String pattern = line.substring(0, line.indexOf(':'));
+            boolean anchored = !pattern.startsWith("-") || !pattern.endsWith("-");
+            if (anchored && pattern.replace("-", "").length() >= 3) return true;
+            if (!anchored && pattern.replace("-", "").length() >= 4) distinctiveInternal++;
+        }
+        return distinctiveInternal >= 2;
+    }
+
     /** Parses model.tsv (format written by the offline trainer, see OriginTrainer). */
     public static OriginModel parse(String tsv) {
         OriginModel m = new OriginModel();

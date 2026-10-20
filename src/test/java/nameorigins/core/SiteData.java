@@ -25,6 +25,7 @@ public final class SiteData {
     private static final Map<String, String> TEXT = new HashMap<>();
     private static NameDirectory dir;
     private static OriginModel model;
+    private static OriginModel usageModel;
     private static Matcher matcher;
     private static Map<String, List<NameEntry>> entries;
 
@@ -73,10 +74,17 @@ public final class SiteData {
         return model;
     }
 
+    public static synchronized OriginModel usageModel() {
+        if (usageModel == null) {
+            usageModel = OriginModel.parse(text("usage-model.tsv"));
+        }
+        return usageModel;
+    }
+
     /** A fresh standard matcher would rebuild every index, so one is shared. */
     public static synchronized Matcher matcher() {
         if (matcher == null) {
-            matcher = Matcher.standard(directory(), SiteData::model);
+            matcher = Matcher.standard(directory(), SiteData::model, SiteData::usageModel);
         }
         return matcher;
     }

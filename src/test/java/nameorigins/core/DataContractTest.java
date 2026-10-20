@@ -168,7 +168,7 @@ class DataContractTest {
             for (String line : SiteData.lines(file)) {
                 rows++;
                 String[] f = Tsv.split(line, '\t');
-                if (f.length != 7) {
+                if (f.length != 8) {
                     p.add(file + ": " + f.length + " columns: " + line);
                     continue;
                 }

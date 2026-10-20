@@ -5,10 +5,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import nameorigins.core.OriginModel;
 import nameorigins.core.Scored;
 import nameorigins.core.Text;
@@ -33,8 +35,52 @@ public final class OriginTrainer {
 
     record Example(String key, String display, String origin) {}
 
+    /**
+     * Wikidata languages whose names are learned as "used in X" classes. Only languages outside Europe and its
+     * settler countries whose name stock is mostly their own, and none that already has an origin class from
+     * Wiktionary (Chinese, Japanese, Arabic, Persian, Hindi, Turkish, Kazakh): a class must mean either origin or
+     * usage, never both. Western usage languages (English, Italian, Dutch, ...) are left out: names used in
+     * English come from everywhere. Classes still need MIN_CLASS names after filtering.
+     */
+    static final Map<String, String> USAGE = new HashMap<>();
+
+    static {
+        for (String l : List.of("Korean", "Vietnamese", "Thai", "Yoruba", "Igbo", "Hausa", "Swahili", "Tamil",
+                "Telugu", "Malayalam", "Kannada", "Marathi", "Ibibio", "Efik", "Idoma", "Isoko", "Farefare",
+                "Dagbanli", "Zulu", "Xhosa", "Akan", "Twi", "Amharic", "Somali", "Mongolian", "Māori", "Quechua")) {
+            USAGE.put(l, l);
+        }
+        USAGE.put("Bangla", "Bengali");
+        // Taiwan's indigenous languages: thousands of Wikidata items, each language too close to the next to tell apart
+        for (String l : List.of("Seediq", "Atayal", "Amis", "Saisiyat", "Sakizaya", "Paiwan", "Bunun", "Tsou", "Rukai",
+                "Puyuma", "Truku", "Kavalan", "Thao", "Yami")) {
+            USAGE.put(l, "Formosan languages");
+        }
+    }
+
     public static void run(Path work, Path site, Path report) throws IOException {
-        List<Example> all = load(work.resolve("origins.tsv"));
+        List<Example> rawOrigins = load(work.resolve("origins.tsv"));
+        List<Example> origins = keepLargeClasses(rawOrigins);
+        Path wikidata = work.resolve("wikidata.tsv");
+        List<Example> usage = List.of();
+        if (Files.exists(wikidata)) {
+            usage = keepLargeClasses(withUsage(rawOrigins, wikidata).stream()
+                    .filter(e -> OriginModel.isUsage(e.origin())).toList());
+        }
+        StringBuilder reportText = new StringBuilder();
+        reportText.append(trainOne(origins, site.resolve("data/model.tsv"), "origin"));
+        if (!usage.isEmpty()) {
+            reportText.append('\n').append(trainOne(usage, site.resolve("data/usage-model.tsv"), "usage"));
+        } else {
+            Files.writeString(site.resolve("data/usage-model.tsv"), "");
+            reportText.append("\nusage model unavailable: no labelled Wikidata names\n");
+        }
+        Files.writeString(report, reportText.toString());
+        System.out.print(reportText);
+    }
+
+    /** Separate models preserve the original etymology classifier while adding an explicitly labelled fallback. */
+    private static String trainOne(List<Example> all, Path modelFile, String kind) throws IOException {
         List<Example> train = new ArrayList<>();
         List<Example> val = new ArrayList<>();
         List<Example> test = new ArrayList<>();
@@ -44,8 +90,8 @@ public final class OriginTrainer {
         }
         StringBuilder out = new StringBuilder();
         Map<String, Integer> classSizes = counts(all);
-        out.append(String.format(Locale.ROOT, "names: %,d  origins kept: %d  train/val/test: %,d/%,d/%,d%n",
-                all.size(), classSizes.size(), train.size(), val.size(), test.size()));
+        out.append(String.format(Locale.ROOT, "%s model: %,d names, %d classes; train/val/test: %,d/%,d/%,d%n",
+                kind, all.size(), classSizes.size(), train.size(), val.size(), test.size()));
 
         double bestAcc = -1;
         double bestAlpha = 0;
@@ -95,23 +141,78 @@ public final class OriginTrainer {
         out.append(String.format(Locale.ROOT,
                 "TEST above the confidence floor: shown for %.1f%% of names, correct %.1f%% of the time%n",
                 100.0 * shown / test.size(), 100.0 * correct / Math.max(1, shown)));
+        if (kind.equals("usage")) {
+            int supported = 0;
+            int supportedCorrect = 0;
+            for (Example e : test) {
+                Scored<String> top = tuned.rank(e.key(), 1).get(0);
+                if (top.score() >= floor && tuned.supportsUsage(e.key(), top.item())) {
+                    supported++;
+                    if (top.item().equals(e.origin())) supportedCorrect++;
+                }
+            }
+            out.append(String.format(Locale.ROOT,
+                    "TEST usage support gate: shown for %.1f%% of recorded usage names, correct %.1f%% of those%n",
+                    100.0 * supported / test.size(), 100.0 * supportedCorrect / Math.max(1, supported)));
+        }
         out.append(perClass(tuned, test));
 
         String shipped = modelTsv(all, bestAlpha, bestPower, bestTau, floor);
-        Files.writeString(site.resolve("data").resolve("model.tsv"), shipped);
-        out.append(String.format(Locale.ROOT, "shipped model.tsv: %,d bytes%n", shipped.length()));
-        Files.writeString(report, out.toString());
-        System.out.print(out);
+        Files.writeString(modelFile, shipped);
+        out.append(String.format(Locale.ROOT, "shipped %s: %,d bytes%n", modelFile.getFileName(), shipped.length()));
+        return out.toString();
     }
 
     static List<Example> load(Path tsv) throws IOException {
         List<Example> raw = new ArrayList<>();
         for (String line : Files.readAllLines(tsv)) {
             String[] f = Tsv.split(line, '\t');
-            if (f.length == 3 && Text.isLatinWord(f[0]) && f[0].length() >= 2 && f[0].chars().allMatch(Character::isLetter)) {
+            if (f.length == 3 && trainable(f[0])) {
                 raw.add(new Example(f[0], f[1], OriginGroups.of(f[2])));
             }
         }
+        return raw;
+    }
+
+    private static boolean trainable(String key) {
+        return Text.isLatinWord(key) && key.length() >= 2 && key.chars().allMatch(Character::isLetter);
+    }
+
+    /**
+     * Adds names with no recorded origin as "used in X" examples, from Wikidata's language labels (USAGE).
+     * A name joins only if every language Wikidata gives it maps to the same usage class: Jing (Korean and
+     * Chinese) and Kai (several) say nothing about one language. Hyphens are dropped (Seo-yeon is typed Seoyeon).
+     */
+    static List<Example> withUsage(List<Example> origins, Path wikidataTsv) throws IOException {
+        Set<String> hasOrigin = new HashSet<>();
+        for (Example e : origins) {
+            hasOrigin.add(e.key());
+        }
+        Map<String, Set<String>> classes = new LinkedHashMap<>();
+        Map<String, String> display = new HashMap<>();
+        for (String line : Files.readAllLines(wikidataTsv)) {
+            String[] f = Tsv.split(line, '\t');
+            if (f.length < 2 || f[1].isEmpty() || f[1].equals("multiple languages")) {
+                continue;
+            }
+            String key = Text.fold(f[0]).replaceAll("[-' ]", "");
+            if (!trainable(key) || hasOrigin.contains(key)) {
+                continue;
+            }
+            String usage = USAGE.get(f[1]);
+            classes.computeIfAbsent(key, k -> new HashSet<>()).add(usage == null ? "" : OriginModel.USED_IN + usage);
+            display.putIfAbsent(key, f[0]);
+        }
+        List<Example> all = new ArrayList<>(origins);
+        for (Map.Entry<String, Set<String>> e : classes.entrySet()) {
+            if (e.getValue().size() == 1 && !e.getValue().contains("")) {
+                all.add(new Example(e.getKey(), display.get(e.getKey()), e.getValue().iterator().next()));
+            }
+        }
+        return all;
+    }
+
+    private static List<Example> keepLargeClasses(List<Example> raw) {
         Map<String, Integer> sizes = counts(raw);
         List<Example> kept = new ArrayList<>();
         for (Example e : raw) {
@@ -291,16 +392,41 @@ public final class OriginTrainer {
     private static String perClass(OriginModel m, List<Example> test) {
         Map<String, int[]> pc = new LinkedHashMap<>();
         for (Example e : test) {
-            int[] a = pc.computeIfAbsent(e.origin(), x -> new int[2]);
+            int[] a = pc.computeIfAbsent(e.origin(), x -> new int[3]);
             a[0]++;
-            if (m.rank(e.key(), 1).get(0).item().equals(e.origin())) {
+            List<Scored<String>> ranked = m.rank(e.key(), 3);
+            Scored<String> top = ranked.get(0);
+            if (top.item().equals(e.origin())) {
                 a[1]++;
             }
+            if (ranked.stream().anyMatch(s -> s.item().equals(e.origin()))) {
+                a[2]++;
+            }
         }
-        StringBuilder sb = new StringBuilder("TEST top-1 by origin (largest 12):\n");
-        pc.entrySet().stream().sorted((x, y) -> y.getValue()[0] - x.getValue()[0]).limit(12).forEach(e ->
-                sb.append(String.format(Locale.ROOT, "  %-14s n=%4d  %.2f%n", e.getKey(), e.getValue()[0],
-                        (double) e.getValue()[1] / e.getValue()[0])));
+        Map<String, int[]> predictions = new HashMap<>();
+        for (Example e : test) {
+            Scored<String> top = m.rank(e.key(), 1).get(0);
+            int[] p = predictions.computeIfAbsent(top.item(), x -> new int[4]);
+            p[0]++;
+            if (top.item().equals(e.origin())) {
+                p[1]++;
+            }
+            if (top.score() >= m.confidenceFloor()) {
+                p[2]++;
+                if (top.item().equals(e.origin())) {
+                    p[3]++;
+                }
+            }
+        }
+        StringBuilder sb = new StringBuilder("TEST by class (origin and usage kept distinct):\n");
+        pc.entrySet().stream().sorted((x, y) -> y.getValue()[0] - x.getValue()[0]).forEach(e -> {
+            int[] a = e.getValue();
+            int[] p = predictions.getOrDefault(e.getKey(), new int[4]);
+            sb.append(String.format(Locale.ROOT,
+                    "  %-26s n=%4d top1=%.2f top3=%.2f predicted=%4d precision=%.2f shown=%4d shown-precision=%.2f%n",
+                    e.getKey(), a[0], (double) a[1] / a[0], (double) a[2] / a[0], p[0],
+                    (double) p[1] / Math.max(1, p[0]), p[2], (double) p[3] / Math.max(1, p[2])));
+        });
         return sb.toString();
     }
 

@@ -261,7 +261,7 @@ class PropertyTest {
             List<String> lines = Tsv.lines(line);
             assertTrue(lines.size() <= 1 && (lines.isEmpty() || lines.get(0).equals(line)), "row broke into lines");
             String[] f = Tsv.split(line, '\t');
-            assertEquals(7, f.length, line);
+            assertEquals(8, f.length, line);
             assertEquals(key, f[0]);
             NameEntry back = NameEntry.fromTsv(f);
             assertEquals(Tsv.clean(e.display()), back.display());

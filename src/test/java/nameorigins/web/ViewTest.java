@@ -52,6 +52,14 @@ class ViewTest {
     }
 
     @Test
+    void usageGuessDoesNotClaimEtymology() {
+        String html = View.result(new MatchResult.Inferred("Eunwoo",
+                List.of(new Scored<>("used in Korean", 0.71)), List.of(), List.of()), List.of(), List.of());
+        assertTrue(html.contains("used in Korean"), html);
+        assertTrue(html.contains("not where it originated"), html);
+    }
+
+    @Test
     void wikidataOnlyEntryLinksToWikidataAndHasNoStraySeparator() {
         NameEntry wei = new NameEntry("Wei", "", "male", "",
                 "Listed on Wikidata as a given name. No etymology is recorded for it yet.", List.of());
@@ -60,6 +68,15 @@ class ViewTest {
         assertTrue(html.contains("wikidata.org/w/index.php?search=Wei"));
         assertFalse(html.contains("Wiktionary entry"));
         assertTrue(View.encodeQuery("Zoë Ann").equals("Zo%C3%AB%20Ann"));
+    }
+
+    @Test
+    void wikipediaFactLinksToItsSitelinkTitle() {
+        NameEntry entry = new NameEntry("Chinedu", "Igbo", "male", "God leads",
+                "Chinedu is a common Igbo name.", List.of(), "Chinedu (given name)");
+        String html = View.result(new MatchResult.Exact("Chinedu", "chinedu"), List.of(entry), List.of());
+        assertTrue(html.contains("wikipedia.org/wiki/Chinedu_%28given_name%29"), html);
+        assertFalse(html.contains("Wiktionary entry"), html);
     }
 
     @Test

@@ -5,10 +5,31 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import nameorigins.core.OriginModel;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 
 class OriginTrainerTest {
+
+    @TempDir Path temp;
+
+    @Test
+    void usageTrainingKeepsItsProvenanceAndExcludesAmbiguousNames() throws Exception {
+        Path wikidata = temp.resolve("wikidata.tsv");
+        Files.writeString(wikidata, "Eunwoo\tKorean\t\tmale\n"
+                + "Kai\tKorean\t\tmale\nKai\tChinese\t\tmale\n"
+                + "Raya\tSeediq\t\tfemale\nRaya\tAtayal\t\tfemale\n"
+                + "Known\tKorean\t\tmale\nJane\tEnglish\t\tfemale\n");
+        List<OriginTrainer.Example> examples = OriginTrainer.withUsage(
+                List.of(new OriginTrainer.Example("known", "Known", "Greek")), wikidata);
+        assertTrue(examples.contains(new OriginTrainer.Example("known", "Known", "Greek")));
+        assertTrue(examples.contains(new OriginTrainer.Example("eunwoo", "Eunwoo", "used in Korean")));
+        assertTrue(examples.contains(new OriginTrainer.Example("raya", "Raya", "used in Formosan languages")));
+        assertTrue(examples.stream().noneMatch(e -> e.key().equals("kai") || e.key().equals("jane")));
+        assertEquals(3, examples.size());
+    }
 
     /** A model that is confidently wrong on every validation name must switch the guesser off, not pass at 0.95. */
     @Test

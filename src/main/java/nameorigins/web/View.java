@@ -3,6 +3,7 @@ package nameorigins.web;
 import java.util.List;
 import nameorigins.core.MatchResult;
 import nameorigins.core.NameEntry;
+import nameorigins.core.OriginModel;
 import nameorigins.core.OriginStep;
 import nameorigins.core.Scored;
 
@@ -102,7 +103,11 @@ final class View {
         if (!e.summary().isEmpty()) {
             sb.append("<p class=\"summary\">").append(Html.esc(e.summary())).append("</p>");
         }
-        if (e.chain().isEmpty() && e.summary().startsWith("Listed on Wikidata")) {
+        if (!e.wikipediaTitle().isEmpty()) {
+            sb.append("<p class=\"source\"><a href=\"https://en.wikipedia.org/wiki/")
+                    .append(Html.esc(encodeQuery(e.wikipediaTitle().replace(' ', '_'))))
+                    .append("\">Wikipedia article</a></p>");
+        } else if (e.chain().isEmpty() && e.summary().startsWith("Listed on Wikidata")) {
             sb.append("<p class=\"source\"><a href=\"https://www.wikidata.org/w/index.php?search=")
                     .append(Html.esc(encodeQuery(e.display()))).append("\">Wikidata</a></p>");
         } else {
@@ -137,15 +142,20 @@ final class View {
         StringBuilder sb = new StringBuilder("<article class=\"entry inferred\">");
         sb.append("<header class=\"entry-head\"><h2 class=\"entry-name\">").append(Html.esc(i.query())).append("</h2>")
                 .append("<p class=\"entry-meta\">Not recorded yet: a guess from its letter patterns, not a record</p></header>");
+        boolean usageShown = false;
         sb.append("<ol class=\"odds\">");
         for (Scored<String> o : i.origins()) {
             if (o.score() < 0.01) {
                 continue; // "Persian 0%" says nothing
             }
+            usageShown |= OriginModel.isUsage(o.item());
             sb.append("<li><span class=\"odds-lang\">").append(Html.esc(o.item())).append("</span><span class=\"odds-pct\">")
                     .append(percent(o.score())).append("</span></li>");
         }
         sb.append("</ol>");
+        if (usageShown) {
+            sb.append("<p class=\"note\">“Used in” predicts where a name is recorded, not where it originated.</p>");
+        }
         if (!i.evidence().isEmpty()) {
             sb.append("<p class=\"label\">Recorded names with the same patterns</p><ul class=\"evidence\">");
             for (String line : i.evidence()) {

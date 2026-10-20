@@ -7,9 +7,10 @@ Ancient Greek → Latin → Old French → Middle English → English.
 Everything is Java. The data is built by Java programs on a PC, and the page itself is Java compiled to
 JavaScript with [TeaVM](https://teavm.org/), so it runs as a static site (GitHub Pages) with no server.
 
-The data: 69,323 given-name entries from Wiktionary (22,259 names with a recorded origin chain), plus 87,427
-more names from Wikidata, which records the language and gender a name is used with but no etymology. 149,112
-names in all.
+The data: given-name entries from Wiktionary (22,259 names with a recorded origin chain), names from
+Wikidata (which records usage language and gender), and selected meanings or summaries from English Wikipedia
+given-name articles for 2,124 names without a Wiktionary origin. There are 149,112 names in all. A Wikipedia
+meaning or usage language does not establish an etymological origin.
 
 ## What happens when you type a name
 
@@ -23,7 +24,9 @@ The matcher tries four layers in order and the page says which one answered:
    so *Mykal* finds *Michael*. Wikidata's other same-as links (nicknames, other languages' forms) are left out:
    joined transitively they put 13,495 names into one group.
 3. **Guess.** No variant either: a character n-gram naive Bayes model guesses the origin from letter patterns
-   and shows the recorded names behind the guess ("-jit: Abhijit, Ranjit"). It is labelled as a guess.
+   and shows the recorded names behind the guess ("-jit: Abhijit, Ranjit"). If that model abstains, a separate
+   model may say **used in** a language, provided the spelling has enough supported letter patterns. Neither
+   guess is presented as a recorded etymology.
 4. **Nothing confident.** The closest recorded spellings (BK-tree over edit distance).
 
 Two meaning features sit on top: **names with a similar meaning** under every result, and **search by
@@ -40,17 +43,38 @@ Numbers from the last build (`work/eval-origin.txt`, `work/eval-meaning.txt`):
 | Origin guess | top-1 accuracy, 2,736 held-out names, 30 origins | 0.563 (always guessing the largest origin: 0.135) |
 | Origin guess | top-3 accuracy | 0.769 |
 | Origin guess | above the confidence floor | shown for 80% of names, right 65% of the time |
-| Meaning search | concept recall@50 (TF-IDF / embeddings / blend) | 0.961 / 0.955 / **0.973** |
-| Meaning search | shared-root recall@10 | 0.595 / 0.578 / **0.606** |
-| Meaning search | names found only through a synonym, recall@100 | 0.000 / 0.135 / 0.088 |
+| Usage guess | top-1 accuracy, 2,130 held-out names, 8 classes | 0.894 (largest-class baseline: 0.523) |
+| Usage guess | support gate | shown for 79.9% of recorded usage names, right 96.5% of those |
+| Meaning search | concept recall@50 (TF-IDF / embeddings / blend) | 0.965 / 0.965 / **0.976** |
+| Meaning search | shared-root recall@10 | 0.580 / 0.564 / **0.592** |
+| Meaning search | names found only through a synonym, recall@100 | 0.000 / 0.098 / 0.068 |
 
 The blend was chosen by a rule fixed before the results were seen: it had to raise concept recall without
 lowering shared-root recall by more than 0.05. The last row is a diagnostic added afterwards (the precision
 measure saturated at 1.0 for every method); it shows what embeddings add that TF-IDF cannot.
 
+A fixed 25-name regional spot-check, recorded before this change, shows where the new article facts help.
+Counts below are names with a recorded origin chain / a stated meaning; they are not a random sample or an
+accuracy estimate.
+
+| Panel | Before | After |
+|---|---:|---:|
+| Western control | 25 / 0 | 25 / 0 |
+| South Asian | 17 / 0 | 17 / 0 |
+| East Asian | 14 / 0 | 12 / 0 |
+| Southeast Asian | 18 / 0 | 18 / 1 |
+| African | 8 / 1 | 7 / 6 |
+| Middle East / Central Asia | 18 / 0 | 18 / 2 |
+| Indigenous Americas | 15 / 1 | 15 / 1 |
+
+The lower East Asian and African origin counts reflect correction of false sound-alike variants, not lost
+recorded etymologies. The article pass still leaves many names without a meaning; the later JMnedict expansion
+is not part of this build.
+
 Known limits: origins are only as good as Wiktionary's etymologies; names known only from Wikidata show the
-language they are used in, not where they come from; many names, especially from Indian, Chinese and African
-languages, have no etymology recorded; the meaning blend can match on a shared word rather than a shared idea
+language they are used in, not where they come from; a Wikipedia meaning is sourced to that article and may
+be disputed or vary by language; many names, especially from Indian, Chinese and African languages, still
+have no etymology recorded; the meaning blend can match on a shared word rather than a shared idea
 ("full victory" sits near "full moon").
 
 ## Data structures
@@ -79,8 +103,8 @@ Needs a JDK (21 or newer). The Maven wrapper fetches everything else.
 
 `target/site` is the whole site; serve it with any static server, e.g. `jwebserver -d target/site`.
 
-Rebuilding the data (only needed to refresh it; the generated files are committed in `site/data`) takes about
-25 minutes, a network connection (Wikidata's query service) and the kaikki.org dump
+Rebuilding the data (only needed to refresh it; the generated files are committed in `site/data`) needs a
+network connection (Wikidata and Wikipedia APIs) and the kaikki.org dump
 `raw-wiktextract-data.jsonl.gz` (~2.9 GB) from <https://kaikki.org/dictionary/rawdata.html>:
 
 ```
@@ -100,4 +124,5 @@ site/                             index.html, styles.css, generated data/
 
 Code: MIT, see `LICENSE`. Data in `site/data` and the test fixtures are derived from
 [Wiktionary](https://en.wiktionary.org/) (CC BY-SA 4.0) via [kaikki.org](https://kaikki.org/), with names,
-languages and genders from [Wikidata](https://www.wikidata.org/) (CC0); see `DATA_LICENSE.md`.
+languages and genders from [Wikidata](https://www.wikidata.org/) (CC0), plus selected facts from
+[Wikipedia](https://en.wikipedia.org/) given-name articles (CC BY-SA 4.0); see `DATA_LICENSE.md`.

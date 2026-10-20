@@ -28,10 +28,16 @@ public final class Matcher {
      * reach that layer); a supplier returning null skips the layer.
      */
     public static Matcher standard(NameDirectory dir, Supplier<OriginModel> model) {
+        return standard(dir, model, () -> null);
+    }
+
+    /** The usage model only answers when the etymology model abstains; its labels say "used in", not "from". */
+    public static Matcher standard(NameDirectory dir, Supplier<OriginModel> model,
+            Supplier<OriginModel> usageModel) {
         List<MatchStrategy> layers = new ArrayList<>();
         layers.add(new ExactLayer(dir));
         layers.add(new VariantLayer(dir));
-        layers.add(new InferredLayer(dir, model));
+        layers.add(new InferredLayer(dir, model, usageModel));
         layers.add(new NearestLayer(dir));
         return new Matcher(layers);
     }
@@ -92,7 +98,11 @@ public final class Matcher {
                 for (int v : dir.soundsLike(folded)) {
                     add(ranked, v, 1, folded);
                 }
-                int skeletonLimit = Math.max(2, folded.length() / 3);
+                // A skeleton of one or two letters says little: Siwoo and Savoo share "sv", Seoah and Sayah "s".
+                // Then only a one-edit respelling counts. Measured on the 9.6k names with recorded variants, each
+                // looked up as if unknown: the top pick lands in the name's own group 1,332 times (was 1,327)
+                // and outside it 1,336 times (was 1,378). Mohammed (mhmd) and Yusuf (isf) are unaffected.
+                int skeletonLimit = SoundKey.skeleton(folded).length() >= 3 ? Math.max(2, folded.length() / 3) : 1;
                 for (int v : dir.skeletonLike(folded)) {
                     if (ed.within(folded, dir.key(v), skeletonLimit) <= skeletonLimit) {
                         add(ranked, v, 2, folded);
@@ -138,10 +148,12 @@ public final class Matcher {
     static final class InferredLayer implements MatchStrategy {
         private final NameDirectory dir;
         private final Supplier<OriginModel> modelSource;
+        private final Supplier<OriginModel> usageSource;
 
-        InferredLayer(NameDirectory dir, Supplier<OriginModel> model) {
+        InferredLayer(NameDirectory dir, Supplier<OriginModel> model, Supplier<OriginModel> usage) {
             this.dir = dir;
             this.modelSource = model;
+            this.usageSource = usage;
         }
 
         @Override
@@ -149,12 +161,20 @@ public final class Matcher {
             if (!Text.isLatinWord(folded) || folded.length() < 3) {
                 return Optional.empty();
             }
-            OriginModel model = modelSource.get();
+            Optional<MatchResult> origin = guess(query, folded, modelSource.get());
+            return origin.isPresent() ? origin : guess(query, folded, usageSource.get());
+        }
+
+        private Optional<MatchResult> guess(String query, String folded, OriginModel model) {
             if (model == null) {
                 return Optional.empty();
             }
             List<Scored<String>> origins = model.rank(folded, 3);
             if (origins.isEmpty() || origins.get(0).score() < model.confidenceFloor()) {
+                return Optional.empty();
+            }
+            if (OriginModel.isUsage(origins.get(0).item())
+                    && !model.supportsUsage(folded, origins.get(0).item())) {
                 return Optional.empty();
             }
             return Optional.of(new MatchResult.Inferred(query, origins,

@@ -4,12 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * One Wiktionary entry for a name in one language. A name can have several (Michael in English, German, ...).
+ * One sourced entry for a name in one language. A name can have several (Michael in English, German, ...).
  *
  * @param chain oldest step first, e.g. Biblical Hebrew -> Koine Greek -> Latin -> Old French -> Middle English
  */
 public record NameEntry(
-        String display, String language, String gender, String meaning, String summary, List<OriginStep> chain) {
+        String display, String language, String gender, String meaning, String summary, List<OriginStep> chain,
+        String wikipediaTitle) {
+
+    /** Wiktionary and Wikidata entries have no Wikipedia source title. */
+    public NameEntry(String display, String language, String gender, String meaning, String summary,
+            List<OriginStep> chain) {
+        this(display, language, gender, meaning, summary, chain, "");
+    }
 
     private static final char STEP = '\u001E';
     private static final char PART = '\u001F';
@@ -29,7 +36,7 @@ public record NameEntry(
             c.append(Tsv.clean(s.language())).append(PART).append(Tsv.clean(s.form()));
         }
         return String.join("\t", Tsv.clean(key), Tsv.clean(display), Tsv.clean(language), Tsv.clean(gender),
-                Tsv.clean(meaning), Tsv.clean(summary), c.toString());
+                Tsv.clean(meaning), Tsv.clean(summary), c.toString(), Tsv.clean(wikipediaTitle));
     }
 
     /** Parses a line written by {@link #toTsv}; fields[0] is the key. */
@@ -41,6 +48,6 @@ public record NameEntry(
                 chain.add(new OriginStep(p[0], p.length > 1 ? p[1] : ""));
             }
         }
-        return new NameEntry(f[1], f[2], f[3], f[4], f[5], chain);
+        return new NameEntry(f[1], f[2], f[3], f[4], f[5], chain, f.length > 7 ? f[7] : "");
     }
 }

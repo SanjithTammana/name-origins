@@ -28,7 +28,10 @@ class MatcherTest {
             + row("ranjit", "Ranjit", 5, true)
             + row("sanjay", "Sanjay", 3, true)
             + row("sanjeet", "Sanjeet", 4, true)
-            + row("wei", "Wei", 6, 1));            // has an entry (e.g. Wikidata) but no origin chain
+            + row("savoo", "Savoo", 8, true)
+            + row("sayah", "Sayah", 9, true)
+            + row("wei", "Wei", 6, 1)              // has an entry (e.g. Wikidata) but no origin chain
+            + row("yousef", "Yousef", 10, true));
 
     // Tiny model: two origins, "jit$" strongly Sanskrit.
     private static final OriginModel MODEL = OriginModel.parse(
@@ -63,6 +66,38 @@ class MatcherTest {
     void recordedVariantWithoutEntryFollowsItsGroup() {
         assertEquals("muhammad", assertInstanceOf(MatchResult.Variant.class, matcher.match("Mohammed")).key());
         assertEquals("michael", assertInstanceOf(MatchResult.Variant.class, matcher.match("Mykal")).key());
+    }
+
+    @Test
+    void vowelRespellingsFindTheirNameByConsonantSkeleton() {
+        assertEquals("muhammad", assertInstanceOf(MatchResult.Variant.class, matcher.match("Mohamad")).key());
+        assertEquals("yousef", assertInstanceOf(MatchResult.Variant.class, matcher.match("Yusuf")).key());
+    }
+
+    @Test
+    void aShortSkeletonNeedsAOneEditRespelling() {
+        // "sv" and "s" are all Siwoo and Seoah share with Savoo and Sayah; two edits apart is a different name
+        for (String q : new String[] {"Siwoo", "Seoah"}) {
+            MatchResult r = matcher.match(q);
+            assertTrue(!(r instanceof MatchResult.Variant), q + " -> " + r);
+        }
+        assertEquals("savoo", assertInstanceOf(MatchResult.Variant.class, matcher.match("Savo")).key());
+    }
+
+    @Test
+    void usageModelOnlyAnswersWhenOriginModelAbstains() {
+        OriginModel disabledOrigin = OriginModel.parse("C\tHebrew\t0\t-1\nT\t1\nF\t1.01\n");
+        OriginModel usage = OriginModel.parse("C\tused in Korean\t0\t-1\n"
+                + "G\t^xy\t0:2\nG\t^xyz\t0:2\nG\txyz\t0:2\nG\tyzn\t0:2\n"
+                + "G\tznor\t0:2\nG\tnor\t0:2\nG\torb\t0:2\n"
+                + "E\t^xyz\t0\tXyzan\nT\t1\nF\t0.20\n");
+        MatchResult.Inferred fallback = assertInstanceOf(MatchResult.Inferred.class,
+                Matcher.standard(DIR, () -> disabledOrigin, () -> usage).match("Xyznorb"));
+        assertEquals("used in Korean", fallback.origins().get(0).item());
+        OriginModel confidentOrigin = OriginModel.parse("C\tHebrew\t0\t-1\nT\t1\nF\t0.20\n");
+        MatchResult.Inferred first = assertInstanceOf(MatchResult.Inferred.class,
+                Matcher.standard(DIR, () -> confidentOrigin, () -> usage).match("Xyznorb"));
+        assertEquals("Hebrew", first.origins().get(0).item());
     }
 
     @Test

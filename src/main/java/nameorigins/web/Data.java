@@ -18,7 +18,7 @@ import nameorigins.core.Tsv;
 import org.teavm.jso.browser.Window;
 
 /**
- * Loads the data files on demand and caches them. Only the name directory and the origin model load up front;
+ * Loads the data files on demand and caches them. Only the name directory and the two small model files load up front;
  * entry details load one first-letter shard at a time, and the meaning data only when a meaning feature is used.
  */
 final class Data {
@@ -27,11 +27,14 @@ final class Data {
     private String modelText;
     private OriginModel model;
     private boolean modelDone;
+    private String usageText;
+    private OriginModel usageModel;
+    private boolean usageDone;
     private final Map<String, Map<String, List<NameEntry>>> shards = new HashMap<>();
     private Map<String, String[]> similar;
     private MeaningSearch meaning;
 
-    /** Loads the directory and the origin model in parallel; calls ready when both are in. */
+    /** Loads the directory and model files in parallel; calls ready when all have answered. */
     void loadCore(Runnable ready, Consumer<String> failed) {
         Http.get("data/directory.tsv", text -> {
             dir = NameDirectory.parse(text);
@@ -45,11 +48,19 @@ final class Data {
             modelDone = true; // the page still works without the guesser
             finishCore(ready);
         });
+        Http.get("data/usage-model.tsv", text -> {
+            usageText = text;
+            usageDone = true;
+            finishCore(ready);
+        }, err -> {
+            usageDone = true; // the original matcher still works without this optional model
+            finishCore(ready);
+        });
     }
 
     private void finishCore(Runnable ready) {
-        if (dir != null && modelDone && matcher == null) {
-            matcher = Matcher.standard(dir, this::model);
+        if (dir != null && modelDone && usageDone && matcher == null) {
+            matcher = Matcher.standard(dir, this::model, this::usageModel);
             ready.run();
         }
     }
@@ -61,6 +72,7 @@ final class Data {
     void warmUp() {
         Window.setTimeout(() -> slices(() -> dir.buildSoundIndexStep(SOUND_SLICE), () -> {
             model();
+            usageModel();
             Window.setTimeout(() -> slices(() -> dir.buildTreeStep(TREE_SLICE), () -> { }), 0);
         }), 300);
     }
@@ -84,6 +96,14 @@ final class Data {
             modelText = null;
         }
         return model;
+    }
+
+    private OriginModel usageModel() {
+        if (usageModel == null && usageText != null) {
+            usageModel = OriginModel.parse(usageText);
+            usageText = null;
+        }
+        return usageModel;
     }
 
     void entries(String key, Consumer<List<NameEntry>> done) {

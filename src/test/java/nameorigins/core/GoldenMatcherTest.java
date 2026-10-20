@@ -77,8 +77,25 @@ class GoldenMatcherTest {
     }
 
     @Test
+    void shortSkeletonsDoNotPassForSpellings() {
+        // Siwoo went to "savoo" and Seoah to "sayah": both share only a one- or two-letter consonant skeleton
+        for (String[] p : new String[][] {{"Siwoo", "savoo"}, {"Seoah", "sayah"}}) {
+            MatchResult r = match(p[0]);
+            if (r instanceof MatchResult.Variant v) {
+                assertFalse(v.key().equals(p[1]), r.toString());
+            }
+        }
+    }
+
+    @Test
     void gibberishFindsNothing() {
         assertInstanceOf(MatchResult.None.class, match("Qwzx"));
+    }
+
+    @Test
+    void inferredUsageIsLabelledAsUsage() {
+        MatchResult.Inferred result = assertInstanceOf(MatchResult.Inferred.class, match("Ifeoluwa"));
+        assertEquals("used in Yoruba", result.origins().get(0).item());
     }
 
     @Test
@@ -198,9 +215,10 @@ class GoldenMatcherTest {
 
     @Test
     void guessesAreLabelledWithKnownOriginsAndSensibleOdds() {
-        OriginModel m = SiteData.model();
         for (String q : List.of("Surjit", "Abhijeetan", "Takeshiro", "Wolfhardt", "Oluwaseunfunmi")) {
             if (match(q) instanceof MatchResult.Inferred i) {
+                OriginModel m = OriginModel.isUsage(i.origins().get(0).item())
+                        ? SiteData.usageModel() : SiteData.model();
                 assertFalse(i.origins().isEmpty());
                 assertTrue(i.origins().get(0).score() >= m.confidenceFloor(), i.toString());
                 for (Scored<String> o : i.origins()) {

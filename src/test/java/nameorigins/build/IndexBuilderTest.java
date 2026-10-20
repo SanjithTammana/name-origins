@@ -37,6 +37,9 @@ class IndexBuilderTest {
                 + "\"etymology_templates\":[{\"name\":\"der\",\"args\":{\"1\":\"en\",\"2\":\"hbo\",\"3\":\"מִיכָאֵל\"},"
                 + "\"expansion\":\"Biblical Hebrew מִיכָאֵל\"}],\"forms\":[{\"form\":\"Mykal\",\"tags\":[\"alternative\"]}],"
                 + "\"senses\":[{\"glosses\":[\"A male given name\"]}]}\n");
+        Files.writeString(work.resolve("wikidata.tsv"), "Chinedu\tIgbo\t\tmale\n");
+        Files.writeString(work.resolve("wikipedia.tsv"),
+                "chinedu\tChinedu\tChinedu\tIgbo\tGod leads\tChinedu is an Igbo given name.\n");
         IndexBuilder.run(work, site);
         String dir = Files.readString(site.resolve("data/directory.tsv"));
         String shard = Files.readString(site.resolve("data/entries/m.tsv"));
@@ -47,5 +50,10 @@ class IndexBuilderTest {
         assertTrue(d.slot("mykal") >= 0 && !d.hasEntries(d.slot("mykal")), "a recorded variant spelling");
         String[] f = Tsv.split(Tsv.lines(shard).get(0), '\t');
         assertEquals("Biblical Hebrew", NameEntry.fromTsv(f).chain().get(0).language());
+        String wikipediaRow = Tsv.lines(Files.readString(site.resolve("data/entries/c.tsv"))).get(0);
+        NameEntry chinedu = NameEntry.fromTsv(Tsv.split(wikipediaRow, '\t'));
+        assertEquals("God leads", chinedu.meaning());
+        assertEquals("Chinedu", chinedu.wikipediaTitle());
+        assertTrue(Files.readString(work.resolve("meanings.tsv")).contains("chinedu\tChinedu\tGod leads"));
     }
 }
