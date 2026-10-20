@@ -115,7 +115,8 @@ public final class Matcher {
             for (int i = 1; i < ranked.size() && alternatives.size() < 5; i++) {
                 alternatives.add(dir.display(ranked.get(i).item()));
             }
-            return Optional.of(new MatchResult.Variant(query, dir.key(ranked.get(0).item()), alternatives));
+            boolean recorded = self >= 0 && dir.hasEntries(self);
+            return Optional.of(new MatchResult.Variant(query, dir.key(ranked.get(0).item()), alternatives, recorded));
         }
 
         /** Score = tier * 100 + edit distance, so tier dominates and distance breaks ties. */

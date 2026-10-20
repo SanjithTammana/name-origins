@@ -22,9 +22,15 @@ final class View {
         switch (r) {
             case MatchResult.Exact e -> sb.append(entries.isEmpty() ? notLoaded(e.query()) : entriesHtml(entries));
             case MatchResult.Variant v -> {
-                sb.append("<p class=\"note\">“").append(Html.esc(v.query())).append("” isn’t recorded as typed. ")
-                        .append("The closest recorded spelling is <strong>")
-                        .append(Html.esc(entries.isEmpty() ? v.key() : entries.get(0).display())).append("</strong>.");
+                String shown = Html.esc(entries.isEmpty() ? v.key() : entries.get(0).display());
+                sb.append("<p class=\"note\">“").append(Html.esc(v.query()));
+                if (v.recorded()) {
+                    sb.append("” is recorded, but with no origin. The same name spelled <strong>").append(shown)
+                            .append("</strong> has one.");
+                } else {
+                    sb.append("” isn’t recorded as typed. The closest recorded spelling is <strong>").append(shown)
+                            .append("</strong>.");
+                }
                 if (!v.alternatives().isEmpty()) {
                     sb.append(" Other spellings: ").append(chips(v.alternatives(), "inline-chips"));
                 }

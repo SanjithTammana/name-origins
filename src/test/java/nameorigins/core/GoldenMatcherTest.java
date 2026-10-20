@@ -35,11 +35,13 @@ class GoldenMatcherTest {
     void sanjithIsASpellingOfSanjeet() {
         MatchResult.Variant v = assertInstanceOf(MatchResult.Variant.class, match("Sanjith"));
         assertEquals("sanjeet", v.key());
+        assertFalse(v.recorded(), "Sanjith is not in the data");
     }
 
     @Test
     void mykalLandsInMichaelsGroup() {
         MatchResult.Variant v = assertInstanceOf(MatchResult.Variant.class, match("Mykal"));
+        assertTrue(v.recorded(), "Mykal has an entry of its own");
         int michael = dir().slot("michael");
         int got = dir().slot(v.key());
         assertTrue(got >= 0 && dir().hasOrigin(got), v.toString());

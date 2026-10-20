@@ -63,6 +63,17 @@ class ViewTest {
     }
 
     @Test
+    void aRecordedNameThatFollowsItsGroupIsNotCalledUnrecorded() {
+        // "Mykal" has a Wikidata entry; it follows its group to Michael for the origin, and used to be told
+        // "isn't recorded as typed"
+        String html = View.result(new MatchResult.Variant("Mykal", "michael", List.of(), true),
+                List.of(new NameEntry("Michael", "English", "male", "", "", List.of())), List.of());
+        assertFalse(html.contains("isn’t recorded"), html);
+        assertTrue(html.contains("is recorded, but with no origin"), html);
+        assertTrue(html.contains("<strong>Michael</strong>"), html);
+    }
+
+    @Test
     void aMatchWhoseDetailsDidNotDownloadSaysSoInsteadOfRenderingNothing() {
         // Data.entries answers an empty list when the shard request fails; Exact used to render an empty string
         String exact = View.result(new MatchResult.Exact("Michael", "michael"), List.of(), List.of());
