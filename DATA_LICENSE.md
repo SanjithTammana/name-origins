@@ -5,6 +5,10 @@ The files in `site/data/` and `src/test/resources/fixtures.jsonl` are derived fr
 and are licensed under the [Creative Commons Attribution-ShareAlike 4.0 International
 licence](https://creativecommons.org/licenses/by-sa/4.0/).
 
+Names that appear only on Wikidata (their language, gender and same-spelling links) come from
+[Wikidata](https://www.wikidata.org/), released under CC0; they are included in the same files, which as a
+whole remain CC BY-SA 4.0.
+
 Attribution: Wiktionary contributors. Each name's entry links to its Wiktionary page, where the full edit
 history and authorship are available.
 

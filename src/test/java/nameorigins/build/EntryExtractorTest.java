@@ -128,6 +128,20 @@ class EntryExtractorTest {
     }
 
     @Test
+    void inlineModifiersAreStrippedFromForms() throws Exception {
+        JsonNode e = new ObjectMapper().readTree("""
+            {"pos": "name", "word": "Xóchitl", "lang": "Spanish", "lang_code": "es",
+             "etymology_templates": [{"name": "bor", "args": {"1": "es", "2": "nci", "3": "xōchitl<t:flower>"},
+               "expansion": "Classical Nahuatl xōchitl<t:flower>"}]}""");
+        EntryExtractor x = new EntryExtractor(Map.of("nci", "Classical Nahuatl", "gmh", "Middle High German"));
+        assertEquals("xōchitl", x.extract(e).entry().chain().get(0).form());
+        JsonNode tree = new ObjectMapper().readTree("""
+            {"pos": "name", "word": "Adem", "lang": "German", "lang_code": "de",
+             "etymology_templates": [{"name": "etymon", "args": {"1": "de", "2": ":inh", "3": "gmh:Adam<id:first man>"}}]}""");
+        assertEquals("Adam", x.extract(tree).entry().chain().get(0).form());
+    }
+
+    @Test
     void chainFromTextReadsNestedFromClauses() {
         assertEquals(List.of(new OriginStep("Hindi", ""), new OriginStep("Sanskrit", "")),
                 EXTRACT.chainFromText("A male given name from Hindi [in turn from Sanskrit]."));

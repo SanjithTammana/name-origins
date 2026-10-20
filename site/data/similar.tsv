@@ -490,16 +490,16 @@ alvar	aelfhere,albiharjaz,alfheri,ernst,aelf,alver,keijo,alf,aelfhild,aelfgyth
 alvaro	gerda,amparo,sigmund,alaric,hiltimunt,hildimundur,borghildr,gudmundr,alaricus,alarico
 alver	aelfhild,aelfgyth,alvhild,aelfwig,albigaizaz,alfger,aelfgar,aelfwine,alboino,alvin
 alvhild	aelf,alver,keijo,alf,aelfhere,aelfsige,albigaizaz,alfger,aelfgar,aelfmaer
-alvin	albin,alwin,aelf,alver,keijo,alf,wenche,sadik,sadiq,wine
+alvin	albin,aelf,alver,keijo,alf,wenche,sadik,sadiq,wine,halil
 alvis	hakim,bilge,frode,frodi,frodo,alaric,alaricus,alarico,sobeslav,ruuben
-alwin	aelfwine,alboino,alvin,albwin,athalawini,wenche,sadik,sadiq,wine,halil
+alwin	aelfwine,alboino,albwin,athalawini,wenche,sadik,sadiq,wine,halil,amyas
 alwyn	aeronwen,athalawini,aethelwine,albin,eurwen,eurwyn,arwen,arwyn,bento,anwen
 alys	bhoomika,bhumika,axar,akshar,sheela,aryaske,aade,ethel,ethelwolf,genadijs
 alyssa	aster,kealani,piibe,onerva,rush,taimi,madara,madars,margriet,aira
 amabel	aimablle,leofnoth,makisig,philemon,adiv,nanea,karatakos,srimati,manju,rahman
 amadea	thea,diana,dua,liubov,lyubov,kealoha,aloha,evin,angharad,carita
 amadeus	dua,liubov,lyubov,kealoha,aloha,evin,angharad,carita,unni,lufu
-amaia	amaya,kurre,bosse,aryukah,evanthia,waning,eloise,zabrakanah,marcion,athanasios
+amaia	kurre,bosse,aryukah,evanthia,waning,eloise,zabrakanah,marcion,athanasios,levin
 amal	sperandio,gervila,vonbjort,wulfwen,asha,akansha,tautvilas,vaisvilas,waning,nadia
 amalaberga	amalija,imre,emery,amelia,amelie,amory,leoberht,hleobeorht,amalia,arnost
 amalariks	mali,rihhart,richard,rikard,emmerich,guthheard,kahananui,contardo,hardi,erardo
@@ -517,7 +517,7 @@ amastri	winethryth,magne,beornthryth,spitamah,maegenric,baljeet,ingedrudis,agild
 amata	maite,aimee,karatakos,david,habib,myrna,mehboob,philomena,armi,daavid
 amatakos	folkmar,clotilde,hadamar,mariwig,beorhtmaer,elmer,elmira,aylmer,athalamar,sigimeraz
 amatista	safir,beril,esmeralda,ratan,torhthelm,mingzhu,bruning,spodris,soraya,candice
-amaya	amaia,pauahi,iroyinogunkiitan,townsend,alo,ordhelm,kurre,ordheah,ajayi,elod
+amaya	pauahi,iroyinogunkiitan,townsend,alo,ordhelm,kurre,ordheah,ajayi,elod,ajari
 amber	parimal,surbhi,sourav,saurabh,saurav,kahalaomapuana,beril,kiele,hương,mapuana
 ambika	moa,janani,uwa,kuuna,quiselpoo,arnannguaq,idiswif,dion,sn-n-mwt,lillemor
 ambikatus	emlyn,pericles,gunthild,badu,ceadda,bojan,gun,gunn,viggo,hildegunn
@@ -632,7 +632,7 @@ anmol	aanya,mirando,ceadach,memduh,mahmut,jude,shukrije,sakir,shakir,demaenetus
 ann	hanna,annette,danna,hanne,zuan,leofhild,neema,jana,jane,jean
 anna	annette,neema,hanne,zuan,leofhild,holda,jana,jane,jean,joan
 annabel	aimablle,leofnoth,makisig,philemon,adiv,nanea,karatakos,srimati,manju,rahman
-anne	kurre,bosse,anya,anahy,aryukah,zabrakanah,annette,manaicah,arabazukah,juanita
+anne	kurre,bosse,anahy,aryukah,zabrakanah,annette,manaicah,arabazukah,juanita,johannes
 annette	hannah,anna,neema,hanne,zuan,leofhild,holda,jana,jane,jean
 anngerd	aetius,orn,kartal,ezio,arne,are,aquilino,gerda,amparo,earnwig
 annikki	gentius,mari,paarnannguaq,marjut,paarma,marja,paarnaq,marja-terttu,damir,ignatius
@@ -681,7 +681,7 @@ anwen	carwyn,macarie,macarena,macarius,lume,aeronwen,baruch,tegwen,arianwyn,aria
 anwyl	ermelinda,mildgyth,mildthryth,blagoje,modesto,lirain,halime,maigonis,vieno,orne
 anxela	malachi,melek,ingel,ange,angeles,gwenael,malaika,iride,malakias,malachia
 anxelu	malachi,melek,ingel,ange,angeles,gwenael,malaika,iride,malakias,malachia
-anya	asya,anne,laurs,lassi,laust,kaili,elli,valts,sonia,ailish
+anya	asya,laurs,lassi,laust,kaili,elli,valts,sonia,ailish,antti
 aodh	acipatah,panu,acidatah,eldjarn,tanguy,tangi,attashin,ligwulf,gudbrandr,pauahi
 aoibhinn	anandi,beatrix,harshit,pulkit,gaudioso,mandana,allegra,tatnoth,rada,miranda
 aoife	aloka,alok,anshuman,amshuman,cemal,lavanya,dzemal,zayn,xhemal,nani
@@ -1082,9 +1082,9 @@ bale	bala,tindra,candida,candido,endrit,palvi,abha,dritbardh,vuldar,muireall
 baljeet	magnhild,hervald,reginheri,gerald,cenweald,magna,winethryth,magni,magny,meinhard
 balkus	uindiorix,dritbardh,candida,candido,bardhyl,yllbardhe,spitakah,borbardha,aneirwen,gwyneth
 ballan	guidobaldo,yllballe,baldo,hildibalth,argyotalus,axrotalus,wigbeald,sigeboldus,konrad,osbeald
-baltasar	baltazar,jakob,valmai,bronislaw,eosaph,jacob,gintautas,bayacah,hannibal,rex
-baltazar	balthazar,baltasar,jakob,hannibal,valmai,bronislaw,gaozrich,jacob,pushpesh,eosaph
-balthazar	baltazar,jakob,valmai,bronislaw,eosaph,jacob,gintautas,bayacah,hannibal,rex
+baltasar	jakob,valmai,bronislaw,eosaph,jacob,gintautas,bayacah,hannibal,rex,rey
+baltazar	jakob,hannibal,valmai,bronislaw,gaozrich,jacob,pushpesh,eosaph,mai,sargao
+balthazar	jakob,valmai,bronislaw,eosaph,jacob,gintautas,bayacah,hannibal,rex,rey
 baltwini	heardwine,vahur,tormod,eanbald,makoa,nakoa,balder,cuono,wenche,sadik
 bambi	impi,nena,nivikka,colleen,mlada,arbakah,kauno,innogen,imogen,inna
 bangii	vaughan,miki,lill,maimu,liten,lilleba,vesla,lita,beryl,signhild
@@ -1891,7 +1891,7 @@ damaris	hengest,giles,beyla,raakel,tosun,calimero,kishore,rikeneu,eneh,agnello
 damian	damon,euhemerus,claude,andini,conchur,conchobar,conchoor,anwyl,annwyl,reagan
 damir	irineu,solomon,salomono,salomone,irenaeus,mira,mir,slimane,pax,paz
 damon	laka,damian,amory,amelia,amalia,andini,reagan,aegenbeald,ettore,conchur
-dan	dann,dana,denegils,denemod,denebeald,denewulf,deneweald,halvdan,halfdanr,healfdene
+dan	dana,denegils,denemod,denebeald,denewulf,deneweald,halvdan,halfdanr,healfdene,daniela
 dana	denewulf,denebeald,denemod,denegils,dan,halvdan,halfdanr,healfdene,deneweald,jordan
 dangah	torkil,thorkild,kjell,kjellaug,kjetil,paris,hrafnkell,torcall,torquil,corrie
 danguole	selena,celine,cennet,firdevs,celia,kalani,nalani,taivo,asuman,orion
@@ -1900,11 +1900,11 @@ danica	aamu,vesna,araci,daegberht,dag,dit,dite,birgun,hyinora,csilla
 daniel	jehoshaphat,elijah,elia,elias,gabrielo,hiskia,uriah,uriel,uriele,elisabeth
 daniela	danny,tatu,dan,kamuela,gioele,matts,makaio,jean-luc,gianluca,bartolo
 daniele	jehoshaphat,elijah,elia,elias,gabrielo,hiskia,uriah,uriel,uriele,elisabeth
-daniell	danny,tatu,kamuela,gioele,matts,makaio,jean-luc,gianluca,bartolo,makia
+daniell	tatu,kamuela,gioele,matts,makaio,jean-luc,gianluca,bartolo,makia,esteri
 danish	wirognawos,widya,hikmet,artognou,arthwys,mefodijus,vidyasagar,gudrun,guro,oddrun
-dann	denewulf,denebeald,denemod,denegils,dan,halvdan,halfdanr,healfdene,deneweald,jordan
+dann	denewulf,denebeald,denemod,denegils,halvdan,halfdanr,healfdene,deneweald,jordan,dougal
 danna	porter,finnegan,callan,ana,ann,lennon,anne,kristel,kirste,kristin
-danny	daniela,daniell,ramintas,kestutis,girdutis,daugirutis,girdenis,vytenis,erzsok,vainila
+danny	daniela,ramintas,kestutis,girdutis,daugirutis,girdenis,vytenis,erzsok,vainila,mageen
 danvers	duringin,marsilio,lienite,iuri,noris,ishbel,fiorentino,sidonie,gauti,svava
 daphne	laurie,laurence,vavrinec,hanalei,lara,lorin,laura,llorian,vernon,aranzazu
 daraartuu	flor,potira,floor,kukka,xochitl,oie,lili,zehra,sikkerninnguaq,flieur
@@ -3248,9 +3248,9 @@ hanna	neema,ann,jane,holda,leofhild,johanne,altagracia,faizan,sheena,janice
 hannah	annette,neema,ana,holda,leofhild,zuan,faizan,jana,jane,jean
 hanne	annette,anna,ivan,xohan,johann,jon,giovanni,jehan,xoan,xan
 hannelore	erno,erni,ernits,makia,laurs,lassi,laust,erkki,eerikki,eero
-hannes	jeanne,juana,ivan,xohan,giovanni,xoan,xan,xuan,juano,jana
+hannes	jeanne,juana,xohan,giovanni,xoan,xan,xuan,juano,juhani,jukka
 hannibal	hasdrubal,neema,leofhild,annette,hanna,anna,altagracia,domonkos,joyce,domenico
-hans	jeanne,juana,ivan,xohan,xoan,xan,xuan,juano,jana,juhani
+hans	jeanne,juana,xohan,xoan,xan,xuan,juano,juhani,jukka,gjo
 hansina	jacobine,juline,jakobine,jakobina,monsine,jona,mikaela,hiltni,svafa,edvarda
 hansine	jacobine,juline,jakobine,jakobina,monsine,jona,mikaela,hiltni,svafa,edvarda
 hanss	johnson,gianmaria,jean-pierre,gianpiero,jean pierre,jean-paul,gianpaolo,giancarlo,jean-charles,gianluigi
@@ -3321,7 +3321,7 @@ heardlac	guthmund,oslac,winelac,guthlac,beornheard,wihtlac,aslak,stithwulf,gomal
 heardred	reginpald,eanred,ardizzone,osraed,bealdraed,cenred,berhtraed,ratberht,raedbeorht,cuntrat
 heardwine	ardizzone,hartwini,baltwini,contardo,heardberht,wulfheard,wolfhart,sigihart,sigeheard,rikhard
 hebe	kijana,juvenal,arbinah,gusav,arbaraivah,kishore,vitalis,hyam,beathag,hyman
-hector	hektor,dosunmu,ashu,jakob,spitamah,brzoslav,brzomir,brzomil,hraethhun,raskus
+hector	dosunmu,ashu,jakob,spitamah,brzoslav,brzomir,brzomil,hraethhun,raskus,jacob
 hedinn	gildasius,aminnguaq,nyyrikki,conchenn,hemming,aegidius,algernon,meqqusaaq,floki,bra
 hedwig	ratibor,hathuwulfaz,sambor,hludahildiz,vigmund,mahtihildiz,cstibor,myslibor,starchilt,hiltibrant
 heikki	hammond,heino,bartolo,gino,ugis,fricis,frits,fritz,veeti,fadrique
@@ -3333,7 +3333,7 @@ heini	juuli,juulika,hailey,haley,hayden,heino,hayley,eylul,juni,sumarlidi
 heino	ivik,ivinnguaq,hailey,haley,heini,henriikka,indulis,heikki,indrek,harriet
 heinrich	friederich,friedrich,haimariks,heine,henrik,aymon,haimo,aimone,emeric,anrico
 hekla	rock,mairiga,rota,kawehi,brunnihilt,aegidius,brynolf,hemming,leofhelm,talabi
-hektor	hector,ashu,brzoslav,brzomir,brzomil,raskus,hraethhun,uinseann,vicenzu,vincent
+hektor	ashu,brzoslav,brzomir,brzomil,raskus,hraethhun,uinseann,vicenzu,vincent,vincentius
 helbe	sugar,dock,alpheus,astaphium,sirpa,nyyrikki,ybyrapue,ras,tinna,masoro
 heldica	gundalberht,ratibor,oswig,osgyth,ashildr,alfhild,gunter,guntheri,heregyth,gunther
 hele	eili,eila,elin,liene,alona,olo,helena,helene,elena,elina
@@ -3406,7 +3406,7 @@ herideo	abdoel,andi,obed,abdon,abdul,maethhere,herborg,hoshere,herbjorg,igor
 herigast	hostek,baƙo,godgjest,sigigastiz,maethhere,herborg,hoshere,herbjorg,igor,arlette
 herirat	eanred,ragnar,osraed,cuntrat,hiltrat,frithurad,frithuraed,sigeraed,ethelred,aethelred
 herjuna	uindiorix,dritbardh,candida,candido,bardhyl,yllbardhe,spitakah,borbardha,aneirwen,gwyneth
-herman	bernheri,beornhere,hermann,miles,ulfarr,sconhari,albiharjaz,alfheri,eraslan,peranfrid
+herman	bernheri,beornhere,miles,ulfarr,sconhari,albiharjaz,alfheri,eraslan,peranfrid,beornwulf
 hermann	ulfarr,peranfrid,sconhari,beornwulf,albiharjaz,alfheri,beornmund,enar,ener,ejner
 hermine	brice,imola,kimmernaq,aira,marakaiaguasu,nakul,madara,madars,oanh,astorre
 herradus	eanred,ragnar,osraed,cuntrat,hiltrat,frithurad,frithuraed,sigeraed,ethelred,aethelred
@@ -3788,10 +3788,10 @@ iuraytauasu	kahananui,mitchell,grant,makanui,massimo,iniguasu,trefor,souerusu,pi
 iuri	ishbel,sisse,sonia,maurizio,valts,kristo,oko,agita,felikss,noris
 iustinianus	justus,adalet,justitia,kapono,ku,justin,justine,jeustene,dobromir,dobromira
 iustinus	adil,justus,justin,justine,jeustene,zedekiah,adalet,justitia,kapono,ku
-ivan	hannes,hans,sheena,janice,joanne,joanna,vanna,sinead,siobhan,shane
+ivan	sheena,vanna,sinead,siobhan,shane,shawn,shaun,sian,shauna,xoana
 ivanas	jeanne,juana,johanne,janna,johannes,juanita,annette,eloa,ta-allah,joonatan
-ivar	ivo,ivarr,kekoa,uyraparusu,bogi,yay,jousia,yves,sconhari,albiharjaz
-ivarr	ivar,iivari,ulfarr,sconhari,bernheri,beornhere,hermann,albiharjaz,alfheri,uhtaharjaz
+ivar	ivo,kekoa,uyraparusu,bogi,yay,jousia,yves,sconhari,albiharjaz,alfheri
+ivarr	iivari,ulfarr,sconhari,bernheri,beornhere,hermann,albiharjaz,alfheri,uhtaharjaz,havar
 ivik	heino,leigh,roosevelt,pellervo,sage,holly,everleigh,taimi,lee,riley
 ivinnguaq	heino,leigh,roosevelt,pellervo,sage,holly,everleigh,taimi,lee,riley
 ivo	ivar,yves,uyraparusu,bogi,yay,jousia,iivari,eoghann,yvain,iwogenos
@@ -3849,13 +3849,13 @@ james	talon,padakah,jacqueline,rigel,howe,valmai,eosaph,joachim,joakim,mai
 jamila	calista,calixto,gudrid,ragnfridr,frida,sigridr,belle,nfr-nfrw-jtn,eder,astrid
 jamin	benjaminas,benjamin,dobromir,dobromira,dexter,eymen,dobrovoj,dobrozizn,dobromysl,dobrohost
 jan	kushagra,jangeri,cangeri,agrizzo,uwe,janberk,eoforhwaet,uzdagaizaz,oddr,ǫgmundr
-jana	hannes,hans,johannes,annette,hanne,anna,hannah,joel,hansina,hansine
+jana	annette,hanne,anna,hannah,joel,hansina,hansine,jonna,elijah,elia
 janani	dion,sn-n-mwt,lillemor,ambika,amiya,tiyamiyu,iraci,gilmore,nuria,araci
 janberk	dagomaros,tinkomaros,can,jangeri,cangeri,jan,kushagra,szilard,vladimir,berkant
 jandira	marise,mellita,iraci,melissa,iracema,leleten,muff,sladan,guglo,sherine
 jane	annette,hanna,hanne,anna,hannah,joel,hansina,hansine,jonna,elijah
 jangeri	can,jan,kushagra,janberk,maunu,mauno,agung,agrizzo,uwe,magnus
-janice	zuan,ivan,xohan,giovanni,xoan,xan,xuan,juano,annette,eloa
+janice	zuan,xohan,giovanni,xoan,xan,xuan,juano,annette,eloa,ta-allah
 jankat	yusuf,jusuf,jose,vitalis,hyam,beathag,hyman,jeta,vita,chaim
 janna	zuan,ian,eoin,chuan,evan,jogvan,shane,sean,shawn,ivanas
 janne	sheena,vanna,sinead,siobhan,sian,xoana,hanne,annette,jeanne,juana
@@ -3934,8 +3934,8 @@ jo	asfauruk,filipe,philipp,josteinn,jostein,philip,arhippa,eomaer,jorid,marey
 joachim	jeremias,jorma,jair,iair,eosaph,valmai,budimerus,jeremie,kushtrim,adalto
 joakim	jorma,jeremias,jair,iair,eosaph,valmai,jeremie,adalto,jakob,budimerus
 joan	annette,hanne,anna,hannah,joel,jonna,elijah,elia,elias,ana
-joanna	zuan,ivan,xohan,giovanni,xoan,xan,xuan,juano,annette,eloa
-joanne	zuan,ivan,xohan,giovanni,xoan,xan,xuan,juano,annette,eloa
+joanna	zuan,xohan,giovanni,xoan,xan,xuan,juano,annette,eloa,ta-allah
+joanne	zuan,xohan,giovanni,xoan,xan,xuan,juano,annette,eloa,ta-allah
 joao	jeanne,juana,johanne,janna,johannes,juanita,annette,eloa,ta-allah,joonatan
 joar	idar,gerheri,eochaid,jo,eachann,eochaidh,maethhere,herborg,hoshere,herbjorg
 job	anhangupiara,moroupiaruera,bago,alejandro,alexandra,gislhere,gislaharius,gisalheri,hostibor,rhys
@@ -3949,9 +3949,9 @@ jogvan	jeanne,juana,johanne,janna,juanita,annette,eloa,ta-allah,joonatan,aesa
 johan	acun,dagodubnos,lokesh,dubnorix,albiorix,xhihan,cihan,jaromir,jeanne,juana
 johanino	johnson,gianmaria,jean-pierre,gianpiero,jean pierre,jean-paul,gianpaolo,giancarlo,jean-charles,gianluigi
 johann	sheena,vanna,evan,sinead,siobhan,shawn,sian,xoana,hanne,annette
-johanna	zuan,ivan,xohan,giovanni,xoan,xan,xuan,juano,annette,eloa
+johanna	zuan,xohan,giovanni,xoan,xan,xuan,juano,annette,eloa,ta-allah
 johanne	zuan,ian,eoin,chuan,evan,jogvan,shane,sean,shawn,ivanas
-johannes	jana,loviisa,sheena,vanna,chuan,sinead,siobhan,ivanas,joao,sian
+johannes	loviisa,sheena,vanna,chuan,sinead,siobhan,ivanas,joao,sian,xoana
 johans	johnson,gianmaria,jean-pierre,gianpiero,jean pierre,jean-paul,gianpaolo,giancarlo,jean-charles,gianluigi
 johari	ratna,cevher,alaha,zeynep,gema,ratan,giada,nalmes,soraya,dyrmundur
 john	jeanne,juana,annette,juanita,hanne,anna,hannah,joel,elijah,elia
@@ -3959,7 +3959,7 @@ johnson	juhani,jukka,gjo,seainin,johans,ansis,jaan,jack,jussi,jocjo
 jomantas	jogintas,karijotas,mantvydas,laimantas,manvydas,miniotas,jogaila,daujotas,zygimantas,ake
 jon	sheena,vanna,evan,sinead,siobhan,shawn,sian,xoana,hanne,annette
 jona	jacobine,juline,jakobine,jakobina,monsine,hansina,hansine,mikaela,kolumban,hiltni
-jonah	joonas,kolumban,jona,malcolm,bylbyl,kapautah,pellumb,urraca,hraefn,chramn
+jonah	joonas,kolumban,malcolm,bylbyl,kapautah,pellumb,urraca,hraefn,chramn,corbin
 jonas	kalman,colman,jemima,fanol,colm,comba,paloma,dufe,calum,joona
 jonatan	nathan,natan,mehetabel,domonkos,joyce,domenico,dominik,dominic,quirze,froy
 jonathan	joel,theodosius,abdollah,thecla,oswig,osgyth,ashildr,bohuslav,tanriverdi,haqverdi
@@ -5247,8 +5247,8 @@ nadege	sperandio,gervila,vonbjort,wulfwen,asha,akansha,tautvilas,vaisvilas,wanin
 nadej	sperandio,gervila,vonbjort,wulfwen,asha,akansha,tautvilas,vaisvilas,waning,nadia
 nadeschda	sperandio,gervila,vonbjort,wulfwen,asha,akansha,tautvilas,vaisvilas,waning,nadia
 nadezhda	sperandio,gervila,vonbjort,wulfwen,asha,akansha,tautvilas,vaisvilas,waning,nadia
-nadia	helle,esperanza,nadeschda,toivo,nadej,nadege,shpresa,amal,nadiya,umit
-nadiya	sperandio,gervila,vonbjort,wulfwen,asha,akansha,tautvilas,vaisvilas,waning,nadia
+nadia	helle,esperanza,nadeschda,toivo,nadej,nadege,shpresa,amal,umit,nada
+nadiya	sperandio,gervila,vonbjort,wulfwen,asha,akansha,tautvilas,vaisvilas,waning,wilmer
 naemi	noam,mio,tobit,mojmir,mungo,hephzibah,zebedee,jehovah,gabrielo,hiskia
 nagore	santiago,mikkeli,meritxell,lourdes,begona,maria da soledade,guadalupe,seamus,iakopo,seamaisin
 nagraj	itzcoatl,rex,rey,raju,hilmir,regis,fiachrai,cynric,katurix,wulfric
@@ -6713,13 +6713,13 @@ stellaluna	hyinora,csilla,ylli,seren,ylleza,stella,estelle,citlali,tahti,estrell
 sten	gudsteinn,hallgeir,frithustan,frithestan,sixten,aethelstan,athelstan,adalsteinn,wulfstan,stanwulf
 stenhilt	sambor,sten,axton,steinn,stein,steen,eben,steinur,guran,badwohildiz
 stepan	paidin,linards,claes,nicole,nis,claus,nigul,klavs,niilo,heleri
-stephan	steven,tapani,steve,corona,stjepan,estevao,taji,stephanus,estevo,stephen
+stephan	tapani,steve,corona,stjepan,estevao,taji,stephanus,estevo,aytac,parja
 stephanus	stephan,steve,aytac,beagwine,beagnoth,beaglac,aladesanmi,adegbemibu,adejuyigbe,adekugbe
-stephen	stephan,steve,parja,venceslav,corona,knox,taji,lei,leimomi,kaleiokalani
+stephen	steve,parja,venceslav,corona,knox,taji,lei,leimomi,kaleiokalani,leinani
 stepo	paidin,linards,claes,nicole,nis,claus,nigul,klavs,niilo,heleri
 stetson	crofton,neville,sutton,keaton,jugoslav,hadrianus,elton,barnaby,kimberley,ross
 steve	stephan,steven,corona,parja,venceslav,stjepan,estevao,taji,stephanus,estevo
-steven	stephan,steve,parja,venceslav,corona,taji,lei,leimomi,kaleiokalani,leinani
+steven	steve,parja,venceslav,corona,taji,lei,leimomi,kaleiokalani,leinani,aytac
 stewart	meyer,caspar,casper,kaspar,kasper,abdunnasir,abdinasir,eduardo,hafiz,maritza
 stian	beatriz,wendilger,lotr,rakip,beatrice,burgundofara,eduardo,vytis,oscar,conor
 stigr	ozkul,eitvydas,eimantas,wolfgang,arung,resat,lagunna,kingetorix,ida,rigel
@@ -6785,11 +6785,11 @@ svatopluk	sanquette,mukaddes,geruuih,halgeberht,dryhtnoth,oleg,uuihrat,olga,ruod
 svava	wanda,venla,noris,sonya,arkadijus,afanasijus,hrvoje,iuri,shawnee,gaute
 svea	gustaw,phinehas,finney,torfinn,gaute,gustav,aostargaoz,jocelyn,syra,senni
 svein	kauno,sveinung,rikeneu,kii,paige,hysenoth,mlada,arbakah,hyseberht,maoldomhnaich
-sveinn	kii,svenn,abdoel,andi,obed,abdon,abdul,paige,schalk,obadiah
+sveinn	kii,abdoel,andi,obed,abdon,abdul,paige,schalk,obadiah,godescealc
 sveinung	sven,svend,svenn,svein,kauno,gottlieb,mlada,arbakah,jundil,rikeneu
 sven	kauno,kii,mlada,arbakah,rikeneu,hysenoth,sveinung,paige,bambi,wiroku
 svend	kauno,kii,mlada,arbakah,rikeneu,hysenoth,sveinung,paige,bambi,wiroku
-svenn	sweyn,sveinn,kauno,kii,mlada,arbakah,rikeneu,hysenoth,sveinung,paige
+svenn	sweyn,kauno,kii,mlada,arbakah,rikeneu,hysenoth,sveinung,paige,bambi
 sverker	dubthach,ciaran,kalo,syamakah,kjaran,kersobleptes,dubhan,garrick,thorgeirr,geir
 sverre	ambikatus,pallas,emlyn,pericles,ida,kari,toliotas,kingetorix,sunkanmi,arabazukah
 sverrir	vaula,beagwine,beaglac,beagnoth,gwendolen,beagmund,helina,derdriu,torgny,roine
@@ -7300,8 +7300,8 @@ valdemar	reginpirin,reginpero,valda,valdis,iamblichus,vlad,waltheri,romuald,valt
 valdis	miervaldis,valfrid,romuald,uualtni,waltraud,thorvald,thorvaldur,torald,ewald,malte
 valdivina	peppi,linards,stanislava,fricis,frits,fritz,veeti,fadrique,ugis,paidin
 valencia	valto,ingweald,aengus,oingus,izet,ladislaus,vladislav,fergus,dufgus,magne
-valentin	marcion,valentine,athanasios,eloi,svafa,cyriac,levin,eudoxia,heloise,eloise
-valentine	valeria,vailintin,snbj,keola,jw-snb,valentin,snb-n.j,artemie,frithuswith,aethelswith
+valentin	marcion,athanasios,eloi,svafa,cyriac,levin,eudoxia,heloise,eloise,eudocia
+valentine	valeria,vailintin,snbj,keola,jw-snb,snb-n.j,artemie,frithuswith,aethelswith,diotswind
 valeria	vailintin,snbj,valentine,keola,ikaika,snb-n.j,jw-snb,artemie,beorhtswith,frithuswith
 valeriane	capucine,margriet,kimmernaq,zymbyle,imola,ffion,aira,vivan,gundega,neven
 valev	prakash,lucian,svetlana,drita,valo,dritim,dritan,luz,nur,drit
@@ -9172,7 +9172,7 @@ zꜣ-ꜣst	isidora,isidorus,izidorius,isadora,sune,ximena,nandan,jimena,erneeraq
 ѕвезда	hokulani,stellaluna,ayyildiz,ylldrita,drityll,bardhyl,yllbardhe,maristela,esther,ylljeta
 ѕвездан	hokulani,stellaluna,ayyildiz,ylldrita,drityll,bardhyl,yllbardhe,maristela,esther,ylljeta
 ѕвездана	hokulani,stellaluna,ayyildiz,ylldrita,drityll,bardhyl,yllbardhe,maristela,esther,ylljeta
-іван	jeanne,juana,johanne,janna,johannes,juanita,annette,eloa,ta-allah,joonatan
+іван	jeanne,juana,juanita,annette,eloa,ta-allah,joonatan,aesa,nathanael,jonathan
 іванна	zuan,ivan,xohan,johann,jon,giovanni,jehan,xoan,xan,xuan
 ізяслав	slawosz,hrodny,yash,rodi,adal,miroslav,bronislaw,kirti,bohuchval,bratroslava
 іларіон	hilary,blythe,teitur,festus,vui,fausto,sait,asser,bodog,allegra
@@ -9411,7 +9411,7 @@ zꜣ-ꜣst	isidora,isidorus,izidorius,isadora,sune,ximena,nandan,jimena,erneeraq
 אביעזר	helpwine,auxilium,helpric,ophelie,ophelia,helpariks,abacar,abu bakr,kevin,mio
 אבישלום	cleopatra,abner,avi,jupiter,jn-jt.f,zeynep,abacar,abu bakr,ahab,ⲡⲁⲧⲣⲟⲕⲗⲁⲥ
 אבנר	abner,candelaria,avi,prakash,lucian,svetlana,drita,valo,dritim,dritan
-אברהם	abraham,abram,brigit,brigid,breeshey,brighde,brigita,brid,ali,avi
+אברהם	abram,brigit,brigid,breeshey,brighde,brigita,brid,ali,avi,hiram
 אברם	abram,addo,papakah,atli,mryt-jt.s,cleopatra,avi,abner,absalom,akseli
 אדיב	adiv,euhemerus,mervyn,alma,tryphosa,blerim,kaino,gurra,aagni,carine
 אדם	clancy,jatau,piroska,rufus,qasso,rory,suxrah,roy,ruaidri,adao

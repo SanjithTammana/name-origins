@@ -93,8 +93,10 @@ public final class EntryExtractor {
         return steps.isEmpty() ? fromTreeTemplates : steps;
     }
 
-    private void addStep(List<OriginStep> steps, String code, String form) {
+    private void addStep(List<OriginStep> steps, String code, String rawForm) {
         String lang = languageNames.getOrDefault(code, code);
+        // every path strips Wiktionary inline modifiers: "Adam<id:first man>", "xōchitl<t:flower>"
+        String form = rawForm.replaceAll("<[^>]*>", "").trim();
         if (steps.size() >= MAX_STEPS) {
             return;
         }
@@ -106,7 +108,8 @@ public final class EntryExtractor {
 
     /** The source word as Wiktionary displays it, e.g. "Μῐχᾱήλ (Mĭkhāḗl)"; "" when the template has no word. */
     private String form(JsonNode args, String expansion, String code) {
-        String word = args.path("3").asText("");
+        // strip Wiktionary inline modifiers: "xōchitl<t:flower>" -> "xōchitl"
+        String word = args.path("3").asText("").replaceAll("<[^>]*>", "").trim();
         if (word.equals("-")) {
             return "";
         }
@@ -114,7 +117,7 @@ public final class EntryExtractor {
         if (lang != null) {
             int at = expansion.indexOf(lang + " ");
             if (at >= 0) {
-                String shown = expansion.substring(at + lang.length() + 1).trim();
+                String shown = expansion.substring(at + lang.length() + 1).replaceAll("<[^>]*>", "").trim();
                 // drop the trailing gloss inside the brackets: "संजीत (sañjīt, literally “full victory”)"
                 int comma = shown.indexOf(", ");
                 int paren = shown.indexOf(" (");

@@ -69,7 +69,7 @@ final class View {
         sb.append("<header class=\"entry-head\"><h2 class=\"entry-name\">").append(Html.esc(e.display())).append("</h2>")
                 .append("<p class=\"entry-meta\">").append(Html.esc(e.language()));
         if (!e.gender().isEmpty()) {
-            sb.append(" · ").append(Html.esc(e.gender())).append(" name");
+            sb.append(e.language().isEmpty() ? "" : " · ").append(Html.esc(e.gender())).append(" name");
         }
         sb.append("</p></header>");
         if (!e.chain().isEmpty()) {
@@ -90,7 +90,10 @@ final class View {
         if (!e.summary().isEmpty()) {
             sb.append("<p class=\"summary\">").append(Html.esc(e.summary())).append("</p>");
         }
-        if (!e.chain().isEmpty() || !e.summary().startsWith("Listed on Wikidata")) {
+        if (e.chain().isEmpty() && e.summary().startsWith("Listed on Wikidata")) {
+            sb.append("<p class=\"source\"><a href=\"https://www.wikidata.org/w/index.php?search=")
+                    .append(Html.esc(encodeQuery(e.display()))).append("\">Wikidata</a></p>");
+        } else {
             sb.append("<p class=\"source\"><a href=\"https://en.wiktionary.org/wiki/").append(Html.esc(wikiTitle(e.display())))
                     .append('#').append(Html.esc(e.language().replace(' ', '_'))).append("\">Wiktionary entry</a></p>");
         }
@@ -99,6 +102,24 @@ final class View {
 
     private static String wikiTitle(String display) {
         return display.replace(' ', '_');
+    }
+
+    /** Percent-encodes characters that would break a query string (URLEncoder is not in TeaVM's class library). */
+    static String encodeQuery(String s) {
+        StringBuilder out = new StringBuilder();
+        for (char c : s.toCharArray()) {
+            boolean asciiAlnum = (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9');
+            if (asciiAlnum || c == '-' || c == '.' || c == '_') {
+                out.append(c);
+            } else {
+                byte[] bytes = String.valueOf(c).getBytes(java.nio.charset.StandardCharsets.UTF_8);
+                for (byte b : bytes) {
+                    out.append('%').append(Character.toUpperCase(Character.forDigit((b >> 4) & 0xF, 16)))
+                            .append(Character.toUpperCase(Character.forDigit(b & 0xF, 16)));
+                }
+            }
+        }
+        return out.toString();
     }
 
     private static String inferredHtml(MatchResult.Inferred i) {

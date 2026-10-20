@@ -21,7 +21,8 @@ import java.util.Map;
  * built the first time a query needs them, which happens only for names that are not found as typed. Exact
  * lookup uses binary search on the keys, already sorted in the file, so it needs no hash map at all.
  *
- * File format (directory.tsv), sorted by key (String.compareTo order): key, display, group, state, where state is
+ * File format (directory.tsv), sorted by key (String.compareTo order): key, display (empty when it equals
+ * Text.defaultDisplay(key)), group, state, where state is
  * 2 = has an origin chain, 1 = has entries but no chain, 0 = a recorded spelling with no entry of its own.
  */
 public final class NameDirectory {
@@ -64,7 +65,8 @@ public final class NameDirectory {
             int t2 = tsv.indexOf('\t', t1 + 1);
             int t3 = tsv.indexOf('\t', t2 + 1);
             d.keys[row] = tsv.substring(start, t1);
-            d.display[row] = tsv.substring(t1 + 1, t2);
+            // empty display = the key with default capitals (most rows): no string to cut out here
+            d.display[row] = t2 == t1 + 1 ? null : tsv.substring(t1 + 1, t2);
             int g = 0;
             for (int i = t2 + 1; i < t3; i++) {
                 g = g * 10 + (tsv.charAt(i) - '0');
@@ -107,7 +109,8 @@ public final class NameDirectory {
     }
 
     public String display(int slot) {
-        return display[slot];
+        String d = display[slot];
+        return d != null ? d : Text.defaultDisplay(keys[slot]);
     }
 
     public boolean hasOrigin(int slot) {
@@ -120,42 +123,81 @@ public final class NameDirectory {
     }
 
     public int[] soundsLike(String folded) {
-        buildSoundIndex();
+        buildSoundIndexStep(Integer.MAX_VALUE);
         int[] a = byStrong.get(SoundKey.strong(folded));
         return a == null ? new int[0] : a;
     }
 
     public int[] skeletonLike(String folded) {
-        buildSoundIndex();
+        buildSoundIndexStep(Integer.MAX_VALUE);
         int[] a = bySkeleton.get(SoundKey.skeleton(folded));
         return a == null ? new int[0] : a;
     }
 
-    /** Builds the sound-key maps now instead of on the first unknown name (lets the page warm up in idle time). */
-    public void prepareSoundIndex() {
-        buildSoundIndex();
-    }
+    private Map<String, List<Integer>> pendingStrong;
+    private Map<String, List<Integer>> pendingSkeleton;
+    private int soundDone;
 
-    /** Builds the BK-tree now instead of on the first suggestion request. */
-    public void prepareTree() {
-        nearest("", 0, 0);
-    }
-
-    private void buildSoundIndex() {
+    /**
+     * Adds up to maxRows names to the sound-key maps; true once complete. Called in small slices from timer ticks
+     * so building it for 150k names never freezes the page (one go measured 1.2 s); a query that needs it before
+     * it is done finishes it on the spot.
+     */
+    public boolean buildSoundIndexStep(int maxRows) {
         if (byStrong != null) {
-            return;
+            return true;
         }
-        Map<String, List<Integer>> s = new HashMap<>();
-        Map<String, List<Integer>> k = new HashMap<>();
-        for (int i = 0; i < keys.length; i++) {
+        if (pendingStrong == null) {
+            pendingStrong = new HashMap<>();
+            pendingSkeleton = new HashMap<>();
+        }
+        int end = (int) Math.min(keys.length, (long) soundDone + maxRows);
+        for (int i = soundDone; i < end; i++) {
             if (Text.isLatinWord(keys[i])) {
                 String strong = SoundKey.strong(keys[i]);
-                s.computeIfAbsent(strong, x -> new ArrayList<>()).add(i);
-                k.computeIfAbsent(SoundKey.skeletonOfStrong(strong), x -> new ArrayList<>()).add(i);
+                pendingStrong.computeIfAbsent(strong, x -> new ArrayList<>()).add(i);
+                pendingSkeleton.computeIfAbsent(SoundKey.skeletonOfStrong(strong), x -> new ArrayList<>()).add(i);
             }
         }
-        byStrong = toArrays(s);
-        bySkeleton = toArrays(k);
+        soundDone = end;
+        if (soundDone < keys.length) {
+            return false;
+        }
+        byStrong = toArrays(pendingStrong);
+        bySkeleton = toArrays(pendingSkeleton);
+        pendingStrong = null;
+        pendingSkeleton = null;
+        return true;
+    }
+
+    private BkTree<String> pendingTree;
+    private int treeDone;
+
+    /**
+     * Adds up to maxRows names to the BK-tree; true once complete. Only names with an origin chain go in: they are
+     * what suggestions show, and leaving out the ~90k Wikidata-only names cut the build from 5.6 s.
+     */
+    public boolean buildTreeStep(int maxRows) {
+        if (tree != null) {
+            return true;
+        }
+        if (pendingTree == null) {
+            EditDistance ed = new EditDistance();
+            pendingTree = new BkTree<>(ed::within);
+        }
+        int end = (int) Math.min(keys.length, (long) treeDone + maxRows);
+        for (int i = treeDone; i < end; i++) {
+            if (hasOrigin[i] && Text.isLatinWord(keys[i])) {
+                pendingTree.add(keys[i]);
+            }
+        }
+        treeDone = end;
+        if (treeDone < keys.length) {
+            return false;
+        }
+        tree = pendingTree;
+        pendingTree = null;
+        return true;
     }
 
     private static Map<String, int[]> toArrays(Map<String, List<Integer>> m) {
@@ -222,17 +264,12 @@ public final class NameDirectory {
         return out;
     }
 
-    /** Slots within edit distance r of the folded name, nearest first. The BK-tree is built on first use. */
+    /**
+     * Recorded names with an origin chain within edit distance r of the folded name, nearest first.
+     * Finishes the BK-tree first if warm-up has not.
+     */
     public List<Scored<Integer>> nearest(String folded, int r, int k) {
-        if (tree == null) {
-            EditDistance ed = new EditDistance();
-            tree = new BkTree<>(ed::within);
-            for (String key : keys) {
-                if (Text.isLatinWord(key)) {
-                    tree.add(key);
-                }
-            }
-        }
+        buildTreeStep(Integer.MAX_VALUE);
         List<Scored<Integer>> out = new ArrayList<>();
         for (Scored<String> s : tree.within(folded, r)) {
             if (s.score() > 0) {

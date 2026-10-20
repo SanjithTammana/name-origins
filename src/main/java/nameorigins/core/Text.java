@@ -85,6 +85,18 @@ public final class Text {
         return w;
     }
 
+    /** "anne-marie" -> "Anne-Marie": the display a key gets when the directory stores none. */
+    public static String defaultDisplay(String key) {
+        StringBuilder out = new StringBuilder(key.length());
+        boolean start = true;
+        for (int i = 0; i < key.length(); i++) {
+            char c = key.charAt(i);
+            out.append(start ? Character.toUpperCase(c) : c);
+            start = c == ' ' || c == '-';
+        }
+        return out.toString();
+    }
+
     /** True for a single Unicode letter in a Latin-like range where sound keys make sense. */
     public static boolean isLatinWord(String folded) {
         for (int i = 0; i < folded.length(); i++) {

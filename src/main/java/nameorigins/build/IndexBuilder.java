@@ -15,6 +15,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 import nameorigins.core.NameEntry;
+import nameorigins.core.SoundKey;
 import nameorigins.core.Shards;
 import nameorigins.core.Text;
 import nameorigins.core.Tsv;
@@ -38,6 +39,10 @@ public final class IndexBuilder {
         final Set<String> variants = new LinkedHashSet<>();
         final Set<String> meanings = new LinkedHashSet<>();
         final Set<String> wikidataLanguages = new LinkedHashSet<>();
+        final Set<String> wikidataGenders = new LinkedHashSet<>();
+        /** Wikidata "said to be the same as" labels; joined into the group only if the spelling is close. */
+        final Set<String> wikidataSame = new LinkedHashSet<>();
+        boolean inWikidata;
     }
 
     private final Map<String, NameData> names = new TreeMap<>();
@@ -101,11 +106,15 @@ public final class IndexBuilder {
             if (isNew) {
                 added++;
             }
+            d.inWikidata = true;
             if (f.length > 1 && !f[1].isEmpty() && !f[1].equals("multiple languages")) {
                 d.wikidataLanguages.add(f[1]);
             }
             if (f.length > 2 && !f[2].isEmpty()) {
-                d.variants.add(f[2]);
+                d.wikidataSame.add(f[2]);
+            }
+            if (f.length > 3 && !f[3].isEmpty()) {
+                d.wikidataGenders.add(f[3]);
             }
         }
         System.out.printf("  wikidata: %,d names not in Wiktionary%n", added);
@@ -135,14 +144,33 @@ public final class IndexBuilder {
             slot.put(keys.get(i), i);
         }
         UnionFind groups = new UnionFind(keys.size());
+        int wikidataLinks = 0;
+        int wikidataSkipped = 0;
         for (int i = 0; i < keys.size(); i++) {
-            for (String v : names.get(keys.get(i)).variants) {
+            NameData d = names.get(keys.get(i));
+            for (String v : d.variants) {
                 Integer j = slot.get(Text.fold(v));
                 if (j != null) {
                     groups.union(i, j);
                 }
             }
+            // Wikidata's "said to be the same as" also links different names across languages and nicknames
+            // (Michael ~ Mike ~ Mikhail ...). Joined transitively, that made one group of 13,495 names.
+            // So a Wikidata link only joins a group when both spellings have the same sound key.
+            for (String v : d.wikidataSame) {
+                Integer j = slot.get(Text.fold(v));
+                if (j == null) {
+                    continue;
+                }
+                if (spellingClose(keys.get(i), keys.get(j))) {
+                    groups.union(i, j);
+                    wikidataLinks++;
+                } else {
+                    wikidataSkipped++;
+                }
+            }
         }
+        System.out.printf("  wikidata same-as links: %,d joined (close spelling), %,d left out%n", wikidataLinks, wikidataSkipped);
 
         Path entriesDir = site.resolve("data").resolve("entries");
         Files.createDirectories(entriesDir);
@@ -157,7 +185,8 @@ public final class IndexBuilder {
                 NameData d = names.get(key);
                 List<NameEntry> entries = ordered(d);
                 boolean hasOrigin = entries.stream().anyMatch(e -> !e.chain().isEmpty());
-                dir.write(String.join("\t", key, Tsv.clean(d.display),
+                String display = Tsv.clean(d.display);
+                dir.write(String.join("\t", key, display.equals(Text.defaultDisplay(key)) ? "" : display,
                         String.valueOf(groups.find(i)), hasOrigin ? "2" : entries.isEmpty() ? "0" : "1"));
                 dir.newLine();
                 if (!entries.isEmpty()) {
@@ -188,6 +217,15 @@ public final class IndexBuilder {
                 keys.size(), withEntries, withOrigin);
     }
 
+    /**
+     * True only for respellings with the same sound key: Sofia ~ Sophia, Katherine ~ Catherine, Michael ~ Michaell;
+     * not Mike ~ Michael, Maria ~ Mario or Wei ~ Mei. Measured: allowing even one edit on top of this let
+     * Wikidata links chain 4,088 names into one group (Wiktionary's own links stay at most 135).
+     */
+    static boolean spellingClose(String a, String b) {
+        return Text.isLatinWord(a) && Text.isLatinWord(b) && SoundKey.strong(a).equals(SoundKey.strong(b));
+    }
+
     private static BufferedWriter open(Path dir, String shard) {
         try {
             return Files.newBufferedWriter(dir.resolve(shard + ".tsv"));
@@ -206,10 +244,13 @@ public final class IndexBuilder {
         if (list.size() > MAX_ENTRIES_PER_NAME) {
             list = new ArrayList<>(list.subList(0, MAX_ENTRIES_PER_NAME));
         }
-        if (list.isEmpty() && !d.wikidataLanguages.isEmpty()) {
+        if (list.isEmpty() && d.inWikidata) {
             String langs = String.join(", ", d.wikidataLanguages);
-            list.add(new NameEntry(d.display, langs, "", "",
-                    "Listed on Wikidata as a given name in " + langs + ". No etymology is recorded for it yet.",
+            String gender = d.wikidataGenders.size() == 1 ? d.wikidataGenders.iterator().next()
+                    : d.wikidataGenders.containsAll(List.of("male", "female")) ? "unisex" : "";
+            list.add(new NameEntry(d.display, langs, gender, "", langs.isEmpty()
+                    ? "Listed on Wikidata as a given name. No etymology is recorded for it yet."
+                    : "Listed on Wikidata as a given name in " + langs + ". No etymology is recorded for it yet.",
                     List.of()));
         }
         return list;

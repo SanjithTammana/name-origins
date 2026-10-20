@@ -285,6 +285,7 @@ public final class MeaningBuilder {
         return out;
     }
 
+    /** key -> variant group id, from directory.tsv (key, display, group, state). */
     private static Map<String, Integer> groups(Path directory) throws IOException {
         Map<String, Integer> g = new HashMap<>();
         for (String line : Files.readAllLines(directory)) {

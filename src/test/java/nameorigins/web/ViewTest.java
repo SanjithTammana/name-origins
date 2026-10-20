@@ -52,6 +52,17 @@ class ViewTest {
     }
 
     @Test
+    void wikidataOnlyEntryLinksToWikidataAndHasNoStraySeparator() {
+        NameEntry wei = new NameEntry("Wei", "", "male", "",
+                "Listed on Wikidata as a given name. No etymology is recorded for it yet.", List.of());
+        String html = View.result(new MatchResult.Exact("Wei", "wei"), List.of(wei), List.of());
+        assertTrue(html.contains("<p class=\"entry-meta\">male name</p>"), html);
+        assertTrue(html.contains("wikidata.org/w/index.php?search=Wei"));
+        assertFalse(html.contains("Wiktionary entry"));
+        assertTrue(View.encodeQuery("Zoë Ann").equals("Zo%C3%AB%20Ann"));
+    }
+
+    @Test
     void negligibleOddsAreHiddenAndCertaintyIsNotOverstated() {
         String html = View.result(new MatchResult.Inferred("Takeshiro",
                 List.of(new Scored<>("Japanese", 0.998), new Scored<>("Persian", 0.001)), List.of(), List.of()),

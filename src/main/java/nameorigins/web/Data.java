@@ -55,17 +55,27 @@ final class Data {
     }
 
     /**
-     * Builds the lazy structures (sound keys, origin model, BK-tree) after the page is usable, one per timer tick,
-     * so the first misspelled name doesn't pay ~1 s and no single pause blocks typing for long.
+     * Builds the lazy structures (sound keys, origin model, BK-tree) after the page is usable, in slices across
+     * timer ticks, so the first misspelled name doesn't pay for them and no single pause blocks typing for long.
      */
     void warmUp() {
-        Window.setTimeout(() -> {
-            dir.prepareSoundIndex();
-            Window.setTimeout(() -> {
-                model();
-                Window.setTimeout(dir::prepareTree, 50);
-            }, 50);
-        }, 300);
+        Window.setTimeout(() -> slices(() -> dir.buildSoundIndexStep(SOUND_SLICE), () -> {
+            model();
+            Window.setTimeout(() -> slices(() -> dir.buildTreeStep(TREE_SLICE), () -> { }), 0);
+        }), 300);
+    }
+
+    /** Rows per tick; measured: the longest slice took 177 ms on a desktop (150k names). */
+    private static final int SOUND_SLICE = 15_000;
+    private static final int TREE_SLICE = 20_000;
+
+    /** Runs step until it returns true, one call per timer tick, then runs done. */
+    private static void slices(java.util.function.BooleanSupplier step, Runnable done) {
+        if (step.getAsBoolean()) {
+            done.run();
+        } else {
+            Window.setTimeout(() -> slices(step, done), 0);
+        }
     }
 
     private OriginModel model() {
