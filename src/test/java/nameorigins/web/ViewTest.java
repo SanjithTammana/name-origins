@@ -63,6 +63,16 @@ class ViewTest {
     }
 
     @Test
+    void aMatchWhoseDetailsDidNotDownloadSaysSoInsteadOfRenderingNothing() {
+        // Data.entries answers an empty list when the shard request fails; Exact used to render an empty string
+        String exact = View.result(new MatchResult.Exact("Michael", "michael"), List.of(), List.of());
+        assertTrue(exact.contains("didn’t load"), exact);
+        String variant = View.result(new MatchResult.Variant("Sanjith", "sanjeet", List.of()), List.of(), List.of());
+        assertTrue(variant.contains("didn’t load"), variant);
+        assertTrue(View.result(new MatchResult.Exact("<b>", "b"), List.of(), List.of()).contains("&lt;b&gt;"));
+    }
+
+    @Test
     void negligibleOddsAreHiddenAndCertaintyIsNotOverstated() {
         String html = View.result(new MatchResult.Inferred("Takeshiro",
                 List.of(new Scored<>("Japanese", 0.998), new Scored<>("Persian", 0.001)), List.of(), List.of()),

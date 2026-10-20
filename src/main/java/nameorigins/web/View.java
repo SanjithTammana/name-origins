@@ -20,7 +20,7 @@ final class View {
     static String result(MatchResult r, List<NameEntry> entries, List<String> similar) {
         StringBuilder sb = new StringBuilder();
         switch (r) {
-            case MatchResult.Exact e -> sb.append(entriesHtml(entries));
+            case MatchResult.Exact e -> sb.append(entries.isEmpty() ? notLoaded(e.query()) : entriesHtml(entries));
             case MatchResult.Variant v -> {
                 sb.append("<p class=\"note\">“").append(Html.esc(v.query())).append("” isn’t recorded as typed. ")
                         .append("The closest recorded spelling is <strong>")
@@ -29,7 +29,7 @@ final class View {
                     sb.append(" Other spellings: ").append(chips(v.alternatives(), "inline-chips"));
                 }
                 sb.append("</p>");
-                sb.append(entriesHtml(entries));
+                sb.append(entries.isEmpty() ? notLoaded(v.key()) : entriesHtml(entries));
             }
             case MatchResult.Inferred i -> sb.append(inferredHtml(i));
             case MatchResult.None n -> {
@@ -46,6 +46,12 @@ final class View {
                     .append(chips(similar, "chips")).append("</section>");
         }
         return sb.toString();
+    }
+
+    /** Exact and Variant keys always have entries in the data, so none means the shard did not download. */
+    private static String notLoaded(String name) {
+        return "<p class=\"note\">The details for “" + Html.esc(name) + "” didn’t load. Check your connection and"
+                + " trace it again.</p>";
     }
 
     private static String entriesHtml(List<NameEntry> entries) {

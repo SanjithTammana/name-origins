@@ -52,7 +52,7 @@ public final class App {
             e.preventDefault();
             String name = nameInput.getValue().trim();
             if (!name.isEmpty()) {
-                Window.current().getLocation().setHash(encode(name));
+                go(name);
             }
         });
         DOC.getElementById("meaning-form").addEventListener("submit", (EventListener<Event>) e -> {
@@ -66,7 +66,7 @@ public final class App {
             String name = target.getAttribute("data-name");
             if (name != null && !name.isEmpty()) {
                 nameInput.setValue(name);
-                Window.current().getLocation().setHash(encode(name));
+                go(name);
                 nameInput.focus();
             }
         };
@@ -80,6 +80,19 @@ public final class App {
             traceFromHash();
             DATA.warmUp();
         }, err -> status.setInnerText("The name data didn’t load (" + err + "). Try reloading the page."));
+    }
+
+    /**
+     * Traces a name through the URL hash, so it can be linked and the back button works. Setting the hash it already
+     * has fires no hashchange, so tracing the shown name again (e.g. after a failed download) traces it directly.
+     */
+    private static void go(String name) {
+        String hash = Window.current().getLocation().getHash();
+        if (DATA.matcher != null && decode(hash.startsWith("#") ? hash.substring(1) : hash).trim().equals(name)) {
+            trace(name);
+        } else {
+            Window.current().getLocation().setHash(encode(name));
+        }
     }
 
     private static void traceFromHash() {
