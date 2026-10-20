@@ -188,24 +188,24 @@ public final class IndexBuilder {
                 String display = Tsv.clean(d.display);
                 dir.write(String.join("\t", key, display.equals(Text.defaultDisplay(key)) ? "" : display,
                         String.valueOf(groups.find(i)), hasOrigin ? "2" : entries.isEmpty() ? "0" : "1"));
-                dir.newLine();
+                dir.write('\n'); // newLine() writes \r\n on Windows, and site/data must stay LF
                 if (!entries.isEmpty()) {
                     withEntries++;
                     BufferedWriter shard = shards.computeIfAbsent(Shards.of(key), s -> open(entriesDir, s));
                     for (NameEntry e : entries) {
                         shard.write(e.toTsv(key));
-                        shard.newLine();
+                        shard.write('\n');
                     }
                 }
                 if (hasOrigin) {
                     withOrigin++;
                     NameEntry best = entries.stream().filter(e -> !e.chain().isEmpty()).findFirst().orElseThrow();
                     origins.write(key + "\t" + Tsv.clean(d.display) + "\t" + best.oldestLanguage());
-                    origins.newLine();
+                    origins.write('\n');
                 }
                 if (!d.meanings.isEmpty()) {
                     meanings.write(key + "\t" + Tsv.clean(d.display) + "\t" + Tsv.clean(String.join("; ", d.meanings)));
-                    meanings.newLine();
+                    meanings.write('\n');
                 }
             }
         } finally {
