@@ -48,7 +48,7 @@ kaari	Kaari		female		Listed on Wikidata as a given name. No etymology is recorde
 kaarin	Kaarin	Finnish	female		Phonetic rendering of the Swedish Karin.	SwedishKarin
 kaarin	Kaarin	Estonian	female			
 kaarina	Kaarina	Finnish	female		Vernacular form of Katariina, probably from Swedish Karina.	SwedishKarina
-kaarle	Kaarle	Finnish	male	free man	From Old Swedish Karle (compare Swedish Karl), ultimately from a Germanic word meaning “free man” (Proto-Germanic *karlaz).	gemOld SwedishKarle
+kaarle	Kaarle	Finnish	male	free man	From Old Swedish Karle (compare Swedish Karl), ultimately from a Germanic word meaning “free man” (Proto-Germanic *karlaz).	GermanicOld SwedishKarle
 kaarli	Kaarli	Estonian	male		Listed on Wikidata as a given name in Estonian. No etymology is recorded for it yet.	
 kaarlo	Kaarlo	Finnish	male			
 kaashif	Kaashif		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
@@ -169,7 +169,7 @@ kadrush	Kadrush	Albanian	male
 kadshah	Kadshah		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kadu	Kadu	Seediq	unisex		Listed on Wikidata as a given name in Seediq. No etymology is recorded for it yet.	
 kadudɨɣern	Kadüdɨɣern	Proto-Brythonic	male	battle; lord	From Proto-Celtic *Katutigernos. Equivalent to *kad (“battle”) + *tɨɣern (“lord”).	Proto-Celtic*Katutigernos
-kaduwallọn	Kaduwallọn	Proto-Brythonic	male			Proto-Celtic*Katuwelnāmnos
+kaduwallon	Kaduwallọn	Proto-Brythonic	male			Proto-Celtic*Katuwelnāmnos
 kadvi	Kädvi	Estonian	female		Listed on Wikidata as a given name in Estonian. No etymology is recorded for it yet.	
 kadwalon	Kadwalon	Breton	male			
 kady	Kädy	Estonian	female		Listed on Wikidata as a given name in Estonian. No etymology is recorded for it yet.	
@@ -293,6 +293,7 @@ kaidor	Kaidor		male		Listed on Wikidata as a given name. No etymology is recorde
 kaidu	Kaidu	Estonian	male		Listed on Wikidata as a given name in Estonian. No etymology is recorded for it yet.	
 kaidy	Kaidy		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kaie	Kaie	Estonian	female			
+kaige	Kǎigē	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 kaiho	Kaiho	Finnish			Listed on Wikidata as a given name in Finnish. No etymology is recorded for it yet.	
 kaihsiang	Kaihsiang		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kaii	Kaii	Japanese	male		Listed on Wikidata as a given name in Japanese. No etymology is recorded for it yet.	
@@ -1016,7 +1017,7 @@ karabey	Karabey	English	unisex		Listed on Wikidata as a given name in English. N
 karacson	Karácson		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 karadag	Karadağ	Turkish	male	black; mountain	Inherited from Ottoman Turkish قره طاغ (Kara Tağ), a calque of Serbo-Croatian Црна Гора (Crna Gora). By surface analysis, kara (“black”) + dağ (“mountain”).	Ottoman Turkishقره طاغ (Kara Tağ)
 karadeg	Karadeg	Breton	male			
-karadọg	Karadọg	Proto-Brythonic	male			Proto-Celtic*Karatākos
+karadog	Karadọg	Proto-Brythonic	male			Proto-Celtic*Karatākos
 karafil	Karafil				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 karagoz	Karagöz	Turkish	unisex	black; eye	From Ottoman Turkish قرهگوز (Karagöz). By surface analysis, kara (“black”) + göz (“eye”).	Ottoman Turkishقرهگوز (Karagöz)
 karah	Karah		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
@@ -1082,7 +1083,7 @@ karelle	Karelle		female		Listed on Wikidata as a given name. No etymology is rec
 karem	Karem		unisex		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 karemekeme	Karemekeme	Rukai	male			
 karen	Karen	English	unisex		From Danish Karen, a vernacular form of Catherine that arose in medieval Denmark. The sense "middle-aged woman" comes from the popularity of the name among baby boomers and Gen-Xers. The derogatory usage was popularized via African-American Vernacular English.	DanishKaren
-karen	Karen	English	unisex		From Parthian 𐭊𐭓𐭍𐭉 (krny /⁠Kārēn⁠/), from Old Iranian. The Armenian name is from Armenian Կարեն (Karen), from the same Parthian name.	ArmenianԿարեն (Karen)ira-old*kar-ina-Parthian𐭊𐭓𐭍𐭉 (krny /⁠Kārēn⁠/)
+karen	Karen	English	unisex		From Parthian 𐭊𐭓𐭍𐭉 (krny /⁠Kārēn⁠/), from Old Iranian. The Armenian name is from Armenian Կարեն (Karen), from the same Parthian name.	ArmenianԿարեն (Karen)Old Iranian*kar-ina-Parthian𐭊𐭓𐭍𐭉 (krny /⁠Kārēn⁠/)
 karen	Karen	Cebuano	female		From English Karen, from Danish.	DanishEnglishKaren
 karen	Karen	German	female			DanishKaren
 karen	Karen	Danish	female	Catherine	A medieval variant of Katharina (“Catherine”).	
@@ -1111,7 +1112,7 @@ kari	Kári	Faroese	male	gust of wind; curly-haired; to fold up, wrinkle	From Old
 kari	Kari	Finnish	male		Karelian form of the Russian saint's name Макарий (Makarij), Макар (Makar), from Ancient Greek Μακάριος (Makários) meaning "happy", cognate to the English historical name Macarius. Also a short form of Sakari and Oskari.	Ancient GreekΜακάριος (Makários)RussianKarelian
 kari	Kari	Greenlandic	male			DanishChristian
 kari	Kári	Icelandic	male	gust of wind; curly-haired; to fold up, wrinkle	From Old Norse Kári (“gust of wind”), related to kárr (“curly-haired”), from a Proto-Germanic root related to *kreukaną (“to fold up, wrinkle”).	Proto-GermanicOld NorseKári (“gust of wind”)
-kari	Kári	Old Norse	male	to turn, sweep; to turn, bend; breeze; curly-haired; to turn, spread; to whip, ride, fling	From kári (“breeze”) from Proto-Germanic *kawara- related to Proto-Germanic *kaurijaną (“to turn, sweep”) ultimatly from Proto-Indo-European *geu- (“to turn, bend”), related to kárr (“curly-haired”), ká (“to turn, spread”) and keyra (“to whip, ride, fling”).	unknown*geu-Proto-Germanic*kawara-
+kari	Kári	Old Norse	male	to turn, sweep; to turn, bend; breeze; curly-haired; to turn, spread; to whip, ride, fling	From kári (“breeze”) from Proto-Germanic *kawara- related to Proto-Germanic *kaurijaną (“to turn, sweep”) ultimatly from Proto-Indo-European *geu- (“to turn, bend”), related to kárr (“curly-haired”), ká (“to turn, spread”) and keyra (“to whip, ride, fling”).	Proto-Indo-European*geu- (“to turn)Proto-Germanic*kawara-
 kari	Kari	Norwegian	female	Catherine		
 kari	Kari	Spanish	female			
 kari ann	Kari Ann	Norwegian	female		Listed on Wikidata as a given name in Norwegian. No etymology is recorded for it yet.	
@@ -1180,14 +1181,14 @@ karitas	Karitas	Icelandic	female
 kariuki	Kariũki	Kikuyu	male	to be resurrected		
 karja	Karja		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 karkur	Karkur	Icelandic	male		Listed on Wikidata as a given name in Icelandic. No etymology is recorded for it yet.	
-karl	Karl	English	male		From German and North Germanic (Scandinavian) Karl, from Germanic. Doublet of Charles.	gemNorth GermanicGerman
+karl	Karl	English	male		From German and North Germanic (Scandinavian) Karl, from Germanic. Doublet of Charles.	GermanicNorth GermanicGerman
 karl	Karl	Cebuano	male			EnglishKarl
 karl	Karl	Central Bikol	male			EnglishKarl
 karl	Karl	Danish	male	free man	From Old Norse Karl, from karl (“free man”), originally a nickname. Popularized by the fame of Charlemagne (Karl in Danish), from the same Proto-Germanic source.	Old NorseKarl
 karl	Karl	Faroese	male	free man	From Old Norse Karl, from karl (“free man”).	Old NorseKarl
 karl	Karl	German	male	free man; man, elder	From Old High German karal, from Proto-Germanic *karlaz (“free man”), *karilaz (“man, elder”). Cognate with French and English Charles.	Proto-Germanic*karlaz (“free man”)Old High Germankaral
-karl	Karl	Norwegian	male	free man, little man; to become old, to grow; man	From Old Norse Karl, from karl (“man”), from Proto-Norse ᚲᚨᚱᛁᛚᚨᛉ (karilaʀ), from Proto-Germanic *karilaz (“free man, little man”), a diminutive of *karaz, probably from Proto-Indo-European *ǵerh₂- (“to become old, to grow”).	unknown*ǵerh₂-Proto-Germanic*karilaz (“free man)Proto-Norseᚲᚨᚱᛁᛚᚨᛉ (karilaʀ)Old NorseKarl
-karl	Karl	Old Swedish	male	free man, little man; to become old, to grow; man	From Old Norse Karl, from karl (“man”), from Proto-Norse ᚲᚨᚱᛁᛚᚨᛉ (karilaʀ), from Proto-Germanic *karilaz (“free man, little man”), a diminutive of *karaz, probably from Proto-Indo-European *ǵerh₂- (“to become old, to grow”).	unknown*ǵerh₂-Proto-Germanic*karilaz (“free man)Proto-Norseᚲᚨᚱᛁᛚᚨᛉ (karilaʀ)Old NorseKarl
+karl	Karl	Norwegian	male	free man, little man; to become old, to grow; man	From Old Norse Karl, from karl (“man”), from Proto-Norse ᚲᚨᚱᛁᛚᚨᛉ (karilaʀ), from Proto-Germanic *karilaz (“free man, little man”), a diminutive of *karaz, probably from Proto-Indo-European *ǵerh₂- (“to become old, to grow”).	Proto-Indo-European*ǵerh₂- (“to become old)Proto-Germanic*karilaz (“free man)Proto-Norseᚲᚨᚱᛁᛚᚨᛉ (karilaʀ)Old NorseKarl
+karl	Karl	Old Swedish	male	free man, little man; to become old, to grow; man	From Old Norse Karl, from karl (“man”), from Proto-Norse ᚲᚨᚱᛁᛚᚨᛉ (karilaʀ), from Proto-Germanic *karilaz (“free man, little man”), a diminutive of *karaz, probably from Proto-Indo-European *ǵerh₂- (“to become old, to grow”).	Proto-Indo-European*ǵerh₂- (“to become old)Proto-Germanic*karilaz (“free man)Proto-Norseᚲᚨᚱᛁᛚᚨᛉ (karilaʀ)Old NorseKarl
 karl albert	Karl Albert	German	male		Listed on Wikidata as a given name in German. No etymology is recorded for it yet.	
 karl alfred	Karl Alfred		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 karl anton	Karl Anton	German, Norwegian	male		Listed on Wikidata as a given name in German, Norwegian. No etymology is recorded for it yet.	
@@ -1291,10 +1292,10 @@ karlik	Karlík	Czech	male
 karlina	Karlina	Faroese	female			
 karlina	Karlīna	Latvian	female		First recorded as a given name of Latvians in 1795. A feminine form of Kārlis.	
 karline	Karline		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
-karlis	Kārlis	Latvian	male		First recorded in 1638. Of Germanic origin. Cognate to English Charles.	gem
+karlis	Kārlis	Latvian	male		First recorded in 1638. Of Germanic origin. Cognate to English Charles.	Germanic
 karlmann	Karlmann		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 karlo	Karlo	Esperanto	male	free man		Proto-Germanic*karlaz (“free man”)
-karlos	Karlos	Basque, Greek	male		Listed on Wikidata as a given name in Basque, Greek. No etymology is recorded for it yet.	
+karlos	Karlos	Basque, Armenian, Greek	male		Listed on Wikidata as a given name in Basque, Armenian, Greek. No etymology is recorded for it yet.	
 karlotta	Karlotta	Icelandic	female		Borrowed from French Charlotte, female diminutive form of Charles, ultimately from Proto-Germanic *karlaz.	Proto-Germanic*karlazFrenchCharlotte
 karlous	Karlous		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 karlrobert	Karlrobert	German	male		Listed on Wikidata as a given name in German. No etymology is recorded for it yet.	
@@ -1506,7 +1507,7 @@ kasparas	Kasparas	Lithuanian	male
 kaspars	Kaspars	Latvian	male		First recorded in 1577. Cognate to German Kaspar and English Caspar.	
 kasparus	Kasparus				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kasper	Kasper	Finnish	male		A name of biblical origin, perhaps via Old Swedish Kasper; see English Caspar for more.	Old SwedishKasper
-kasper	Kasper	Norwegian Bokmål	male	treasurer	Variant of Kaspar, from Medieval Latin Caspar (“male given name”), traditionally the name of one of the Magi in Western Christianity.	xme*ganǰabarahOld Persian*ganzabarah (“treasurer”)Classical Syriacܓܙܒܪܐ (gēzaḇrā)Biblical Hebrewגִּזְבָּר (gizbar)Medieval LatinCaspar (“male given name”)
+kasper	Kasper	Norwegian Bokmål	male	treasurer	Variant of Kaspar, from Medieval Latin Caspar (“male given name”), traditionally the name of one of the Magi in Western Christianity.	Median*ganǰabarahOld Persian*ganzabarah (“treasurer”)Classical Syriacܓܙܒܪܐ (gēzaḇrā)Biblical Hebrewגִּזְבָּר (gizbar)Medieval LatinCaspar (“male given name”)
 kasper	Kasper	Danish	male			
 kasper	Kasper	Swedish	male			
 kasperi	Kasperi	Finnish	male			
@@ -1836,9 +1837,9 @@ katuse	Katuše		female		Listed on Wikidata as a given name. No etymology is reco
 katuska	Katuška	Czech	female			
 katutigernos	Katutigernos	Proto-Celtic	male	battle; lord, master	From *katus (“battle”) + *tigernos (“lord, master”).	
 katuwalos	Katuwalos	Proto-Celtic	male	battle; prince, chief	From *katus (“battle”) + *walos (“prince, chief”).	
-katuwelnamnos	Katuwelnāmnos	Proto-Celtic	male	battle; ruler; to rule, govern; to be strong, rule; prince, chief	From *katus (“battle”) + *wolnāmnos, from *wolnāmon- (“ruler”), from *wolnāti (“to rule, govern”), from Proto-Indo-European *wol-néh₂-ti, from *h₂welh₁- (“to be strong, rule”) (compare Proto-Celtic *walos (“prince, chief”)).	unknown*wol-néh₂-ti
+katuwelnamnos	Katuwelnāmnos	Proto-Celtic	male	battle; ruler; to rule, govern; to be strong, rule; prince, chief	From *katus (“battle”) + *wolnāmnos, from *wolnāmon- (“ruler”), from *wolnāti (“to rule, govern”), from Proto-Indo-European *wol-néh₂-ti, from *h₂welh₁- (“to be strong, rule”) (compare Proto-Celtic *walos (“prince, chief”)).	Proto-Indo-European*wol-néh₂-ti
 katy	Katy	English	female			
-katya	Katya	English	female		Transliteration of Russian and Ukrainian Ка́тя (Kátja), diminutive of Екатери́на (Jekaterína), Катери́на (Katerýna).	ru,ukКа́тя
+katya	Katya	English	female		Transliteration of Russian and Ukrainian Ка́тя (Kátja), diminutive of Екатери́на (Jekaterína), Катери́на (Katerýna).	Russian and UkrainianКа́тя (Kátja)
 katyna	Katyna		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 katyuscia	Katyuscia		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 katyusha	Katyusha	Portuguese	female			Russian
@@ -2042,8 +2043,8 @@ kazimiera	Kazimiera	Lithuanian	female
 kazimiera	Kazimiera	Polish	female			
 kazimieras	Kazimieras	Lithuanian	male	destroyer of peace	Derived from Proto-Slavic *Kaziměrъ /*Kazimirъ (“destroyer of peace”). Compare Latin Casimirus, Polish Kazimierz, and Latvian Kazimirs.	Proto-Slavic*Kaziměrъ /*Kazimirъ (“destroyer of peace”)
 kazimierz	Kazimierz	Polish	male	destroyer of peace; to destroy; peace	Inherited from Proto-Slavic *Kaziměrъ, *Kazimirъ (“destroyer of peace”, from *kaziti (“to destroy”) + *mirъ (“peace”)).	Proto-Slavic*Kaziměrъ, *Kazimirъ (“destroyer of peace”, from *kaziti (“to destroy”) + *mirъ (“peace”))
-kazimir	Kazimir	English	male	to destroy; peace	Of Slavic origin and meaning "destroyer of peace", from Proto-Slavic *kaziti (“to destroy”) + *mirъ (“peace”).	Proto-Slavic*kaziti (“to destroy”)sla
-kazimir	Kazimír	Czech	male	to destroy; peace	Of Slavic origin and meaning "destroyer of peace", from Proto-Slavic *kaziti (“to destroy”) + *mirъ (“peace”).	Proto-Slavic*kaziti (“to destroy”)sla
+kazimir	Kazimir	English	male	to destroy; peace	Of Slavic origin and meaning "destroyer of peace", from Proto-Slavic *kaziti (“to destroy”) + *mirъ (“peace”).	Proto-Slavic*kaziti (“to destroy”)Slavic
+kazimir	Kazimír	Czech	male	to destroy; peace	Of Slavic origin and meaning "destroyer of peace", from Proto-Slavic *kaziti (“to destroy”) + *mirъ (“peace”).	Proto-Slavic*kaziti (“to destroy”)Slavic
 kazimir	Kazimír	Old Czech	male			
 kazimir	Kazimir	Serbo-Croatian	male			
 kazimir	Kazimír	Slovak	male			
@@ -2120,7 +2121,6 @@ kaʻimi	Kaʻimi	Hawaiian	unisex	the; seeker; Spanish clover	ka (“the”) + ʻi
 kaʻiulani	Kaʻiulani	Hawaiian	female	the; sacred; sky	ka (“the”) + ʻiu (“sacred”) + lani (“sky”) = "the royal sacred one". Name of the last crown princess of Hawaii.	Hawaiian
 kaʻohu	Kaʻohu	Hawaiian	unisex	the; mist	ka (“the”) + ʻohu (“mist”). Also a short form of compound given names beginning thus.	Hawaiian
 kaʻuhane	Kaʻuhane	Hawaiian	unisex	the; soul, spirit	ka (“the”) + ʻuhane (“soul, spirit”). Also a short form of compound names beginning thus.	Hawaiian
-kaṙlos	Kaṙlos	Armenian	male		Listed on Wikidata as a given name in Armenian. No etymology is recorded for it yet.	
 kba	Kba	Seediq	male		Listed on Wikidata as a given name in Seediq. No etymology is recorded for it yet.	
 kdayu	Kdayu	Seediq	unisex		Listed on Wikidata as a given name in Seediq. No etymology is recorded for it yet.	
 kdot	Kdot	Amis	male		Listed on Wikidata as a given name in Amis. No etymology is recorded for it yet.	
@@ -2241,7 +2241,7 @@ keh hai	Keh Hai		male		Listed on Wikidata as a given name. No etymology is recor
 kehan	Kehan	Chinese	male		Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 kehau	Kēhau	Hawaiian	unisex	dew	kēhau (“dew”). Also a short form of compound given names containing this word.	Hawaiian
 kehaulani	Kēhaulani	Hawaiian	female	dew; sky	kēhau (“dew”) + lani (“sky”) = "heavenly dew".	Hawaiian
-kehinde	Kehinde	Yoruba			Listed on Wikidata as a given name in Yoruba. No etymology is recorded for it yet.	
+kehinde	Kẹhinde	Yoruba	unisex			
 kehkashan	Kehkashan		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kehlani	Kehlani	English	female		Listed on Wikidata as a given name in English. No etymology is recorded for it yet.	
 kehri	Kehri	English			Listed on Wikidata as a given name in English. No etymology is recorded for it yet.	
@@ -2310,7 +2310,7 @@ keit	Keit				Listed on Wikidata as a given name. No etymology is recorded for it
 keita	Keita	Latvian	female			EnglishKate
 keitaro	Keitarō	Japanese	male		Listed on Wikidata as a given name in Japanese. No etymology is recorded for it yet.	
 keith	Keith	English	unisex	sprout, offspring	* As a Scottish surname, from the placename in Moray, Scotland, from Scottish Gaelic Cèith, meaning "wood" or "from the battleground," which is probably borrowed from Pictish *ᚉᚓᚈ (cēt) meaning "wood", or a forest, from Proto-Brythonic *koɨd.	Middle High Germankit (“sprout)GermanProto-Brythonic*koɨdPictish*ᚉᚓᚈ (cēt)Scottish GaelicCèith
-keith	Keith	Cebuano	male		From English Keith, probably from Celtic.	celEnglishKeith
+keith	Keith	Cebuano	male		From English Keith, probably from Celtic.	CelticEnglishKeith
 keith	Keith	Spanish	female		Borrowed from English Kate, according to Spanish pronunciation respelling.	EnglishKate
 keith edward	Keith Edward	English	male		Listed on Wikidata as a given name in English. No etymology is recorded for it yet.	
 keitha	Keitha				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
@@ -2427,7 +2427,7 @@ kelu	Kelu				Listed on Wikidata as a given name. No etymology is recorded for it
 kelufan	Kelufan	Lun Bawang	female			
 kelupaina	Kelupaina	Hawaiian	female	Tryphena	Vernacular form of the biblical Terupaina (“Tryphena”).	
 kelva	Kelva		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
-kelvin	Kelvin	English	male	narrow; wooded; river	Of Celtic/Scottish Gaelic origin, possibly from caol (“narrow”) or coille (“wooded”) + abhainn (“river”). The surname is derived from the river.	Scottish Gaeliccel
+kelvin	Kelvin	English	male	narrow; wooded; river	Of Celtic/Scottish Gaelic origin, possibly from caol (“narrow”) or coille (“wooded”) + abhainn (“river”). The surname is derived from the river.	Scottish GaelicCeltic
 kelvin	Kelvin	Cebuano	male			EnglishKelvin
 kelvis	Kelvis				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kelvyn	Kelvyn		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
@@ -2450,7 +2450,8 @@ kemboi	Kemboi	English			Listed on Wikidata as a given name in English. No etymol
 keme	Keme				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kemenes	Kemenes		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kemi	Kemi		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
-kemin	Kemin				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
+kemin	Kěmǐn	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
+kemisola	Kẹ́misọ́lá	Yoruba	female		Listed on Wikidata as a given name in Yoruba. No etymology is recorded for it yet.	
 kemit	Kemit				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kemmons	Kemmons				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kemo	Kemo		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
@@ -2460,7 +2461,6 @@ kempe	Kempe		male		Listed on Wikidata as a given name. No etymology is recorded 
 kempton	Kempton				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kemuel	Kemuel	Hebrew	male		Listed on Wikidata as a given name in Hebrew. No etymology is recorded for it yet.	
 kemy	Kemy		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
-kemǐn	Kěmǐn	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 ken	Ken	English	male			
 ken	Ken	Estonian	male		Borrowed from English Ken, Kenneth in modern times. Also a rare variant of Kents, a short form of Latin Innocentius.	LatinInnocentiusEnglishKen
 ken	Ken	Danish	male			
@@ -2544,7 +2544,7 @@ kennedyegbus	KennedyEgbus		male		Listed on Wikidata as a given name. No etymolog
 kenner	Kenner				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kennert	Kennert		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kennet	Kennet	Swedish	male			
-kenneth	Kenneth	English	male	handsome	Anglicized form of two Goidelic names, Old Irish Cináed, the name of Scottish kings derived from Pictish *ᚉᚔᚅᚔᚑᚇ (Ciniod), and the saint's name Cainnech (literally “handsome”) (modern Scottish Gaelic Coinneach), as in the surname Mackenzie.	Pictish*ᚉᚔᚅᚔᚑᚇ (Ciniod)Old IrishCináedcel-gae
+kenneth	Kenneth	English	male	handsome	Anglicized form of two Goidelic names, Old Irish Cináed, the name of Scottish kings derived from Pictish *ᚉᚔᚅᚔᚑᚇ (Ciniod), and the saint's name Cainnech (literally “handsome”) (modern Scottish Gaelic Coinneach), as in the surname Mackenzie.	Pictish*ᚉᚔᚅᚔᚑᚇ (Ciniod)Old IrishCináedGoidelic
 kenneth	Kenneth	Cebuano	male		From English Kenneth, from Scottish Gaelic.	Scottish GaelicEnglishKenneth
 kenneth	Kenneth	Danish	male		From English Kenneth at the end of the 19th century.	EnglishKenneth
 kenneth	Kenneth	Norwegian	male		From English Kenneth in c. 1900.	EnglishKenneth
@@ -2587,7 +2587,7 @@ kensington	Kensington				Listed on Wikidata as a given name. No etymology is rec
 kensley	Kensley	English	female			
 kenso	Kensō	Japanese	male		Listed on Wikidata as a given name in Japanese. No etymology is recorded for it yet.	
 kensuke	Kensuke	Japanese	male		Listed on Wikidata as a given name in Japanese. No etymology is recorded for it yet.	
-kent	Kent	English	male	corner, rim; gathering, folkmoot, hillock	Inherited from Middle English Kent, from Old English Cent, from Latin Cantium, from Brythonic *Cantio (compare Old Irish céite (“gathering, folkmoot, hillock”)), from Proto-Celtic *kantos (“corner, rim”).	Proto-Celtic*kantos (“corner)cel-bryLatinCantiumOld EnglishCentMiddle EnglishKent
+kent	Kent	English	male	corner, rim; gathering, folkmoot, hillock	Inherited from Middle English Kent, from Old English Cent, from Latin Cantium, from Brythonic *Cantio (compare Old Irish céite (“gathering, folkmoot, hillock”)), from Proto-Celtic *kantos (“corner, rim”).	Proto-Celtic*kantos (“corner)BrythonicLatinCantiumOld EnglishCentMiddle EnglishKent
 kent	Kent	Danish	male			English
 kent	Kent	Italian	male			EnglishKent
 kent	Kent	Norwegian	male			English
@@ -2892,6 +2892,7 @@ keyate	Keyate	English	male		Listed on Wikidata as a given name in English. No et
 keydomar	Keydomar		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 keye	Keye		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 keyes	Keyes				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
+keyinde	Kẹyinde	Yoruba	unisex	The child who comes from behind, the one who comes second; child; to come from behind, to come last; to arrive	From Clipping of Ọmọ́kẹ́yìndé, ultimately from ọmọ (“child”) + kẹ́yìn (“to come from behind, to come last”) + dé (“to arrive”), literally “The child who comes from behind, the one who comes second”.	
 keyla	Keyla	English	female			
 keylin	Keylin		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 keylla	Keylla				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
@@ -2959,7 +2960,7 @@ khaeriah	Khaeriah		female		Listed on Wikidata as a given name. No etymology is r
 khaerunnisa	Khaerunnisa		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 khafid	Khafid		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 khagav	Khagav	English	male			
-khai	Khai				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
+khai	Khải	Vietnamese	male			Chinese
 khai xing	Khai Xing		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 khaia	Khaia		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 khaim	Khaim		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
@@ -2986,7 +2987,7 @@ khaled	Khaled	English	male			Arabicخَالِد (ḵālid)
 khaleed	Khaleed		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 khaleel	Khaleel		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 khaleeq	Khaleeq		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
-khaleesi	Khaleesi	English	female	queen; king	Borrowed from Dothraki khaleesi (“queen”), feminine of khal (“king”). Coined by American writer and television producer George R. R. Martin for the title of the character Daenerys Targaryen in his book A Song of Ice and Fire (1996) novels.	art-dtkkhaleesi
+khaleesi	Khaleesi	English	female	queen; king	Borrowed from Dothraki khaleesi (“queen”), feminine of khal (“king”). Coined by American writer and television producer George R. R. Martin for the title of the character Daenerys Targaryen in his book A Song of Ice and Fire (1996) novels.	Dothrakikhaleesi (“queen”)
 khalegh	Khalegh				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 khalek	Khalek	Bangla	male		Listed on Wikidata as a given name in Bangla. No etymology is recorded for it yet.	
 khaleke	Khaleke		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
@@ -3017,7 +3018,7 @@ khamica	Khamica		female		Listed on Wikidata as a given name. No etymology is rec
 khamis	Khamis		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 khamlangba	Khamlangba	English	male			Manipuriꯈꯝꯂꯥꯡꯕ (khamlāngba)
 khamzat	Khamzat	Arabic	male		Listed on Wikidata as a given name in Arabic. No etymology is recorded for it yet.	
-khan	Khan	English	male		As a surname, via Hindustani خان (xān) / ख़ान (xān), from Classical Persian خَان (xān), from Turkic. As a title, a proper noun form of khan.	trkClassical Persianخَان (xān)Hindustani
+khan	Khan	English	male		As a surname, via Hindustani خان (xān) / ख़ान (xān), from Classical Persian خَان (xān), from Turkic. As a title, a proper noun form of khan.	TurkicClassical Persianخَان (xān)Hindustani
 khanaphon	Khanaphon		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 khanderao	Khanderao				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 khandu	Khandu		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
@@ -3160,6 +3161,7 @@ khunakorn	Khunakorn		male		Listed on Wikidata as a given name. No etymology is r
 khunathah	Khunāthah	Arabic	female		Listed on Wikidata as a given name in Arabic. No etymology is recorded for it yet.	
 khunays	Khunays		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 khuneary	Khuneary	English	female			Khmer[Term?]
+khunu	Khǖnû	Khiamniungan Naga	male			
 khunu leima	Khunu Leima	English	female			Manipuriꯈꯨꯅꯨꯔꯩꯃ (khunureima)
 khuraymah	Khuraymah		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 khurram	Khurram		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
@@ -3185,8 +3187,6 @@ khylee	Khylee		female		Listed on Wikidata as a given name. No etymology is recor
 khym	Khym				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 khymer	Khymer				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 khyri	Khyri		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
-khǖnu	Khǖnû	Khiamniungan Naga	male			
-khải	Khải	Vietnamese	male			Chinese
 ki	Ki	Korean			Listed on Wikidata as a given name in Korean. No etymology is recorded for it yet.	
 ki-chang	Ki-chang	Korean	male		Listed on Wikidata as a given name in Korean. No etymology is recorded for it yet.	
 ki-hoon	Ki-hoon		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
@@ -3260,6 +3260,7 @@ kiele	Kiele	Hawaiian	female	gardenia; fragrance	kiele (“gardenia; fragrance”
 kielen	Kielen		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kielo	Kielo	Finnish	female	lily of the valley	From kielo (“lily of the valley”), the national flower of Finland. Found as a given name since at least the early 20th century.	
 kiely	Kiely				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
+kiem	Kiếm	Vietnamese	male			Chinese
 kien	Kiên	Vietnamese	male			Chinese
 kien keat	Kien Keat		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kier	Kier				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
@@ -3274,7 +3275,9 @@ kiersten	Kiersten	English	female
 kierstin	Kierstin		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kiesha	Kiesha		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kieshawn	Kieshawn		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
-kiet	Kiet		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
+kiet	Kiệt	Vietnamese	male			Chinese
+kieu	Kiều	Vietnamese	female		Sino-Vietnamese word from 嬌 or 翹.	Chinese
+kieu	Kiều	Vietnamese	male			Chinese
 kieu	Kiêu	Vietnamese	male			Chinese
 kif	Kif		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kifah	Kifah		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
@@ -3530,7 +3533,7 @@ kingcyan	Kingcyan	Seediq	male		Listed on Wikidata as a given name in Seediq. No 
 kingcyang	Kingcyang	Seediq	male		Listed on Wikidata as a given name in Seediq. No etymology is recorded for it yet.	
 kingdom	Kingdom				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kingdon	Kingdon				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
-kingetorix	Kingetorix	Gaulish	male	warrior; to limp, walk lamely; king; ruler	From Proto-Celtic *Kengetorīxs. Equivalent to *kingess (“warrior”) + *rīx (“king”), from Proto-Celtic *kengets (“warrior”) + *rīxs (“king”), from Proto-Indo-European *(s)keng- (“to limp, walk lamely”) + *h₃rḗǵs (“ruler”). Compare with *Werkingetorix.	unknown*(s)keng-Proto-Celtic*Kengetorīxs
+kingetorix	Kingetorix	Gaulish	male	warrior; to limp, walk lamely; king; ruler	From Proto-Celtic *Kengetorīxs. Equivalent to *kingess (“warrior”) + *rīx (“king”), from Proto-Celtic *kengets (“warrior”) + *rīxs (“king”), from Proto-Indo-European *(s)keng- (“to limp, walk lamely”) + *h₃rḗǵs (“ruler”). Compare with *Werkingetorix.	Proto-Indo-European*(s)keng- (“to limp)Proto-Celtic*Kengetorīxs
 kingi	Kingi		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kingman	Kingman		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kingo	Kingo	Japanese	male		Listed on Wikidata as a given name in Japanese. No etymology is recorded for it yet.	
@@ -3805,6 +3808,7 @@ kiua	Kiua	Kanakanabu	female
 kiugak	Kiugak		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kiuhuy	Kiuhuy	Sakizaya	female		Listed on Wikidata as a given name in Sakizaya. No etymology is recorded for it yet.	
 kiur	Kiur		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
+kiurral	Ǩiurrâl	Skolt Sami	male		Ultimately, from Ancient Greek Κύριλλος (Kúrillos). Cognate with English Cyril.	Ancient GreekΚύριλλος (Kúrillos)
 kiva	Kiva	English	unisex		Listed on Wikidata as a given name in English. No etymology is recorded for it yet.	
 kivanc	Kıvanç	Turkish	unisex			
 kivilcim	Kıvılcım	Turkish	female		Listed on Wikidata as a given name in Turkish. No etymology is recorded for it yet.	
@@ -3867,10 +3871,6 @@ kizzie	Kizzie	English	female			Hebrew
 kizzmekia	Kizzmekia		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kizzy	Kizzy	English	female		From a pet form of Kezia. Explained as a Mandinka name by Alex Haley in Roots (1976).	Mandinka
 kiʻilani	Kiʻilani		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
-kiếm	Kiếm	Vietnamese	male			Chinese
-kiều	Kiều	Vietnamese	female		Sino-Vietnamese word from 嬌 or 翹.	Chinese
-kiều	Kiều	Vietnamese	male			Chinese
-kiệt	Kiệt	Vietnamese	male			Chinese
 ki’ash	Ki’ash	Thao	female			
 kjaersti	Kjærsti		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kjalar	Kjalar	Icelandic	male		Listed on Wikidata as a given name in Icelandic. No etymology is recorded for it yet.	
@@ -4172,7 +4172,7 @@ klyment	Klyment	Ukrainian	male		Listed on Wikidata as a given name in Ukrainian.
 klymentii	Klymentii	Ukrainian	male		Listed on Wikidata as a given name in Ukrainian. No etymology is recorded for it yet.	
 klymentyna	Klymentyna	Ukrainian	female		Listed on Wikidata as a given name in Ukrainian. No etymology is recorded for it yet.	
 kmay	Kmay	Seediq	female		Listed on Wikidata as a given name in Seediq. No etymology is recorded for it yet.	
-kmbjṯt	kmbjṯt	Egyptian	male		Derived from Old Persian 𐎣𐎲𐎢𐎪𐎡𐎹 (k-b-u-ji-i-y /⁠Kaᵐbūjiyaʰ⁠/).	Old Persian𐎣𐎲𐎢𐎪𐎡𐎹 (k-b-u-ji-i-y /⁠Kaᵐbūjiyaʰ⁠/)
+kmbjtt	kmbjṯt	Egyptian	male		Derived from Old Persian 𐎣𐎲𐎢𐎪𐎡𐎹 (k-b-u-ji-i-y /⁠Kaᵐbūjiyaʰ⁠/).	Old Persian𐎣𐎲𐎢𐎪𐎡𐎹 (k-b-u-ji-i-y /⁠Kaᵐbūjiyaʰ⁠/)
 kmele	Kmele				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kmin	Kmin	Seediq	male		Listed on Wikidata as a given name in Seediq. No etymology is recorded for it yet.	
 kmochna	Kmochna	Old Czech	female			
@@ -4291,7 +4291,7 @@ koffi-dankwa	Koffi-Dankwa		male		Listed on Wikidata as a given name. No etymolog
 kofi	Kofi	Sranan Tongo	male			AkanKofi
 kofi	Kofi	Akan	male			
 kofi mawuena	Kofi Mawuena				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
-kofoworọla	Kofoworọla	Yoruba	unisex	They did not use money to buy honor; not, negation marker; to use; money; to buy; honor	From Blend of kò (“not, negation marker”) + fi (“to use”) + owó (“money”) + rà (“to buy”) + ọlá (“honor”), literally “They did not use money to buy honor”.	
+kofoworola	Kofoworọla	Yoruba	unisex	They did not use money to buy honor; not, negation marker; to use; money; to buy; honor	From Blend of kò (“not, negation marker”) + fi (“to use”) + owó (“money”) + rà (“to buy”) + ọlá (“honor”), literally “They did not use money to buy honor”.	
 kofu	Kōfū	Japanese	male		Listed on Wikidata as a given name in Japanese. No etymology is recorded for it yet.	
 kogo	Kōgo	Japanese			Listed on Wikidata as a given name in Japanese. No etymology is recorded for it yet.	
 kogoro	Kōgorō	Japanese	male		Listed on Wikidata as a given name in Japanese. No etymology is recorded for it yet.	
@@ -4347,14 +4347,14 @@ koksal	Köksal	Turkish	male		Listed on Wikidata as a given name in Turkish. No e
 kokui	Kokui		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kol	Kol	Albanian	male			
 kola	Kola	Albanian, Nigerian Pidgin	unisex		Listed on Wikidata as a given name in Albanian, Nigerian Pidgin. No etymology is recorded for it yet.	
-kolade	Kolade	Yoruba			Listed on Wikidata as a given name in Yoruba. No etymology is recorded for it yet.	
+kolade	Kọlade	Yoruba	male	To arrive bringing honor; to bring; honor, wealth; to arrive	From kó (“to bring”) + ọlá (“honor, wealth”) + dé (“to arrive”), literally “To arrive bringing honor”.	
 kolah	Kolah	Atayal	male			
 kolan	Kolan	Atayal	male			
 kolas	Kolas	Atayal	male			
 kolas	Kolas	Cebuano	male			
 kolat	Kolat	Turkish	male		Listed on Wikidata as a given name in Turkish. No etymology is recorded for it yet.	
 kolaw	Kolaw	Atayal	male			
-kolawole	Kolawole		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
+kolawole	Kọlawọle	Yoruba	male	One who brings honor into the house; gather; honor; to enter; home	From Blend of kó (“gather”) + ọlá (“honor”) + wọ (“to enter”) + ilé (“home”), literally “One who brings honor into the house”	
 kolay	Kolay	Amis	male		Listed on Wikidata as a given name in Amis. No etymology is recorded for it yet.	
 kolayaw	Kolayaw	Amis	male			
 kolbein	Kolbein	Norwegian Nynorsk	male	coal; bone; footed; bare-legged	From Old Norse Kolbeinn, from kol (“coal”) + bein (“bone”) or beinn (“footed”) (cf. berbeinn (“bare-legged”)).	Old NorseKolbeinn
@@ -4487,7 +4487,7 @@ konjit	Konjit				Listed on Wikidata as a given name. No etymology is recorded fo
 konkordia	Konkordía	Icelandic	female			
 konkordie	Konkordie	Danish	female		From Latin Concordia, as the name of an early Roman saint.	LatinConcordia
 konkordiusz	Konkordiusz		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
-konmaikaṅkauske	Konmaikaṅkauśke	Tocharian B				
+konmaikankauske	Konmaikaṅkauśke	Tocharian B				
 konner	Konner	English	male			
 konni	Konni				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 konnie	Konnie		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
@@ -4703,6 +4703,7 @@ kosan	Kosan	Atayal	female		Listed on Wikidata as a given name in Atayal. No etym
 kosana	Kosana	Serbian	female		Listed on Wikidata as a given name in Serbian. No etymology is recorded for it yet.	
 kosara	Kosara		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kosarachi	Kosarachi	Igbo			Listed on Wikidata as a given name in Igbo. No etymology is recorded for it yet.	
+kosau	Ƙosau	Hausa	male	be well fed	From ƙōsā̀ (“be well fed”) + -au.	
 kosaw	kosaw	Saisiyat	male		Listed on Wikidata as a given name in Saisiyat. No etymology is recorded for it yet.	
 koschka	Koschka		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kosei	Kōsei	Japanese	male		Listed on Wikidata as a given name in Japanese. No etymology is recorded for it yet.	
@@ -4779,7 +4780,7 @@ kotryna	Kotryna	Lithuanian	female
 kotse	Kotse	Bulgarian	male		Listed on Wikidata as a given name in Bulgarian. No etymology is recorded for it yet.	
 kottas	Kottas	Greek	male		Listed on Wikidata as a given name in Greek. No etymology is recorded for it yet.	
 kottravai	Kottravai		female		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
-kotus	Kotus	Thracian	unisex	fight; angry, vengeful; I am angry, I am incensed; anger, spite	Loanword from a Phrygian cognate of Ancient Greek κοτήεις (kotḗeis, “angry, vengeful”), κοτέω (kotéō, “I am angry, I am incensed”), κότος (kótos, “anger, spite”). Ultimately from Proto-Indo-European *kéh₃tus (“fight”), from whence also Hittite 𒃰𒁺 (kattu-), P…	unknown*kéh₃tusPhrygian
+kotus	Kotus	Thracian	unisex	fight; angry, vengeful; I am angry, I am incensed; anger, spite	Loanword from a Phrygian cognate of Ancient Greek κοτήεις (kotḗeis, “angry, vengeful”), κοτέω (kotéō, “I am angry, I am incensed”), κότος (kótos, “anger, spite”). Ultimately from Proto-Indo-European *kéh₃tus (“fight”), from whence also Hittite 𒃰𒁺 (kattu-), P…	Proto-Indo-European*kéh₃tus (“fight”)Phrygian
 kou	Kõu	Estonian, Japanese			Listed on Wikidata as a given name in Estonian, Japanese. No etymology is recorded for it yet.	
 kouadio	Kouadio		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kouakou	Kouakou		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
@@ -4851,7 +4852,7 @@ kozpald	Kozpald	Old High German	male
 kozue	Kozue	English	female			Japanese
 kpamor	Kpamor		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kpedetin	Kpèdétin		unisex		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
-kpeɖeŋunye	Kpeɖeŋunye				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
+kpeɖengunye	Kpeɖeŋunye				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kpinzou	Kpinzou				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kplom	Kplom				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kpɔmɔne	Kpɔmɔne				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
@@ -5188,6 +5189,7 @@ kroot	Krõõt	Estonian	female
 krosbi	Krosbi		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kroum	Kroum				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 krscen	Krščen	Old Czech	male			
+krsnah	Kr̥šnah	Old Persian	male	black	From *kr̥šnah (“black”). Cognate with Sanskrit कृष्ण (kṛṣṇa).	
 krsta	Krsta	Serbian	female		Listed on Wikidata as a given name in Serbian. No etymology is recorded for it yet.	
 krste	Krste		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 krstel	Krstel	English			Listed on Wikidata as a given name in English. No etymology is recorded for it yet.	
@@ -5246,7 +5248,6 @@ krzysztofor	Krzysztofor	Polish	male	messiah; I carry, I bear	Learned borrowing f
 krzysztopor	Krzysztopor	Polish	male		Listed on Wikidata as a given name in Polish. No etymology is recorded for it yet.	
 krzywosad	Krzywosąd		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 krzyzan	Krzyżan		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
-kr̥snah	Kr̥šnah	Old Persian	male	black	From *kr̥šnah (“black”). Cognate with Sanskrit कृष्ण (kṛṣṇa).	
 ksanthipi	Ksanthipi				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 ksantipa	Ksantipa	Italian	female		Listed on Wikidata as a given name in Italian. No etymology is recorded for it yet.	
 ksatri	Ksatri		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
@@ -5442,7 +5443,7 @@ kumajiro	Kumajirō	Japanese	male		Listed on Wikidata as a given name in Japanese
 kumakichi	Kumakichi	Japanese	male		Listed on Wikidata as a given name in Japanese. No etymology is recorded for it yet.	
 kumao	Kumao	Japanese	male		Listed on Wikidata as a given name in Japanese. No etymology is recorded for it yet.	
 kumar	Kumar	English	male		Transliteration of Hindi कुमार (kumār), etc.	Hindiकुमार (kumār)
-kumarapuṇye	Kumārapuṇye	Tocharian B	male			
+kumarapunye	Kumārapuṇye	Tocharian B	male			
 kumari	Kumari	English	female	a young girl, one from ten to twelve years old, maiden, daughter	From Sanskrit कुमारी (kumārī, “a young girl, one from ten to twelve years old, maiden, daughter”).	Sanskritकुमारी (kumārī)
 kumataro	Kumatarō	Japanese	male		Listed on Wikidata as a given name in Japanese. No etymology is recorded for it yet.	
 kumaw	Kumaw	Sakizaya	male			
@@ -5471,8 +5472,8 @@ kumudini	Kumudini	Hindi	female		Listed on Wikidata as a given name in Hindi. No 
 kumus	Kumus	Seediq	male		Listed on Wikidata as a given name in Seediq. No etymology is recorded for it yet.	
 kumuy	Kumuy	Seediq, Atayal	female		Listed on Wikidata as a given name in Seediq, Atayal. No etymology is recorded for it yet.	
 kun	Kun	Korean, Chinese			Listed on Wikidata as a given name in Korean, Chinese. No etymology is recorded for it yet.	
-kunacaṃttrakau	Kunacaṃttrakau	Tocharian B				
-kunacaṃttre	Kunacaṃttre	Tocharian B	male			
+kunacamttrakau	Kunacaṃttrakau	Tocharian B				
+kunacamttre	Kunacaṃttre	Tocharian B	male			
 kunal	Kunal	English	male			Sanskritकुणाल (kuṇāla)
 kunang	Kunang	Seediq	male		Listed on Wikidata as a given name in Seediq. No etymology is recorded for it yet.	
 kunata	Kuňata	Old Czech	male			
@@ -5497,7 +5498,7 @@ kungay	Kungay	Seediq	unisex		Listed on Wikidata as a given name in Seediq. No et
 kungkung	Kungkung	Seediq	male		Listed on Wikidata as a given name in Seediq. No etymology is recorded for it yet.	
 kungo	Kúngo	Greenlandic	female			Danish
 kunhambeba	Kunhambeba	Old Tupi	male	woman; flat; flat woman; breastless woman	According to Navarro, from kunhã (“woman”) + peb (“flat”) + -a (nominal suffix), literally, “flat woman”, or more loosely translated as “breastless woman”.	
-kunhauasutenhẽ	Kunhãûasutenhẽ	Old Tupi	female	woman; in vain; big woman for nothing	From kunhã (“woman”) + -ûasu (augmentative suffix) + tenhẽ (“in vain”), literally “big woman for nothing”.	
+kunhauasutenhe	Kunhãûasutenhẽ	Old Tupi	female	woman; in vain; big woman for nothing	From kunhã (“woman”) + -ûasu (augmentative suffix) + tenhẽ (“in vain”), literally “big woman for nothing”.	
 kunhuta	Kunhuta	Old Czech	female			GermanKunigunde
 kuni	Kuni	English	unisex		Borrowed from Japanese 国 (Kuni), 久邇 (Kuni) or くに (Kuni).	Japanese国 (Kuni)
 kuniaki	Kuniaki	Japanese	male		Listed on Wikidata as a given name in Japanese. No etymology is recorded for it yet.	
@@ -5571,7 +5572,7 @@ kunopennos	Kunopennos	Gaulish	female	dog	From *kunos, from Proto-Celtic *kunos, 
 kunorixs	Kunorīxs	Proto-Celtic	male	dog; king	From *kū (“dog”) + *rīxs (“king”).	
 kunowal	Kunowal	Proto-Brythonic	male			Proto-Celtic*Kunowalos
 kunowalos	Kunowalos	Proto-Celtic	male	dog; prince, chief	From *kuno-, stem of *kū (“dog”) + *walos (“prince, chief”).	
-kunoβ̃ọr	Kunoβ̃ọr	Proto-Brythonic	male	big dog; dog; great	From *kun- (“dog”, oblique stem) + *mọr (“great”), literally “big dog”.	
+kunoβor	Kunoβ̃ọr	Proto-Brythonic	male	big dog; dog; great	From *kun- (“dog”, oblique stem) + *mọr (“great”), literally “big dog”.	
 kunrat	Kunrát	Old Czech	male		Derived from Middle High German Kuonrât.	Middle High GermanKuonrât
 kunratec	Kunrátec	Old Czech	male			
 kunsik	Kunšík	Old Czech	male			
@@ -5637,7 +5638,7 @@ kurosch	Kurosch		male		Listed on Wikidata as a given name. No etymology is recor
 kurosh	Kurosh		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kurowskybob	Kurowskybob				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kurre	Kurre	Swedish	male	gemination; hypocoristic suffix	Affix of Kur(t) + r (“gemination”) + -e (“hypocoristic suffix”).	
-kurriṅkate	Kurriṅkāte	Tocharian B	male			
+kurrinkate	Kurriṅkāte	Tocharian B	male			
 kursad	Kürşad		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kursat	Kürşat	Turkish	male		Inherited from Ottoman Turkish كورشاد (Kürşad).	Ottoman Turkishكورشاد (Kürşad)
 kurszan	Kurszán	Hungarian	male		Listed on Wikidata as a given name in Hungarian. No etymology is recorded for it yet.	
@@ -5850,6 +5851,7 @@ kwong beng	Kwong Beng		male		Listed on Wikidata as a given name. No etymology is
 kwong wah	Kwong Wah		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kwong yiu	Kwong Yiu		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kwong-mei	Kwong-Mei				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
+ky	Kỳ	Vietnamese	male	fragrance; strange	Sino-Vietnamese word from 旗 (“fragrance”), 奇 (“strange”) etc.	Chinese
 kya	Kya				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kyal	Kyal	English			Listed on Wikidata as a given name in English. No etymology is recorded for it yet.	
 kyall	Kyall				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
@@ -5983,9 +5985,6 @@ kyushichi	Kyūshichi	Japanese	male		Listed on Wikidata as a given name in Japane
 kyutaro	Kyūtarō	Japanese	male		Listed on Wikidata as a given name in Japanese. No etymology is recorded for it yet.	
 kyvete	Kyvete				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kyzir	Kyzir		male		Listed on Wikidata as a given name. No etymology is recorded for it yet.	
-kǎige	Kǎigē	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-kǎn	Kǎn	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
-kǒng	Kǒng	Chinese			Listed on Wikidata as a given name in Chinese. No etymology is recorded for it yet.	
 kɔkɔe	Kɔkɔe				Listed on Wikidata as a given name. No etymology is recorded for it yet.	
 kəmal	Kəmal	Azerbaijani	male			Arabicكَمَال (kamāl)
 kəmalə	Kəmalə	Azerbaijani	female		Listed on Wikidata as a given name in Azerbaijani. No etymology is recorded for it yet.	
@@ -5994,13 +5993,6 @@ kərim	Kərim	Azerbaijani	male		Ultimately from Arabic كَرِيم (karīm).Dou
 kʉstentin	Kʉstentin	Proto-Brythonic	male		Borrowed from Vulgar Latin Cōstantīnus, from Latin Cōnstantīnus.	LatinCōnstantīnusVulgar LatinCōstantīnus
 kʷekya	Kʷekyā	Proto-Celtic	female	courageous	Feminine of the putative adjective *kʷekyos (“courageous”).	
 kʷennowindos	Kʷennowindos	Proto-Celtic	male	head; white	From *kʷennom (“head”) + *windos (“white”).	
-kẹhinde	Kẹhinde	Yoruba	unisex			
-kẹyinde	Kẹyinde	Yoruba	unisex	The child who comes from behind, the one who comes second; child; to come from behind, to come last; to arrive	From Clipping of Ọmọ́kẹ́yìndé, ultimately from ọmọ (“child”) + kẹ́yìn (“to come from behind, to come last”) + dé (“to arrive”), literally “The child who comes from behind, the one who comes second”.	
-kẹ́misọ́la	Kẹ́misọ́lá	Yoruba	female		Listed on Wikidata as a given name in Yoruba. No etymology is recorded for it yet.	
-kế	Kế	Vietnamese			Listed on Wikidata as a given name in Vietnamese. No etymology is recorded for it yet.	
-kọlade	Kọlade	Yoruba	male	To arrive bringing honor; to bring; honor, wealth; to arrive	From kó (“to bring”) + ọlá (“honor, wealth”) + dé (“to arrive”), literally “To arrive bringing honor”.	
-kọlawọle	Kọlawọle	Yoruba	male	One who brings honor into the house; gather; honor; to enter; home	From Blend of kó (“gather”) + ọlá (“honor”) + wọ (“to enter”) + ilé (“home”), literally “One who brings honor into the house”	
-kỳ	Kỳ	Vietnamese	male	fragrance; strange	Sino-Vietnamese word from 旗 (“fragrance”), 奇 (“strange”) etc.	Chinese
 k’ala’ask	K’ala’ask	English	male			
 kꜣkꜣj	kꜣkꜣj	Egyptian	male	life-force, sustenance; my	Unclear. Like many fifth-dynasty pharaohs’ birth names, this name may simply be a diminutive without any meaning of its own, perhaps of the pharaoh’s throne name nfr-jr-kꜣ-rꜥ (in which case it may not be the actual name given at birth). Alternatively, some hav…	
 kꜣstꜣ	kꜣštꜣ	Egyptian	male	the land of Cush	From kꜣš (“the land of Cush”).	

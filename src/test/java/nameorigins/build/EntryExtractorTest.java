@@ -1,6 +1,7 @@
 package nameorigins.build;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -139,6 +140,52 @@ class EntryExtractorTest {
             {"pos": "name", "word": "Adem", "lang": "German", "lang_code": "de",
              "etymology_templates": [{"name": "etymon", "args": {"1": "de", "2": ":inh", "3": "gmh:Adam<id:first man>"}}]}""");
         assertEquals("Adam", x.extract(tree).entry().chain().get(0).form());
+    }
+
+    /** The step the single template in {@code templates} yields, or null when it yields none. */
+    private static OriginStep onlyStep(EntryExtractor x, String templates) throws Exception {
+        JsonNode e = new ObjectMapper().readTree("""
+            {"pos": "name", "word": "X", "lang": "English", "lang_code": "en", "etymology_templates": [%s]}"""
+                .formatted(templates));
+        List<OriginStep> chain = x.extract(e).entry().chain();
+        assertTrue(chain.size() <= 1, chain.toString());
+        return chain.isEmpty() ? null : chain.get(0);
+    }
+
+    @Test
+    void familyCodesTakeTheirNameFromTheExpansion() throws Exception {
+        // langs.tsv holds only codes with entries of their own, so no family codes like "gem" or "cel-bry"
+        assertEquals(new OriginStep("Germanic", ""), onlyStep(EXTRACT,
+                "{\"name\": \"der\", \"args\": {\"1\": \"en\", \"2\": \"gem\", \"3\": \"-\"}, \"expansion\": \"Germanic\"}"));
+        assertEquals(new OriginStep("Brythonic", "ardu"), onlyStep(EXTRACT,
+                "{\"name\": \"der\", \"args\": {\"1\": \"en\", \"2\": \"cel-bry\", \"3\": \"ardu\"}, \"expansion\": \"Brythonic\"}"));
+        assertEquals(new OriginStep("Slavic", "Milan"), onlyStep(EXTRACT,
+                "{\"name\": \"bor+\", \"args\": {\"1\": \"hu\", \"2\": \"sla\", \"3\": \"Milan\"}, \"expansion\": \"Borrowed from Slavic\"}"));
+    }
+
+    @Test
+    void codeListsReadAsTheLanguagesTheyList() throws Exception {
+        assertEquals(new OriginStep("Russian and Ukrainian", "А́ня (Ánja)"), onlyStep(EXTRACT,
+                "{\"name\": \"bor\", \"args\": {\"1\": \"en\", \"2\": \"ru,uk\", \"3\": \"А́ня\"}, \"expansion\":"
+                        + " \"Russian and Ukrainian А́ня (Ánja, informal pet form of А́нна (Ánna, “Ann”))\"}"));
+        assertEquals(new OriginStep("Italian, Portuguese, and Spanish", "Adolfo"), onlyStep(EXTRACT,
+                "{\"name\": \"bor+\", \"args\": {\"1\": \"en\", \"2\": \"it,pt,es\", \"3\": \"Adolfo\"}, \"expansion\":"
+                        + " \"Borrowed from Italian, Portuguese, and Spanish Adolfo\"}"));
+    }
+
+    @Test
+    void unknownIsNeverALanguage() throws Exception {
+        // langs.tsv votes ine-pro to "unknown"; the template's own expansion names it
+        EntryExtractor x = new EntryExtractor(Map.of("ine-pro", "unknown", "sa", "Sanskrit"));
+        assertEquals(new OriginStep("Proto-Indo-European", "*h₁n̥gʷnís"), onlyStep(x,
+                "{\"name\": \"inh\", \"args\": {\"1\": \"iir-pro\", \"2\": \"ine-pro\", \"3\": \"*h₁n̥gʷnís\"},"
+                        + " \"expansion\": \"Proto-Indo-European *h₁n̥gʷnís\"}"));
+        // tree templates and prose have no expansion to read: the step is dropped, not shown as "unknown"
+        assertNull(onlyStep(x, "{\"name\": \"etymon\", \"args\": {\"1\": \"en\", \"2\": \":inh\", \"3\": \"ine-pro:*h₁n̥gʷnís\"}}"));
+        assertEquals(List.of(new OriginStep("Sanskrit", "")),
+                x.chainFromText("A name from Sanskrit, ultimately from unknown origin."));
+        // an expansion that names no language ("substrate", lowercase) drops the step instead of showing a code
+        assertNull(onlyStep(x, "{\"name\": \"der\", \"args\": {\"1\": \"en\", \"2\": \"qfa-sub\"}, \"expansion\": \"substrate\"}"));
     }
 
     @Test
