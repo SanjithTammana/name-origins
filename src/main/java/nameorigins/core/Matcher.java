@@ -111,6 +111,10 @@ public final class Matcher {
                 int c = Boolean.compare(dir.hasOrigin(b.item()), dir.hasOrigin(a.item()));
                 return c != 0 ? c : Double.compare(a.score(), b.score());
             });
+            if (self >= 0 && dir.hasEntries(self) && !dir.hasOrigin(ranked.get(0).item())) {
+                // no variant has an origin either ("Aarinola" -> "Arinola"): the typed name's own entry is as good
+                return Optional.of(new MatchResult.Exact(query, folded));
+            }
             List<String> alternatives = new ArrayList<>();
             for (int i = 1; i < ranked.size() && alternatives.size() < 5; i++) {
                 alternatives.add(dir.display(ranked.get(i).item()));

@@ -70,6 +70,13 @@ class GoldenMatcherTest {
     }
 
     @Test
+    void aRecordedNameIsNotSentToAVariantThatHasNoOriginEither() {
+        // found in the browser: "Aarinola" (Wikidata) went to "Arinola" (Wikidata too) and the page claimed
+        // Arinola has an origin
+        assertEquals(new MatchResult.Exact("Aarinola", "aarinola"), match("Aarinola"));
+    }
+
+    @Test
     void gibberishFindsNothing() {
         assertInstanceOf(MatchResult.None.class, match("Qwzx"));
     }
@@ -132,6 +139,9 @@ class GoldenMatcherTest {
                 }
             } else if (r instanceof MatchResult.Variant v) {
                 key = v.key();
+                if (v.recorded() && !d.hasOrigin(d.slot(key))) {
+                    bad.add(q + " is recorded but was sent to " + key + ", which has no origin either");
+                }
                 if (v.alternatives().contains(d.display(d.slot(key)))) {
                     bad.add(q + " -> " + key + " lists itself as an alternative");
                 }
