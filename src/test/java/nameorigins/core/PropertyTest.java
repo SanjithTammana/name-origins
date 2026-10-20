@@ -325,6 +325,47 @@ class PropertyTest {
     }
 
     @Test
+    void foldAgreesWithUnicodeDecompositionForEveryLatinLetter() {
+        // Text.fold cannot use java.text.Normalizer (not in TeaVM); on the JVM the table is checked against it.
+        // Before: Yoruba ọ, Romanian ș/ț, pinyin ǎ and Vietnamese ế were left as they were, so 1,018 keys could
+        // only be found by typing the accent ("Aarinola" missed "aarinọla").
+        List<String> bad = new ArrayList<>();
+        for (int[] range : new int[][] {{0xC0, 0x24F}, {0x1E00, 0x1EFF}}) {
+            for (int c = range[0]; c <= range[1]; c++) {
+                String ch = String.valueOf((char) c);
+                StringBuilder base = new StringBuilder();
+                java.text.Normalizer.normalize(ch.toLowerCase(java.util.Locale.ROOT), java.text.Normalizer.Form.NFD)
+                        .codePoints().filter(cp -> Character.getType(cp) != Character.NON_SPACING_MARK)
+                        .forEach(base::appendCodePoint);
+                if (base.toString().matches("[a-z]+") && !Text.fold(ch).equals(base.toString())) {
+                    bad.add(ch + " -> " + Text.fold(ch) + ", not " + base);
+                }
+            }
+        }
+        assertTrue(bad.isEmpty(), bad.toString());
+        assertEquals("aarinola", Text.fold("Aarinọla"));
+        assertEquals("stefan", Text.fold("Ștefan"));
+        assertEquals("xiaoming", Text.fold("Xiǎomíng"));
+        assertEquals("nguyen", Text.fold("Nguyễn"));
+        assertEquals("ivan", Text.fold("Ivań"));
+        assertEquals("иван", Text.fold("Ива́н")); // Wiktionary's stress mark
+        assertEquals("olu", Text.fold("Olú"));
+        assertEquals("ngozi", Text.fold("Ŋozi"));
+    }
+
+    @Test
+    void foldDoesNotDependOnTheDefaultLocale() {
+        java.util.Locale before = java.util.Locale.getDefault();
+        try {
+            java.util.Locale.setDefault(java.util.Locale.forLanguageTag("tr"));
+            assertEquals("ingrid", Text.fold("INGRID")); // not dotless "ıngrıd"
+            assertEquals(SoundKey.strong("ingrid"), SoundKey.strong(Text.fold("INGRID")));
+        } finally {
+            java.util.Locale.setDefault(before);
+        }
+    }
+
+    @Test
     void foldIsIdempotentAndLowercase() {
         Random rnd = new Random(9);
         String alphabet = "aAzZéÉøØßæŒþÐñÑçÇ -'İıΣσさ";

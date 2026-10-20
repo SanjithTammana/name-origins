@@ -3,6 +3,7 @@ package nameorigins.core;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 
 /**
@@ -13,16 +14,42 @@ import java.util.Set;
 public final class Text {
     private Text() {}
 
-    // Each char in FROM maps to the string at the same index in TO.
-    private static final String FROM =
-            "àáâãäåāăąçćĉċčďđèéêëēĕėęěĝğġģĥħìíîïĩīĭįıĵķĺļľŀłñńņňòóôõöøōŏőŕŗřśŝşšţťŧùúûüũūŭůűųŵýÿŷźżžðþßæœ";
-    private static final String[] TO = {
-        "a", "a", "a", "a", "a", "a", "a", "a", "a", "c", "c", "c", "c", "c", "d", "d", "e", "e", "e", "e", "e",
-        "e", "e", "e", "e", "g", "g", "g", "g", "h", "h", "i", "i", "i", "i", "i", "i", "i", "i", "i", "j", "k",
-        "l", "l", "l", "l", "l", "n", "n", "n", "n", "o", "o", "o", "o", "o", "o", "o", "o", "o", "r", "r", "r",
-        "s", "s", "s", "s", "t", "t", "t", "u", "u", "u", "u", "u", "u", "u", "u", "u", "u", "w", "y", "y", "y",
-        "z", "z", "z", "d", "th", "ss", "ae", "oe"
-    };
+    // Lowercase Latin letter -> plain spelling, generated from Unicode decompositions (U+00C0-U+024F and
+    // U+1E00-U+1EFF: Yoruba ọ, Romanian ș, pinyin ǎ, Vietnamese ế, ...) plus letters that have none (ø, ł, þ, ß).
+    // Each space-separated item is one letter followed by its replacement.
+    private static final String PAIRS = ""
+            + "ßss àa áa âa ãa äa åa æae çc èe ée êe ëe ìi íi îi ïi ðd ñn òo óo ôo õo öo øo ùu úu "
+            + "ûu üu ýy þth ÿy āa ăa ąa ćc ĉc ċc čc ďd đd ēe ĕe ėe ęe ěe ĝg ğg ġg ģg ĥh ħh ĩi īi "
+            + "ĭi įi ıi ĳij ĵj ķk ĺl ļl ľl ŀl łl ńn ņn ňn ŉn ŋng ōo ŏo őo œoe ŕr ŗr řr śs ŝs şs "
+            + "šs ţt ťt ŧt ũu ūu ŭu ůu űu ųu ŵw ŷy źz żz žz ſs ƀb ƈc ƙk ƚl ơo ưu ƴy ƶz ǆdz ǉlj "
+            + "ǌnj ǎa ǐi ǒo ǔu ǖu ǘu ǚu ǜu ǟa ǡa ǣae ǥg ǧg ǩk ǫo ǭo ǯz ǰj ǳdz ǵg ǹn ǻa ǽae ǿo ȁa "
+            + "ȃa ȅe ȇe ȉi ȋi ȍo ȏo ȑr ȓr ȕu ȗu șs țt ȟh ȥz ȧa ȩe ȫo ȭo ȯo ȱo ȳy ɍr ɏy ḁa ḃb "
+            + "ḅb ḇb ḉc ḋd ḍd ḏd ḑd ḓd ḕe ḗe ḙe ḛe ḝe ḟf ḡg ḣh ḥh ḧh ḩh ḫh ḭi ḯi "
+            + "ḱk ḳk ḵk ḷl ḹl ḻl ḽl ḿm ṁm ṃm ṅn ṇn ṉn ṋn ṍo ṏo ṑo ṓo ṕp ṗp ṙr ṛr "
+            + "ṝr ṟr ṡs ṣs ṥs ṧs ṩs ṫt ṭt ṯt ṱt ṳu ṵu ṷu ṹu ṻu ṽv ṿv ẁw ẃw ẅw ẇw "
+            + "ẉw ẋx ẍx ẏy ẑz ẓz ẕz ẖh ẗt ẘw ẙy ẛs ẜs ẝs ạa ảa ấa ầa ẩa ẫa ậa ắa "
+            + "ằa ẳa ẵa ặa ẹe ẻe ẽe ếe ềe ểe ễe ệe ỉi ịi ọo ỏo ốo ồo ổo ỗo ộo ớo "
+            + "ờo ởo ỡo ợo ụu ủu ứu ừu ửu ữu ựu ỳy ỵy ỷy ỹy";
+    private static final String[] LATIN = new String[0x250];
+    private static final String[] LATIN_ADDITIONAL = new String[0x100]; // U+1E00-U+1EFF
+
+    static {
+        int i = 0;
+        while (i < PAIRS.length()) {
+            int end = PAIRS.indexOf(' ', i);
+            if (end < 0) {
+                end = PAIRS.length();
+            }
+            char c = PAIRS.charAt(i);
+            String to = PAIRS.substring(i + 1, end);
+            if (c < 0x250) {
+                LATIN[c] = to;
+            } else {
+                LATIN_ADDITIONAL[c - 0x1E00] = to;
+            }
+            i = end + 1;
+        }
+    }
 
     private static final Set<String> STOP_WORDS = new HashSet<>(List.of(
             "a", "an", "and", "the", "of", "or", "in", "to", "from", "for", "with", "by", "as", "is", "was",
@@ -31,23 +58,30 @@ public final class Text {
             "ultimately", "probably", "possibly", "perhaps", "via", "into", "one", "who", "his", "her", "he",
             "she", "their", "they", "are", "were", "been", "has", "have", "had", "not", "but", "see", "etc"));
 
-    /** Lowercases, folds Latin accents, trims. Non-Latin scripts pass through unchanged. */
+    /**
+     * Lowercases, folds Latin accents, drops combining accents (U+0300-U+036F, e.g. the stress marks in
+     * Wiktionary's "Ива́н"), trims. Other non-Latin letters pass through unchanged. Locale.ROOT, so a build on a
+     * Turkish-locale machine does not turn "I" into dotless "ı".
+     */
     public static String fold(String s) {
-        String lower = s.trim().toLowerCase();
+        String lower = s.trim().toLowerCase(Locale.ROOT);
         StringBuilder out = null;
         for (int i = 0; i < lower.length(); i++) {
             char c = lower.charAt(i);
-            int at = c < 0xC0 ? -1 : FROM.indexOf(c);
-            if (at >= 0) {
+            String to = c < 0xC0 ? null
+                    : c < 0x250 ? LATIN[c]
+                    : c >= 0x1E00 && c <= 0x1EFF ? LATIN_ADDITIONAL[c - 0x1E00]
+                    : c >= 0x300 && c <= 0x36F ? "" : null;
+            if (to != null) {
                 if (out == null) {
                     out = new StringBuilder(lower.length() + 2).append(lower, 0, i);
                 }
-                out.append(TO[at]);
+                out.append(to);
             } else if (out != null) {
                 out.append(c);
             }
         }
-        return out == null ? lower : out.toString();
+        return out == null ? lower : out.toString().trim();
     }
 
     /** Splits meaning text into content words: folded, stop words removed, simple plural stripped. */
