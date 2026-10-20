@@ -16,14 +16,17 @@ public final class SoundKey {
     private SoundKey() {}
 
     public static String strong(String folded) {
+        // letters only, before looking at pairs: "Baek-ho" must get the same key as "Baekho"
+        folded = lettersOnly(folded);
         int n = folded.length();
         StringBuilder s = new StringBuilder(n + 2);
         for (int i = 0; i < n; i++) {
             char c = folded.charAt(i);
-            if (!Character.isLetter(c)) {
-                continue;
-            }
             char d = i + 1 < n ? folded.charAt(i + 1) : 0;
+            char prev = s.length() > 0 ? s.charAt(s.length() - 1) : 0;
+            if (c == 'h' && (prev == 't' || prev == 'd' || prev == 'b' || prev == 'k' || prev == 'g')) {
+                continue; // an h after a merged k/t/... ("ckh", "qh", "thh") is the same h the rule below drops
+            }
             if (d == 'h' && (c == 'p' || c == 't' || c == 'd' || c == 'b' || c == 'k' || c == 'g')) {
                 s.append(c == 'p' ? 'f' : c); // ph -> f; th, dh, bh, kh, gh -> t, d, b, k, g
                 i++;
@@ -51,18 +54,33 @@ public final class SoundKey {
             }
         }
         StringBuilder out = new StringBuilder(s.length());
-        int last = s.length() - 1;
-        for (int i = 0; i <= last; i++) {
+        for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            if (c == 'h' && i == last && i > 0 && isVowel(s.charAt(i - 1))) {
-                continue; // final h after a vowel is silent (Sarah/Sara, Aishah/Aisha)
-            }
             if (out.length() > 0 && out.charAt(out.length() - 1) == c) {
                 continue; // doubled letters collapse (Matthew/Mathew, Anna/Ana)
             }
             out.append(c);
         }
+        int last = out.length() - 1;
+        if (last > 0 && out.charAt(last) == 'h' && isVowel(out.charAt(last - 1))) {
+            out.setLength(last); // final h after a vowel is silent (Sarah/Sara, Aishah/Aisha); after collapsing, so "ahh" too
+        }
         return out.toString();
+    }
+
+    private static String lettersOnly(String s) {
+        for (int i = 0; i < s.length(); i++) {
+            if (!Character.isLetter(s.charAt(i))) {
+                StringBuilder b = new StringBuilder(s.length());
+                for (int j = 0; j < s.length(); j++) {
+                    if (Character.isLetter(s.charAt(j))) {
+                        b.append(s.charAt(j));
+                    }
+                }
+                return b.toString();
+            }
+        }
+        return s;
     }
 
     public static String skeleton(String folded) {

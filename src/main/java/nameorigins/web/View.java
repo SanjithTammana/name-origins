@@ -106,17 +106,16 @@ final class View {
 
     /** Percent-encodes characters that would break a query string (URLEncoder is not in TeaVM's class library). */
     static String encodeQuery(String s) {
+        // whole string at once: a character outside the BMP is two chars, and one alone encodes as "?"
         StringBuilder out = new StringBuilder();
-        for (char c : s.toCharArray()) {
+        for (byte b : s.getBytes(java.nio.charset.StandardCharsets.UTF_8)) {
+            char c = (char) (b & 0xFF);
             boolean asciiAlnum = (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9');
             if (asciiAlnum || c == '-' || c == '.' || c == '_') {
                 out.append(c);
             } else {
-                byte[] bytes = String.valueOf(c).getBytes(java.nio.charset.StandardCharsets.UTF_8);
-                for (byte b : bytes) {
-                    out.append('%').append(Character.toUpperCase(Character.forDigit((b >> 4) & 0xF, 16)))
-                            .append(Character.toUpperCase(Character.forDigit(b & 0xF, 16)));
-                }
+                out.append('%').append(Character.toUpperCase(Character.forDigit((b >> 4) & 0xF, 16)))
+                        .append(Character.toUpperCase(Character.forDigit(b & 0xF, 16)));
             }
         }
         return out.toString();
