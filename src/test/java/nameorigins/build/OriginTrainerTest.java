@@ -31,4 +31,15 @@ class OriginTrainerTest {
         }
         assertEquals(0.20, OriginTrainer.chooseFloor(alwaysLatin, val), 1e-9);
     }
+
+    @Test
+    void familiesAndListsJoinTheirGroup() {
+        assertEquals("Germanic", OriginGroups.of("Germanic"));
+        assertEquals("Germanic", OriginGroups.of("Frankish"));
+        assertEquals("Slavic", OriginGroups.of("Bulgarian, Macedonian, and Russian"));
+        assertEquals("Celtic", OriginGroups.of("Irish and Scottish Gaelic"));
+        // a list across groups, and a name that only looks like a list, keep their own name
+        assertEquals("Portuguese and Spanish", OriginGroups.of("Portuguese and Spanish"));
+        assertEquals("Antigua and Barbuda Creole English", OriginGroups.of("Antigua and Barbuda Creole English"));
+    }
 }

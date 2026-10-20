@@ -12,7 +12,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -206,8 +205,6 @@ class DataContractTest {
             java.util.regex.Pattern.compile("[a-z]{2,3}(-[a-z]{2,4})*(,[a-z]{2,3}(-[a-z]{2,4})*)*");
 
     @Test
-    @Disabled("known data defect, needs an EntryExtractor fix and a data rebuild: 717 chain steps show raw codes"
-            + " (gem 204, unknown 249, sla 52, ru,uk 22, ...) and model.tsv has origins gem and unknown")
     void languagesAreNamesNotWiktionaryCodes() {
         Problems p = new Problems("chain steps or entries whose language is a raw Wiktionary code");
         Map<String, Integer> counts = new java.util.TreeMap<>();

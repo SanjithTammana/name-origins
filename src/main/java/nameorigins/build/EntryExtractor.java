@@ -3,6 +3,7 @@ package nameorigins.build;
 import com.fasterxml.jackson.databind.JsonNode;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -32,16 +33,24 @@ public final class EntryExtractor {
             "der", "der+", "bor", "bor+", "inh", "inh+", "lbor", "lbor+", "slbor", "ubor", "translit", "uder");
     private static final Pattern CODE_FORM = Pattern.compile("^([a-z]{2,3}(?:-[a-z]{2,4})*):(.+)$");
     private static final Pattern QUOTED = Pattern.compile("“([^”]{2,80})”");
+    /** "Borrowed from ", "Learned borrowing from ", "Transliteration of ": what an expansion says before the language. */
+    private static final Pattern EXPANSION_PREFIX = Pattern.compile("^(?:[A-Za-z -]*? (?:from|of) )?");
+    /** "Germanic", "Old Iranian", "Italian, Portuguese, and Spanish"; not "[Term?]" or a word in another script. */
+    private static final Pattern LANGUAGE_NAME = Pattern.compile("[A-Z][\\p{L}'–-]*(?:,? [\\p{L}'–-]+)*");
     private static final int MAX_STEPS = 8;
     private static final int MAX_SUMMARY = 260;
 
     private final Map<String, String> languageNames;
     private final List<String> namesLongestFirst;
 
-    /** @param languageNames language code -> name (from langs.tsv) */
+    /**
+     * @param languageNames language code -> name (from langs.tsv). Names voted "unknown" are ignored: the dump
+     *     labels a few codes that way, Proto-Indo-European (ine-pro) among them.
+     */
     public EntryExtractor(Map<String, String> languageNames) {
-        this.languageNames = languageNames;
-        Set<String> unique = new LinkedHashSet<>(languageNames.values());
+        this.languageNames = new HashMap<>(languageNames);
+        this.languageNames.values().removeIf(name -> name.equals("unknown"));
+        Set<String> unique = new LinkedHashSet<>(this.languageNames.values());
         this.namesLongestFirst = new ArrayList<>(unique);
         this.namesLongestFirst.sort((a, b) -> b.length() - a.length());
     }
@@ -78,14 +87,19 @@ public final class EntryExtractor {
                 if (code.isEmpty() || code.equals(ownCode)) {
                     continue;
                 }
-                addStep(steps, code, form(args, t.path("expansion").asText(""), code));
+                String expansion = t.path("expansion").asText("");
+                String lang = languageNames.getOrDefault(code, nameFromExpansion(args, expansion));
+                if (lang != null) {
+                    addStep(steps, lang, form(args, expansion, lang));
+                }
             } else if (name.equals("ety") || name.equals("etymon")) {
-                // newer tree templates: args like {"2": ":bor", "3": "sa:संजय"}
+                // newer tree templates: args like {"2": ":bor", "3": "sa:संजय"}; no expansion to name other codes
                 for (Iterator<String> it = args.fieldNames(); it.hasNext(); ) {
                     String k = it.next();
                     Matcher m = CODE_FORM.matcher(args.path(k).asText());
-                    if (k.chars().allMatch(Character::isDigit) && m.matches() && !m.group(1).equals(ownCode)) {
-                        addStep(fromTreeTemplates, m.group(1), m.group(2));
+                    if (k.chars().allMatch(Character::isDigit) && m.matches() && !m.group(1).equals(ownCode)
+                            && languageNames.containsKey(m.group(1))) {
+                        addStep(fromTreeTemplates, languageNames.get(m.group(1)), m.group(2));
                     }
                 }
             }
@@ -93,8 +107,25 @@ public final class EntryExtractor {
         return steps.isEmpty() ? fromTreeTemplates : steps;
     }
 
-    private void addStep(List<OriginStep> steps, String code, String rawForm) {
-        String lang = languageNames.getOrDefault(code, code);
+    /**
+     * The language as the template's expansion names it, for codes langs.tsv has no name for: family codes
+     * ("gem" -> "Germanic"), lists ("ru,uk" -> "Russian and Ukrainian") and codes voted "unknown". An expansion
+     * reads "[Borrowed from ]language[ word ...]". Null when no name can be read: the step is then dropped
+     * rather than shown as a code.
+     */
+    static String nameFromExpansion(JsonNode args, String expansion) {
+        String rest = EXPANSION_PREFIX.matcher(expansion.replaceAll("<[^>]*>", "").trim()).replaceFirst("");
+        String word = args.path("4").asText("");
+        word = (word.isEmpty() ? args.path("3").asText("") : word).replaceAll("<[^>]*>", "").trim();
+        int at = word.isEmpty() || word.equals("-") ? -1 : rest.indexOf(" " + word);
+        String name = at > 0 ? rest.substring(0, at) : rest; // a family shows no word: "Germanic"
+        if (!LANGUAGE_NAME.matcher(name).matches()) {
+            name = rest.replaceFirst(" [\\[(*].*", ""); // "Germanic [Term?]", "Old Iranian *kar-ina-"
+        }
+        return LANGUAGE_NAME.matcher(name).matches() ? name : null;
+    }
+
+    private static void addStep(List<OriginStep> steps, String lang, String rawForm) {
         // every path strips Wiktionary inline modifiers: "Adam<id:first man>", "xōchitl<t:flower>"
         String form = rawForm.replaceAll("<[^>]*>", "").trim();
         if (steps.size() >= MAX_STEPS) {
@@ -107,26 +138,23 @@ public final class EntryExtractor {
     }
 
     /** The source word as Wiktionary displays it, e.g. "Μῐχᾱήλ (Mĭkhāḗl)"; "" when the template has no word. */
-    private String form(JsonNode args, String expansion, String code) {
+    private static String form(JsonNode args, String expansion, String lang) {
         // strip Wiktionary inline modifiers: "xōchitl<t:flower>" -> "xōchitl"
         String word = args.path("3").asText("").replaceAll("<[^>]*>", "").trim();
         if (word.equals("-")) {
             return "";
         }
-        String lang = languageNames.get(code);
-        if (lang != null) {
-            int at = expansion.indexOf(lang + " ");
-            if (at >= 0) {
-                String shown = expansion.substring(at + lang.length() + 1).replaceAll("<[^>]*>", "").trim();
-                // drop the trailing gloss inside the brackets: "संजीत (sañjīt, literally “full victory”)"
-                int comma = shown.indexOf(", ");
-                int paren = shown.indexOf(" (");
-                if (paren > 0 && comma > paren) {
-                    shown = shown.substring(0, comma) + ")";
-                }
-                if (!shown.isEmpty()) {
-                    return shown;
-                }
+        int at = expansion.indexOf(lang + " ");
+        if (at >= 0) {
+            String shown = expansion.substring(at + lang.length() + 1).replaceAll("<[^>]*>", "").trim();
+            // drop the trailing gloss inside the brackets: "संजीत (sañjīt, literally “full victory”)"
+            int comma = shown.indexOf(", ");
+            int paren = shown.indexOf(" (");
+            if (paren > 0 && comma > paren) {
+                shown = shown.substring(0, comma) + ")";
+            }
+            if (!shown.isEmpty()) {
+                return shown;
             }
         }
         return word;
