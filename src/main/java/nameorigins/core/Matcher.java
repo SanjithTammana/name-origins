@@ -67,8 +67,8 @@ public final class Matcher {
 
     /**
      * Spelling variants, strongest evidence first: the name's own variant group, then same strong sound key,
-     * then same consonant skeleton (looser, so it must also be within a small edit distance).
-     * Falls back to an exact hit without origin data if no variant has any.
+     * then same consonant skeleton (looser, so it must also be within a small edit distance). Variants with an
+     * origin chain beat those with only an entry. Falls back to the typed name's own entry if it has one.
      */
     static final class VariantLayer implements MatchStrategy {
         private final NameDirectory dir;
@@ -99,11 +99,18 @@ public final class Matcher {
                     }
                 }
             }
-            ranked.removeIf(s -> s.item() == self || !dir.hasOrigin(s.item()));
+            // a variant is only worth following if it has something to show; ones with an origin chain rank first
+            ranked.removeIf(s -> s.item() == self || !dir.hasEntries(s.item()));
             if (ranked.isEmpty()) {
-                return self >= 0 ? Optional.of(new MatchResult.Exact(query, folded)) : Optional.empty();
+                // the typed name itself: show it if it has entries; a bare recorded spelling falls through to the
+                // guess / nearest layers instead of rendering an empty result
+                boolean showSelf = self >= 0 && dir.hasEntries(self);
+                return showSelf ? Optional.of(new MatchResult.Exact(query, folded)) : Optional.empty();
             }
-            ranked.sort((a, b) -> Double.compare(a.score(), b.score()));
+            ranked.sort((a, b) -> {
+                int c = Boolean.compare(dir.hasOrigin(b.item()), dir.hasOrigin(a.item()));
+                return c != 0 ? c : Double.compare(a.score(), b.score());
+            });
             List<String> alternatives = new ArrayList<>();
             for (int i = 1; i < ranked.size() && alternatives.size() < 5; i++) {
                 alternatives.add(dir.display(ranked.get(i).item()));

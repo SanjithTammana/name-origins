@@ -24,6 +24,13 @@ class EditDistanceTest {
     }
 
     @Test
+    void hugeLimitDoesNotOverflow() {
+        assertEquals(0, d.within("a", "a", Integer.MAX_VALUE));
+        assertEquals(3, d.within("kitten", "sitting", Integer.MAX_VALUE));
+        assertEquals(0, d.within("", "", Integer.MAX_VALUE));
+    }
+
+    @Test
     void agreesWithFullLevenshteinOnALargerLimit() {
         assertEquals(3, d.within("kitten", "sitting", 10));
         assertEquals(6, d.within("", "sophia", 10));

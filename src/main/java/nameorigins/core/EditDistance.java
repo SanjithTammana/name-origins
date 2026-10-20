@@ -18,6 +18,9 @@ public final class EditDistance {
     public int within(String a, String b, int limit) {
         int n = a.length();
         int m = b.length();
+        // the distance can never exceed max(n, m), so a larger limit changes nothing; capping it also keeps
+        // i + limit and limit + 1 from overflowing (within("a", "a", Integer.MAX_VALUE) used to throw)
+        limit = Math.min(limit, Math.max(n, m));
         if (Math.abs(n - m) > limit) {
             return limit + 1;
         }

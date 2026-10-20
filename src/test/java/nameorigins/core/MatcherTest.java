@@ -9,12 +9,18 @@ import org.junit.jupiter.api.Test;
 /** The four layers, on a hand-built directory in the same format IndexBuilder writes. */
 class MatcherTest {
 
+    /** state: 2 = has an origin chain, 1 = has entries but no chain, 0 = a recorded spelling with no entry. */
+    private static String row(String key, String display, int group, int state) {
+        return String.join("\t", key, display, String.valueOf(group), String.valueOf(state)) + "\n";
+    }
+
     private static String row(String key, String display, int group, boolean origin) {
-        return String.join("\t", key, display, String.valueOf(group), origin ? "1" : "0") + "\n";
+        return row(key, display, group, origin ? 2 : 0);
     }
 
     private static final NameDirectory DIR = NameDirectory.parse(
-            row("abhijit", "Abhijit", 0, true)
+            row("abgaro", "Abgaro", 7, false)        // a spelling with no entry and no variant that has one
+            + row("abhijit", "Abhijit", 0, true)
             + row("michael", "Michael", 1, true)
             + row("mohammed", "Mohammed", 2, false)  // a recorded variant spelling without its own entry
             + row("muhammad", "Muhammad", 2, true)
@@ -22,7 +28,7 @@ class MatcherTest {
             + row("ranjit", "Ranjit", 5, true)
             + row("sanjay", "Sanjay", 3, true)
             + row("sanjeet", "Sanjeet", 4, true)
-            + row("wei", "Wei", 6, false));        // known from Wikidata only, no origin chain
+            + row("wei", "Wei", 6, 1));            // has an entry (e.g. Wikidata) but no origin chain
 
     // Tiny model: two origins, "jit$" strongly Sanskrit.
     private static final OriginModel MODEL = OriginModel.parse(
@@ -62,6 +68,13 @@ class MatcherTest {
     @Test
     void knownNameWithoutVariantsIsNotRedirectedToASoundAlike() {
         assertEquals(new MatchResult.Exact("Wei", "wei"), matcher.match("Wei"));
+    }
+
+    @Test
+    void recordedSpellingWithNothingToShowIsNotAnEmptyExactHit() {
+        // regression (Codex review): "Abgaro" used to come back Exact with no entries, rendering a blank page
+        MatchResult r = matcher.match("Abgaro");
+        assertTrue(!(r instanceof MatchResult.Exact) && !(r instanceof MatchResult.Variant), r.toString());
     }
 
     @Test

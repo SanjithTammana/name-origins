@@ -73,6 +73,9 @@ public final class OriginTrainer {
         double floor = chooseFloor(tuned, val);
         out.append(String.format(Locale.ROOT, "settings chosen on validation: alpha=%.2f prior^%.1f tau=%.1f floor=%.2f%n",
                 bestAlpha, bestPower, bestTau, floor));
+        if (floor >= DISABLED) {
+            out.append("WARNING: no confidence floor reached the target precision on validation; guesses are DISABLED\n");
+        }
 
         String majority = classSizes.entrySet().stream().max(Map.Entry.comparingByValue()).orElseThrow().getKey();
         long majorityHits = test.stream().filter(e -> e.origin().equals(majority)).count();
@@ -257,8 +260,15 @@ public final class OriginTrainer {
         return total / data.size();
     }
 
-    /** Lowest floor whose validation precision reaches the target, so the guess is shown as often as is honest. */
-    private static double chooseFloor(OriginModel m, List<Example> val) {
+    /** Above any probability: the guesser never answers. Used when no floor passes calibration. */
+    static final double DISABLED = 1.01;
+
+    /**
+     * Lowest floor whose validation precision reaches the target, so the guess is shown as often as is honest.
+     * If no floor qualifies, the guesser is switched off rather than given an untested threshold (the first
+     * version returned 0.95 here; caught in the Codex review, 2026-10-20).
+     */
+    static double chooseFloor(OriginModel m, List<Example> val) {
         for (double t = 0.20; t <= 0.95; t += 0.05) {
             int shown = 0;
             int correct = 0;
@@ -275,7 +285,7 @@ public final class OriginTrainer {
                 return Math.round(t * 100) / 100.0;
             }
         }
-        return 0.95;
+        return DISABLED;
     }
 
     private static String perClass(OriginModel m, List<Example> test) {

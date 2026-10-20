@@ -58,6 +58,12 @@ class StructuresTest {
     }
 
     @Test
+    void topKOfZeroIsEmptyNotACrash() {
+        assertEquals(List.of(), MeaningSearch.topK(new float[] {1f}, new String[] {"anna"}, 0));
+        assertEquals("b", MeaningSearch.topK(new float[] {0.2f, 0.9f, 0.5f}, new String[] {"a", "b", "c"}, 1).get(0).item());
+    }
+
+    @Test
     void unionFindGroupsTransitiveLinks() {
         UnionFind uf = new UnionFind(5);
         uf.union(0, 1);

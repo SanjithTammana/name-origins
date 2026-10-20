@@ -18,6 +18,9 @@ public interface MeaningSearch {
      * all n. The heap's root is the weakest of the current top k, so each new score is compared with it once.
      */
     static List<Scored<String>> topK(float[] scores, String[] keys, int k) {
+        if (k <= 0) {
+            return new ArrayList<>();
+        }
         PriorityQueue<Scored<String>> heap = new PriorityQueue<>(k + 1, (a, b) -> Double.compare(a.score(), b.score()));
         for (int i = 0; i < scores.length; i++) {
             float s = scores[i];

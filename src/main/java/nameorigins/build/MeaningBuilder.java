@@ -93,8 +93,8 @@ public final class MeaningBuilder {
         for (Doc d : docs) {
             docText.put(d.key(), String.join(" ", d.tokens()));
         }
-        Map<String, List<String>> byEtymon = byEtymon(docs, emb, etymons);
-        List<String> etymonQueries = etymonQueries(docs, emb, etymons, group, byEtymon);
+        Map<String, List<String>> byEtymon = byEtymon(docs, etymons);
+        List<String> etymonQueries = etymonQueries(docs, etymons, group, byEtymon);
         for (Map.Entry<String, Method> m : methods.entrySet()) {
             double[] concept = conceptScores(m.getValue(), docs);
             double etymon = etymonRecall(m.getValue(), etymonQueries, docText, etymons, group, byEtymon);
@@ -326,27 +326,28 @@ public final class MeaningBuilder {
         return rel;
     }
 
-    /** source word -> names (with an embedding) that have it. */
-    private static Map<String, List<String>> byEtymon(List<Doc> docs, EmbeddingIndex emb, Map<String, Set<String>> etymons) {
-        Set<String> hasEmbedding = new HashSet<>(List.of(emb.keys()));
+    /**
+     * source word -> every name with a meaning that has it. Deliberately not filtered to names that have an
+     * embedding: a name the embedding method cannot represent must count as its miss, not drop out of the test.
+     * (The first version filtered here, which let embedding coverage gaps escape the adoption rule; caught in
+     * the Codex review, 2026-10-20.)
+     */
+    private static Map<String, List<String>> byEtymon(List<Doc> docs, Map<String, Set<String>> etymons) {
         Map<String, List<String>> byEtymon = new HashMap<>();
         for (Doc d : docs) {
-            if (hasEmbedding.contains(d.key())) {
-                for (String et : etymons.getOrDefault(d.key(), Set.of())) {
-                    byEtymon.computeIfAbsent(et, x -> new ArrayList<>()).add(d.key());
-                }
+            for (String et : etymons.getOrDefault(d.key(), Set.of())) {
+                byEtymon.computeIfAbsent(et, x -> new ArrayList<>()).add(d.key());
             }
         }
         return byEtymon;
     }
 
     /** Up to 1,500 names (fixed seed) that share a source word with a name outside their own variant group. */
-    private static List<String> etymonQueries(List<Doc> docs, EmbeddingIndex emb, Map<String, Set<String>> etymons,
+    private static List<String> etymonQueries(List<Doc> docs, Map<String, Set<String>> etymons,
             Map<String, Integer> group, Map<String, List<String>> byEtymon) {
-        Set<String> hasEmbedding = new HashSet<>(List.of(emb.keys()));
         List<String> q = new ArrayList<>();
         for (Doc d : docs) {
-            if (hasEmbedding.contains(d.key()) && !sharedEtymon(d.key(), etymons, group, byEtymon).isEmpty()) {
+            if (!sharedEtymon(d.key(), etymons, group, byEtymon).isEmpty()) {
                 q.add(d.key());
             }
         }

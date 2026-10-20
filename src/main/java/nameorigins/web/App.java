@@ -30,6 +30,7 @@ public final class App {
     private static HTMLElement meaningResult;
     private static HTMLElement nameList;
     private static int traceSeq;
+    private static int meaningSeq;
 
     private App() {}
 
@@ -140,13 +141,21 @@ public final class App {
         if (text.isEmpty() || DATA.dir == null) {
             return;
         }
+        int seq = ++meaningSeq; // a slower, older search must not overwrite a newer one (or its error)
         meaningResult.setInnerText("Loading meanings…");
         DATA.meaning((MeaningSearch search) -> {
+            if (seq != meaningSeq) {
+                return;
+            }
             List<String> names = new ArrayList<>();
             for (Scored<String> s : search.search(text, 16)) {
                 names.add(s.item());
             }
             meaningResult.setInnerHTML(View.meaningResults(text, DATA.displays(names.toArray(new String[0]))));
-        }, err -> meaningResult.setInnerText("The meaning data didn’t load. Try again."));
+        }, err -> {
+            if (seq == meaningSeq) {
+                meaningResult.setInnerText("The meaning data didn’t load. Try again.");
+            }
+        });
     }
 }

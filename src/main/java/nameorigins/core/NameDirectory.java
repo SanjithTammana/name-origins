@@ -21,13 +21,15 @@ import java.util.Map;
  * built the first time a query needs them, which happens only for names that are not found as typed. Exact
  * lookup uses binary search on the keys, already sorted in the file, so it needs no hash map at all.
  *
- * File format (directory.tsv), sorted by key (String.compareTo order): key, display, group, hasOrigin(0/1).
+ * File format (directory.tsv), sorted by key (String.compareTo order): key, display, group, state, where state is
+ * 2 = has an origin chain, 1 = has entries but no chain, 0 = a recorded spelling with no entry of its own.
  */
 public final class NameDirectory {
     private final String[] keys;
     private final String[] display;
     private final int[] group;
     private final boolean[] hasOrigin;
+    private final boolean[] hasEntries;
     private Map<String, int[]> byStrong;
     private Map<String, int[]> bySkeleton;
     private Map<Integer, int[]> groups;
@@ -38,6 +40,7 @@ public final class NameDirectory {
         display = new String[n];
         group = new int[n];
         hasOrigin = new boolean[n];
+        hasEntries = new boolean[n];
     }
 
     /** One pass over the text with indexOf; no per-line lists or arrays. */
@@ -67,7 +70,9 @@ public final class NameDirectory {
                 g = g * 10 + (tsv.charAt(i) - '0');
             }
             d.group[row] = g;
-            d.hasOrigin[row] = tsv.charAt(t3 + 1) == '1';
+            char state = tsv.charAt(t3 + 1);
+            d.hasOrigin[row] = state == '2';
+            d.hasEntries[row] = state != '0';
             row++;
             start = end + 1;
         }
@@ -107,6 +112,11 @@ public final class NameDirectory {
 
     public boolean hasOrigin(int slot) {
         return hasOrigin[slot];
+    }
+
+    /** True when the name has at least one entry to show (with or without an origin chain). */
+    public boolean hasEntries(int slot) {
+        return hasEntries[slot];
     }
 
     public int[] soundsLike(String folded) {

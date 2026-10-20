@@ -22,7 +22,7 @@ import nameorigins.core.UnionFind;
 
 /**
  * Builds the browser data from the work files:
- *   site/data/directory.tsv      every name: key, display, variant group, hasOrigin
+ *   site/data/directory.tsv      every name: key, display, variant group, state (2 origin, 1 entries, 0 neither)
  *   site/data/entries/<x>.tsv    entry details per first letter
  *   work/origins.tsv             key, display, oldest language  (training data for the origin model)
  *   work/meanings.tsv            key, display, meaning text     (documents for meaning search)
@@ -158,7 +158,7 @@ public final class IndexBuilder {
                 List<NameEntry> entries = ordered(d);
                 boolean hasOrigin = entries.stream().anyMatch(e -> !e.chain().isEmpty());
                 dir.write(String.join("\t", key, Tsv.clean(d.display),
-                        String.valueOf(groups.find(i)), hasOrigin ? "1" : "0"));
+                        String.valueOf(groups.find(i)), hasOrigin ? "2" : entries.isEmpty() ? "0" : "1"));
                 dir.newLine();
                 if (!entries.isEmpty()) {
                     withEntries++;
