@@ -33,6 +33,24 @@ class ViewTest {
         assertFalse(html.contains("<img"), html);
         assertTrue(html.contains("&lt;img"));
         assertTrue(html.contains("data-name=\"a&quot;b\""));
+        assertTrue(html.contains("name=%3Cimg%20src%3Dx%20onerror%3Dalert%281%29%3E"), html);
+        assertFalse(html.contains("&name=<img"), html);
+    }
+
+    @Test
+    void everyResultHasAnAttributedFeedbackRoute() {
+        for (MatchResult r : List.of(
+                new MatchResult.Exact("Zoë Ann", "zoe ann"),
+                new MatchResult.Variant("Zoë Ann", "zoeann", List.of()),
+                new MatchResult.Inferred("Zoë Ann", List.of(new Scored<>("Greek", 0.8)), List.of(), List.of()),
+                new MatchResult.None("Zoë Ann", List.of()))) {
+            String html = View.result(r, List.of(SOPHIA), List.of());
+            assertTrue(html.contains("template=name-feedback.yml&amp;name=Zo%C3%AB%20Ann"), html);
+            assertTrue(html.contains("Report this result"), html);
+            assertTrue(html.contains("public GitHub form"), html);
+        }
+        assertTrue(View.reportUrl(new MatchResult.Inferred("Seoah", List.of(), List.of(), List.of()))
+                .contains("result_type=Letter-pattern%20guess"));
     }
 
     @Test

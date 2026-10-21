@@ -1,0 +1,39 @@
+name: Index name feedback
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: name-feedback-index
+  cancel-in-progress: false
+
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test the indexer
+        run: node --test scripts/index-feedback.test.mjs
+      - name: Index the issue
+        run: node scripts/index-feedback.mjs "$GITHUB_EVENT_PATH"
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+      - name: Commit the audit pointer
+        env:
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          git add feedback/reports
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m "Index name feedback #${ISSUE_NUMBER}"
+          git fetch origin "$GITHUB_REF_NAME"
+          git rebase "origin/$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"

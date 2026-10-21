@@ -41,13 +41,31 @@ body {
 }
 
 .page {
-  max-width: 46rem;
+  max-width: 78rem;
   margin: 0 auto;
   padding: var(--space-2xl) var(--space-md) var(--space-3xl);
 }
 
-@media (min-width: 64rem) {
-  .page { margin-left: max(var(--space-3xl), calc(50% - 32rem)); }
+@media (min-width: 58rem) {
+  .page {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(18rem, 0.75fr);
+    column-gap: clamp(var(--space-xl), 4vw, var(--space-3xl));
+  }
+  .masthead { grid-column: 1 / -1; }
+  .page > #trace-form { grid-column: 1; grid-row: 2; }
+  .page > .status { grid-column: 1; grid-row: 3; }
+  .page > .result { grid-column: 1; grid-row: 4; }
+  .page > .by-meaning {
+    grid-column: 2;
+    grid-row: 2 / 5;
+    align-self: start;
+    margin-top: var(--space-xl);
+    padding: 0 0 0 var(--space-xl);
+    border-top: 0;
+    border-left: 1px solid var(--color-border);
+  }
+  .colophon { grid-column: 1 / -1; grid-row: 5; }
 }
 
 a { color: var(--color-accent); text-underline-offset: 3px; }
@@ -80,9 +98,10 @@ h1 {
   text-transform: uppercase;
   color: var(--color-muted);
 }
-.trace-row { display: flex; gap: var(--space-sm); flex-wrap: wrap; }
+.trace-row { display: flex; gap: var(--space-sm); flex-wrap: wrap; min-width: 0; }
 .trace input {
   flex: 1 1 14rem;
+  min-width: 0;
   min-height: 52px;
   padding: var(--space-sm) var(--space-md);
   font: 400 1.5rem/1.2 var(--font-display);
@@ -109,10 +128,11 @@ button.secondary:hover { background: var(--color-surface); }
 
 /* results */
 .result { margin-top: var(--space-lg); }
+.result, .by-meaning { min-width: 0; }
 .result > * { animation: arrive 180ms ease-out both; }
 @keyframes arrive { from { opacity: 0; transform: translateY(4px); } }
 
-.note { margin: 0 0 var(--space-md); max-width: 62ch; }
+.note { margin: 0 0 var(--space-md); max-width: 62ch; overflow-wrap: anywhere; }
 
 .entry {
   background: var(--color-surface);
@@ -122,7 +142,7 @@ button.secondary:hover { background: var(--color-surface); }
   margin-bottom: var(--space-md);
 }
 .entry-head { margin-bottom: var(--space-lg); }
-.entry-name { margin: 0; font: 700 2.25rem/1.1 var(--font-display); }
+.entry-name { margin: 0; font: 700 2.25rem/1.1 var(--font-display); overflow-wrap: anywhere; }
 .entry-meta { margin: var(--space-xs) 0 0; color: var(--color-muted); }
 
 /* the signature: a name's lineage, oldest first, each language's own spelling set large */
@@ -170,8 +190,19 @@ button.secondary:hover { background: var(--color-surface); }
   font-style: normal;
   color: var(--color-muted);
 }
-.summary { margin: 0 0 var(--space-sm); max-width: 66ch; color: var(--color-muted); }
+.summary { margin: 0 0 var(--space-sm); max-width: 66ch; color: var(--color-muted); overflow-wrap: anywhere; }
 .source { margin: 0; font-size: 0.9375rem; }
+
+.feedback {
+  margin: var(--space-sm) 0 var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+  font-size: 0.9375rem;
+  overflow-wrap: anywhere;
+}
+.feedback p { margin: 0; }
+.feedback a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; }
+.feedback-note { color: var(--color-muted); font-size: 0.875rem; }
 
 .more { margin: 0 0 var(--space-lg); }
 .more summary { cursor: pointer; padding: var(--space-sm) 0; font-weight: 700; min-height: 44px; display: flex; align-items: center; }
@@ -187,10 +218,13 @@ button.secondary:hover { background: var(--color-surface); }
 /* clickable names */
 .chips, .inline-chips { list-style: none; padding: 0; margin: 0 0 var(--space-lg); display: flex; flex-wrap: wrap; gap: var(--space-sm); }
 .inline-chips { display: inline-flex; margin: var(--space-sm) 0 0; }
+.chips li, .inline-chips li { max-width: 100%; }
 .chip {
   min-height: 44px;
-  padding: 0 var(--space-md);
-  font: 400 1.125rem/1 var(--font-display);
+  max-width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  font: 400 1.125rem/1.2 var(--font-display);
+  overflow-wrap: anywhere;
   color: var(--color-ink);
   background: var(--color-surface-2);
   border: 1px solid var(--color-surface-2);
@@ -203,6 +237,13 @@ button.secondary:hover { background: var(--color-surface); }
 #meaning-result { margin-top: var(--space-md); }
 
 .colophon { margin-top: var(--space-3xl); font-size: 0.9375rem; color: var(--color-muted); max-width: 62ch; }
+
+@media (max-width: 35rem) {
+  .page { padding-top: var(--space-lg); }
+  .trace-row { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .trace input, .trace-row button { width: 100%; }
+  .entry { padding: var(--space-md); }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .result > * { animation: none; }

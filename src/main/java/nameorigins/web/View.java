@@ -48,11 +48,36 @@ final class View {
                 }
             }
         }
+        sb.append(feedbackHtml(r));
         if (!similar.isEmpty()) {
             sb.append("<section class=\"similar\" aria-labelledby=\"similar-h\"><h3 id=\"similar-h\">Names with a similar meaning</h3>")
                     .append(chips(similar, "chips")).append("</section>");
         }
         return sb.toString();
+    }
+
+    private static String feedbackHtml(MatchResult result) {
+        return "<aside class=\"feedback\" aria-label=\"Feedback about this result\">"
+                + "<p>Does this look wrong or incomplete?</p><a href=\""
+                + Html.esc(reportUrl(result))
+                + "\" target=\"_blank\" rel=\"noopener noreferrer\">Report this result</a>"
+                + "<p class=\"feedback-note\">Opens a public GitHub form. Sign-in is required; leave out private details.</p>"
+                + "</aside>";
+    }
+
+    /** Issue-form field IDs match .github/ISSUE_TEMPLATE/name-feedback.yml. */
+    static String reportUrl(MatchResult result) {
+        String type = switch (result) {
+            case MatchResult.Exact e -> "Recorded entry";
+            case MatchResult.Variant v -> "Spelling variant";
+            case MatchResult.Inferred i -> "Letter-pattern guess";
+            case MatchResult.None n -> "No result";
+        };
+        String name = result.query().trim();
+        int points = name.codePointCount(0, name.length());
+        if (points > 80) name = name.substring(0, name.offsetByCodePoints(0, 80));
+        return "https://github.com/SanjithTammana/name-origins/issues/new?template=name-feedback.yml&name="
+                + encodeQuery(name) + "&result_type=" + encodeQuery(type);
     }
 
     /** Exact and Variant keys always have entries in the data, so none means the shard did not download. */

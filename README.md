@@ -29,6 +29,11 @@ The matcher tries four layers in order and the page says which one answered:
    guess is presented as a recorded etymology.
 4. **Nothing confident.** The closest recorded spellings (BK-tree over edit distance).
 
+Every traced result has a **Report this result** link. It opens a public GitHub issue form with the checked
+name and result category prefilled. A GitHub Action adds a small pointer to `feedback/reports/` so reports can
+be audited later. Reporters need a GitHub account; reports do not change the data automatically. See
+`feedback/README.md` for the audit procedure.
+
 Two meaning features sit on top: **names with a similar meaning** under every result, and **search by
 meaning** ("victory" finds Victoria, Niké, Zafer, Nasr, Voitto, Lanakila, Jaya...). Both use a 50/50 blend of TF-IDF and
 word embeddings trained from scratch in Java (word2vec, skip-gram with negative sampling) on Wiktionary
@@ -92,6 +97,9 @@ Names live in parallel arrays rather than one object each. Indexes needed only f
 in the background after the page loads, in slices so the page never pauses for long (longest slice 177 ms).
 On a desktop the page is usable about 1.5 s after opening (most of it parsing the 150k-name directory), and
 lookups take 2–30 ms, plus one ~80 KB download the first time a letter is looked up.
+
+The page uses a single column on narrow screens and places meaning search beside the name result on wider
+screens; both forms remain keyboard accessible.
 
 ## Building
 

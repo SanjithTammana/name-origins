@@ -1,0 +1,47 @@
+name: Report a name result
+description: Tell us when a name's origin, meaning, spelling match, or absence looks wrong.
+title: "[Name feedback] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This report will be public on GitHub. Please avoid private details about yourself or anyone else.
+        A report is evidence to audit, not an automatic correction to the name data.
+  - type: input
+    id: name
+    attributes:
+      label: Name checked
+      description: The spelling you entered on the site.
+      placeholder: e.g. Seoah
+    validations:
+      required: true
+  - type: input
+    id: result_type
+    attributes:
+      label: Result category
+      description: Prefilled when you arrive from a name result.
+      placeholder: Recorded entry, spelling variant, letter-pattern guess, or no result
+    validations:
+      required: false
+  - type: textarea
+    id: problem
+    attributes:
+      label: What seems wrong?
+      description: Quote the result and say what conflicts with your knowledge or source.
+      placeholder: The site guessed Hebrew, but this name is used in Korean...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What should it say, if you know?
+      description: It is okay to be unsure. Tell us what you can verify.
+    validations:
+      required: false
+  - type: input
+    id: source
+    attributes:
+      label: Source or reference
+      description: A link or citation helps us verify the correction.
+    validations:
+      required: false

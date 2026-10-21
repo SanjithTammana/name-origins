@@ -25,7 +25,7 @@ class ViewEscapingTest {
 
     private static final String ALPHABET = "ab <>\"'&=/;:é ";
     private static final Pattern TAG = Pattern.compile(
-            "</?(p|strong|ul|li|button|article|header|h2|h3|ol|span|details|summary|section|a)[ >]");
+            "</?(p|strong|ul|li|button|article|header|h2|h3|ol|span|details|summary|section|aside|a)[ >]");
 
     private static String hostile(Random rnd) {
         int len = rnd.nextInt(14);
